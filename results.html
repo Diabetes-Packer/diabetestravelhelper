@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Packing List</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Small, safe layout tweak (no need to edit style.css) -->
+  <style>
+    .packing-header-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .packing-header-row .header-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    @media (max-width: 640px){
+      .packing-header-row{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .packing-header-row .header-actions{
+        justify-content:flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <header class="page-header">
+      <h1>Your Personalized Packing List</h1>
+      <p id="bufferLine" style="margin-top: 10px; opacity: 0.9;"></p>
+      <p class="intro">Based on your trip details and the optional safety buffer</p>
+    </header>
+
+    <section class="results-grid">
+      <!-- Left card -->
+      <section class="card" id="answersCard">
+        <h2>Your Trip Details</h2>
+      </section>
+
+      <!-- Right card -->
+      <section class="card" id="packingCard"></section>
+    </section>
+
+    <footer class="page-footer">
+      <a href="index.html" class="back-link">← Back to form</a>
+    </footer>
+
+  </main>
+
+  <script>
+    // ---------- helpers ----------
+    const qs = new URLSearchParams(window.location.search);
+
+    const toInt = (v, fallback = 0) => {
+      const n = parseInt(v, 10);
+      return Number.isFinite(n) ? n : fallback;
+    };
+
+    const toFloat = (v, fallback = 0) => {
+      const n = parseFloat(v);
+      return Number.isFinite(n) ? n : fallback;
+    };
+
+    const ceil = (x) => Math.ceil(x);
+    const isWhole = (x) => Math.abs(x - Math.round(x)) < 1e-9;
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function addAnswerRow(container, label, value) {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `
+        <div class="label">${escapeHtml(label)}</div>
+        <div class="value">${escapeHtml(value)}</div>
+      `;
+      container.appendChild(row);
+    }
+
+    // ---------- normalize incoming values ----------
+    function norm(v) { return String(v || "").trim().toLowerCase(); }
+
+    function normalizeCgm(raw) {
+      const v = norm(raw);
+
+      // New intended values
+      if (v === "dexcomg6") return "dexcomg6";
+      if (v === "dexcomg7_10" || v === "dexcomg7-10" || v === "dexcomg7 10") return "dexcomg7_10";
+      if (v === "dexcomg7_15" || v === "dexcomg7-15" || v === "dexcomg7 15") return "dexcomg7_15";
+
+      // Legacy/back-compat
+      if (v === "dexcomg7") return "dexcomg7_10";   // safest fallback
+      if (v === "dexcom") return "dexcom_legacy";   // old combined option
+      if (v === "libre2") return "libre2";
+      if (v === "libre3") return "libre3";
+      if (v === "libre") return "libre_legacy";
+      if (v === "guardian4") return "guardian4";
+      if (v === "guardian") return "guardian_legacy";
+      if (v === "none" || v === "") return "none";
+
+      return v;
+    }
+
+    // ---------- read inputs ----------
+    const tripDays = Math.max(1, toInt(qs.get("days"), 1));
+    const pumpRaw = norm(qs.get("pump") || "none");
+    const cgmRaw = normalizeCgm(qs.get("cgm") || "none");
+
+    const unitsPerDay = Math.max(0, toFloat(qs.get("units"), 0));
+    const lows = norm(qs.get("lows") || "no") === "yes";
+    const buffer = norm(qs.get("buffer") || "no") === "yes";
+
+    // Pump-specific inputs (compatible with multiple names)
+    const infusionSetDays = Math.max(1, toInt(qs.get("setDays") ?? qs.get("set_days"), 3));
+
+    // ---------- labels ----------
+    const pumpLabelMap = {
+      none: "None",
+      omnipod: "Omnipod 5",
+      omnipod5: "Omnipod 5",
+      tandem: "Tandem t:slim X2",
+      medtronic: "Medtronic 780G / 770G / 670G",
+      ilet: "iLet Bionic Pancreas"
+    };
+
+    const cgmLabelMap = {
+      none: "None",
+      dexcomg6: "Dexcom G6",
+      dexcomg7_10: "Dexcom G7 (10-day)",
+      dexcomg7_15: "Dexcom G7 (15-day)",
+      dexcom_legacy: "Dexcom (G6/G7)",
+      libre2: "FreeStyle Libre 2",
+      libre3: "FreeStyle Libre 3",
+      libre_legacy: "FreeStyle Libre (2/3)",
+      guardian4: "Medtronic Guardian 4",
+      guardian_legacy: "Medtronic Guardian 4"
+    };
+
+    const pumpLabel = pumpLabelMap[pumpRaw] || "Unknown";
+    const cgmLabel = cgmLabelMap[cgmRaw] || "Unknown";
+
+    // ---------- buffer days ----------
+    const totalDaysUsed = buffer ? ceil(tripDays * 1.2) : tripDays;
+
+    // Your CSS may hide this via #bufferLine { display:none !important; }
+    document.getElementById("bufferLine").textContent = buffer
+      ? "Planning buffer: 20% extra supplies included for safety"
+      : "Planning buffer: None";
+
+    // ---------- render trip details ----------
+    const answersCard = document.getElementById("answersCard");
+    addAnswerRow(answersCard, "Trip duration (days)", String(tripDays));
+    addAnswerRow(answersCard, "Pump", pumpLabel);
+    addAnswerRow(answersCard, "Insulin units/day", unitsPerDay > 0 ? String(unitsPerDay) : "—");
+    addAnswerRow(answersCard, "CGM", cgmLabel);
+    addAnswerRow(answersCard, "Low blood sugar treatments?", lows ? "Yes" : "No");
+    addAnswerRow(answersCard, "20% safety buffer?", buffer ? "Yes" : "No");
+
+    // ---------- list building ----------
+    const packingItems = [];
+    const calcItems = [];
+    const quickNotes = [];
+
+    if (buffer) {
+      packingItems.push(`For a ${tripDays}-day trip (${totalDaysUsed} days with 20% safety buffer)`);
+      const raw = tripDays * 1.2;
+      const rawPretty = isWhole(raw) ? String(Math.round(raw)) : raw.toFixed(1);
+      calcItems.push(`Trip days + buffer → ${tripDays} × 1.2 = ${rawPretty} → ${totalDaysUsed} total days`);
+    } else {
+      packingItems.push(`For a ${tripDays}-day trip (no safety buffer)`);
+      calcItems.push(`${tripDays} total days (no buffer)`);
+    }
+
+    // ---------- CGM sensors + Dexcom G6 transmitter note ----------
+    const cgmDurations = {
+      dexcomg6: 10,
+      dexcomg7_10: 10,
+      dexcomg7_15: 15,
+      dexcom_legacy: 10,
+      libre2: 14,
+      libre3: 14,
+      libre_legacy: 14,
+      guardian4: 7,
+      guardian_legacy: 7
+    };
+
+    if (cgmRaw !== "none" && cgmDurations[cgmRaw]) {
+      const daysPerSensor = cgmDurations[cgmRaw];
+      const ratio = totalDaysUsed / daysPerSensor;
+      const sensorsBase = ceil(ratio);
+      const sensors = sensorsBase + 1; // +1 backup
+
+      packingItems.push(`${cgmLabel} sensors: ${sensors}`);
+
+      const ratioPretty = isWhole(ratio) ? String(Math.round(ratio)) : ratio.toFixed(2);
+      calcItems.push(`${cgmLabel} sensors: ${totalDaysUsed} ÷ ${daysPerSensor} = ${ratioPretty} → ${sensorsBase} + 1 backup → ${sensors}`);
+
+      if (cgmRaw === "dexcomg6") {
+        packingItems.push("Dexcom G6 transmitter: 1");
+        calcItems.push("Dexcom G6 transmitter: 1");
+        quickNotes.push(
+          "Ensure your Dexcom G6 transmitter will not expire during travel (G6 transmitters last ~90 days). If it may expire during your trip, consider bringing an additional transmitter as a backup."
+        );
+      } else if (cgmRaw === "dexcom_legacy") {
+        quickNotes.push(
+          "If you use Dexcom G6, ensure your transmitter will not expire during travel (G6 transmitters last ~90 days). Consider bringing a replacement if expiration is near."
+        );
+      }
+    }
+
+    // ---------- insulin totals ----------
+    const totalInsulinNeeded = unitsPerDay > 0 ? (unitsPerDay * totalDaysUsed) : null;
+
+    function addInsulinVials(totalUnits, label = "Insulin vials (U-100, 1000 units)") {
+      const vialsRatio = totalUnits / 1000;
+      const vialsBase = ceil(vialsRatio);
+      const vials = vialsBase + 1; // +1 backup
+
+      packingItems.push(`${label}: ${vials}`);
+
+      const ratioPretty = isWhole(vialsRatio) ? String(Math.round(vialsRatio)) : vialsRatio.toFixed(2);
+      calcItems.push(`${label}: ${Math.round(totalUnits)} ÷ 1000 = ${ratioPretty} → ${vialsBase} + 1 backup → ${vials}`);
+    }
+
+    // ---------- pump logic ----------
+    if (pumpRaw === "omnipod" || pumpRaw === "omnipod5") {
+      const maxWearDays = 3;
+      const capacity = 200;
+
+      let daysPerPod = maxWearDays;
+      if (unitsPerDay > 0) {
+        const byCapacity = capacity / unitsPerDay;
+        daysPerPod = Math.min(maxWearDays, byCapacity);
+      }
+
+      const podsRatio = totalDaysUsed / daysPerPod;
+      const podsBase = ceil(podsRatio);
+      const pods = podsBase + 1;
+
+      packingItems.push(`Omnipod 5 pods: ${pods}`);
+
+      const podsRatioPretty = isWhole(podsRatio) ? String(Math.round(podsRatio)) : podsRatio.toFixed(2);
+      const daysPerPodPretty = isWhole(daysPerPod) ? String(Math.round(daysPerPod)) : daysPerPod.toFixed(2);
+      calcItems.push(`Omnipod pods: ${totalDaysUsed} ÷ ${daysPerPodPretty} = ${podsRatioPretty} → ${podsBase} + 1 backup → ${pods}`);
+
+      if (unitsPerDay > 0) {
+        const perPodLoad = Math.min(capacity, unitsPerDay * daysPerPod);
+        const insulinPlanned = pods * perPodLoad;
+        addInsulinVials(insulinPlanned);
+      } else {
+        quickNotes.push("Insulin totals not included because units/day wasn’t provided.");
+      }
+    }
+
+    if (pumpRaw === "tandem" || pumpRaw === "medtronic" || pumpRaw === "ilet") {
+      const ratio = totalDaysUsed / infusionSetDays;
+      const base = ceil(ratio);
+      const changes = base + 1;
+
+      packingItems.push(`Pump infusion set changes: ${changes}`);
+
+      const ratioPretty = isWhole(ratio) ? String(Math.round(ratio)) : ratio.toFixed(2);
+      calcItems.push(`Infusion set changes: ${totalDaysUsed} ÷ ${infusionSetDays} = ${ratioPretty} → ${base} + 1 backup → ${changes}`);
+
+      if (totalInsulinNeeded !== null) addInsulinVials(totalInsulinNeeded);
+      else quickNotes.push("Insulin totals not included because units/day wasn’t provided.");
+    }
+
+    // ---------- injection users (no pump) ----------
+    if ((pumpRaw === "none" || pumpRaw === "") && totalInsulinNeeded !== null) {
+      addInsulinVials(totalInsulinNeeded);
+      quickNotes.push("No pump selected — insulin estimate is based on your stated units/day (injections).");
+    }
+
+    // ---------- low treatments ----------
+    if (lows) {
+      const lowTotal = 2 * totalDaysUsed;
+      packingItems.push(`Low glucose treatments: ${lowTotal}`);
+      calcItems.push(`Low glucose: 2 per day × ${totalDaysUsed} = ${lowTotal}`);
+    }
+
+    // ---------- build clean share url ----------
+    function buildCleanShareUrl() {
+      const url = new URL(window.location.href);
+      const p = new URLSearchParams();
+
+      // Always keep days
+      p.set("days", String(tripDays));
+
+      // Only keep non-defaults / meaningful params
+      if (pumpRaw && pumpRaw !== "none") p.set("pump", pumpRaw);
+      if (unitsPerDay && unitsPerDay > 0) p.set("units", String(Math.round(unitsPerDay)));
+      if (cgmRaw && cgmRaw !== "none") p.set("cgm", cgmRaw);
+      if (lows) p.set("lows", "yes");
+      if (buffer) p.set("buffer", "yes");
+
+      // Tubed pump extra only if non-default
+      const isTubed = (pumpRaw === "tandem" || pumpRaw === "medtronic" || pumpRaw === "ilet");
+      if (isTubed && infusionSetDays && infusionSetDays !== 3) p.set("set_days", String(infusionSetDays));
+
+      url.search = p.toString();
+      return url.toString();
+    }
+
+    const cleanShareUrl = buildCleanShareUrl();
+    try { window.history.replaceState({}, "", cleanShareUrl); } catch (_) {}
+
+    // ---------- render packing card (CSS-compatible structure) ----------
+    const packingCard = document.getElementById("packingCard");
+
+    packingCard.innerHTML = `
+      <div class="packing-header-row">
+        <div>
+          <h2>Packing List</h2>
+          <div class="subtle-line">Includes extra backups for safety</div>
+        </div>
+
+        <div class="header-actions">
+          <button class="copy-btn" id="copyBtn" type="button">Copy packing list</button>
+          <button class="copy-btn" id="shareBtn" type="button">Share link</button>
+        </div>
+      </div>
+
+      <ul id="packingList"></ul>
+
+      ${quickNotes.length ? `
+        <div class="note">
+          <strong>Quick note:</strong>
+          <ul id="quickNoteList"></ul>
+        </div>
+      ` : ""}
+
+      <details class="calc">
+        <summary>
+          <span>Calculation Summary</span>
+          <span class="subtext">See how your supplies were calculated</span>
+        </summary>
+        <ul id="calcList"></ul>
+      </details>
+
+      <div class="copy-toast" id="copyToast">Copied</div>
+    `;
+
+    // render packing list
+    const packingListEl = document.getElementById("packingList");
+    for (const item of packingItems) {
+      const li = document.createElement("li");
+      li.textContent = item;
+      packingListEl.appendChild(li);
+    }
+
+    // render quick notes
+    if (quickNotes.length) {
+      const qEl = document.getElementById("quickNoteList");
+      for (const n of quickNotes) {
+        const li = document.createElement("li");
+        li.textContent = n;
+        qEl.appendChild(li);
+      }
+    }
+
+    // render calc list
+    const calcListEl = document.getElementById("calcList");
+    for (const item of calcItems) {
+      const li = document.createElement("li");
+      li.textContent = item;
+      calcListEl.appendChild(li);
+    }
+
+    // ---------- copy + toast ----------
+    function buildCopyText() {
+      const lines = [];
+      for (const item of packingItems) lines.push(`• ${item}`);
+      if (quickNotes.length) {
+        lines.push("");
+        lines.push("Quick note:");
+        for (const n of quickNotes) lines.push(`• ${n}`);
+      }
+      return lines.join("\n");
+    }
+
+    async function copyToClipboard(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (e) {
+        try {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          return true;
+        } catch (_) {
+          return false;
+        }
+      }
+    }
+
+    const copyBtn = document.getElementById("copyBtn");
+    const shareBtn = document.getElementById("shareBtn");
+    const copyToast = document.getElementById("copyToast");
+
+    function showToast(msg) {
+      copyToast.textContent = msg;
+      copyToast.classList.add("show");
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => copyToast.classList.remove("show"), 1200);
+    }
+
+    copyBtn.addEventListener("click", async () => {
+      const ok = await copyToClipboard(buildCopyText());
+      showToast(ok ? "Copied" : "Copy failed");
+    });
+
+    shareBtn.addEventListener("click", async () => {
+      const url = cleanShareUrl;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "Diabetes Travel Packing List",
+            text: "Here’s my diabetes travel packing list.",
+            url
+          });
+          return;
+        } catch (_) { /* fall back */ }
+      }
+
+      const ok = await copyToClipboard(url);
+      showToast(ok ? "Link copied" : "Copy failed");
+    });
+  </script>
+</body>
+</html>
