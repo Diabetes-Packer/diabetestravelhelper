@@ -168,8 +168,8 @@
                     <p class="subtle-line" id="packingSubtitle">Includes extra backups for safety</p>
                 </div>
                 <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                    <button class="copy-btn" onclick="copyList()">Copy Packing List</button>
-                    <button class="copy-btn" onclick="shareList()">Share Packing Link</button>
+                    <button class="copy-btn" onclick="copyList()">Copy packing list</button>
+                    <button class="copy-btn" onclick="shareList()">Share link</button>
                 </div>
             </div>
 
@@ -187,7 +187,7 @@
                     <span class="subtext">See how your supplies were calculated</span>
                 </summary>
                 <ul id="calcList"></ul>
-                <p>General guidance only — always confirm supplies with your care team.</p>
+                <p>All quantities follow the "rule of 2x" for medical travel safety.</p>
             </details>
         </div>
 
@@ -494,6 +494,8 @@ function copyList() {
     // Add affiliate section at the bottom
     const footer = `
 
+---
+
 We also thought you might like our favorite recommended travel supplies:
 ${window.location.origin}${window.location.pathname}#products`;
 
@@ -511,20 +513,40 @@ ${window.location.origin}${window.location.pathname}#products`;
     });
 }
 
-// Share function - copies page URL
-function shareList() {
+// Share function - native share or copy URL fallback
+async function shareList() {
     const url = window.location.href;
+    const title = 'My Diabetes Travel Packing List';
+    const text = 'Check out my personalized diabetes packing list';
     
-    navigator.clipboard.writeText(url).then(() => {
-        const toast = document.getElementById('shareToast');
-        toast.classList.add('show');
-        
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 2000);
-    }).catch(err => {
-        console.error('Failed to copy link:', err);
-    });
+    // Check if Web Share API is supported (mobile/Mac)
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: title,
+                text: text,
+                url: url
+            });
+            // No toast needed - native share handles feedback
+        } catch (err) {
+            // User cancelled or share failed
+            if (err.name !== 'AbortError') {
+                console.error('Share failed:', err);
+            }
+        }
+    } else {
+        // Fallback: copy to clipboard (desktop browsers)
+        navigator.clipboard.writeText(url).then(() => {
+            const toast = document.getElementById('shareToast');
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy link:', err);
+        });
+    }
 }
 </script>
 
