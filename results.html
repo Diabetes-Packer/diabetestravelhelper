@@ -492,14 +492,8 @@ function copyList() {
     
     // Combine with trip header at top
     const listText = tripText + '\n\n' + items.join('\n');
-    
-    // Add affiliate section at the bottom
-    const footer = `
 
-We also thought you might like our favorite recommended travel supplies:
-${window.location.origin}${window.location.pathname}#products`;
-
-    const text = listText + footer;
+   const text = listText;
     
     navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById('copyToast');
