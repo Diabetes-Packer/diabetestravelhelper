@@ -148,7 +148,7 @@
     <!-- Header -->
     <header class="page-header">
         <h1>Your Personalized Packing List</h1>
-        <p class="intro">Based on your trip details and the optional safety buffer</p>
+        <p class="intro" id="headerIntro">Based on your trip details and the optional safety buffer</p>
     </header>
 
     <!-- Main grid -->
@@ -157,30 +157,7 @@
         <!-- Left: Trip Details -->
         <div class="card">
             <h2>Your Trip Details</h2>
-            <div class="row">
-                <span class="label">Trip duration (days)</span>
-                <span class="value">7</span>
-            </div>
-            <div class="row">
-                <span class="label">Pump</span>
-                <span class="value">Omnipod 5</span>
-            </div>
-            <div class="row">
-                <span class="label">Insulin units/day</span>
-                <span class="value">50</span>
-            </div>
-            <div class="row">
-                <span class="label">CGM</span>
-                <span class="value">Dexcom G6</span>
-            </div>
-            <div class="row">
-                <span class="label">Low blood sugar treatments?</span>
-                <span class="value">Yes</span>
-            </div>
-            <div class="row">
-                <span class="label">20% safety buffer?</span>
-                <span class="value">Yes</span>
-            </div>
+            <div id="tripDetailsRows"></div>
         </div>
 
         <!-- Right: Packing List -->
@@ -188,25 +165,19 @@
             <div class="card-header-row">
                 <div>
                     <h2>Packing List</h2>
-                    <p class="subtle-line">Includes extra backups for safety</p>
+                    <p class="subtle-line" id="packingSubtitle">Includes extra backups for safety</p>
                 </div>
-                <button class="copy-btn" onclick="copyList()">Copy packing list</button>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="copy-btn" onclick="copyList()">Copy packing list</button>
+                    <button class="copy-btn" onclick="shareList()">Share link</button>
+                </div>
             </div>
 
-            <ul id="packingList">
-                <li>For a 7-day trip (9 days with 20% safety buffer)</li>
-                <li>Dexcom G6 sensors: <strong>2</strong></li>
-                <li>Dexcom G6 transmitter: <strong>1</strong></li>
-                <li>Omnipod 5 pods: <strong>4</strong></li>
-                <li>Insulin vials (U-100, 1000 units): <strong>2</strong></li>
-                <li>Low glucose treatments: <strong>18</strong></li>
-            </ul>
+            <ul id="packingList"></ul>
 
-            <div class="note">
+            <div class="note" id="noteSection" style="display:none;">
                 <strong>Quick note:</strong>
-                <ul>
-                    <li>Ensure your Dexcom G6 transmitter will not expire during travel (G6 transmitters last ~90 days). If it may expire during your trip, consider bringing an additional transmitter as a backup.</li>
-                </ul>
+                <ul id="notesList"></ul>
             </div>
 
             <!-- Calculation Summary (Collapsible) -->
@@ -215,13 +186,7 @@
                     <span>Calculation Summary</span>
                     <span class="subtext">See how your supplies were calculated</span>
                 </summary>
-                <ul>
-                    <li><strong>Trip length:</strong> 7 days × 1.20 buffer = 9 days total</li>
-                    <li><strong>Dexcom G6 sensors:</strong> 1 sensor lasts 10 days → need 1, packed 2 for safety</li>
-                    <li><strong>Omnipod 5 pods:</strong> Changed every ~3 days → 9 days needs 3, packed 4</li>
-                    <li><strong>Insulin vials:</strong> 50 units/day × 9 days = 450 units → 1 vial covers it, packed 2</li>
-                    <li><strong>Low glucose treatments:</strong> 2 per day × 9 days = 18 servings</li>
-                </ul>
+                <ul id="calcList"></ul>
                 <p>All quantities follow the "rule of 2x" for medical travel safety.</p>
             </details>
         </div>
@@ -325,24 +290,242 @@
 
 <!-- Copy toast -->
 <div class="copy-toast" id="copyToast">✓ Copied to clipboard!</div>
+<div class="copy-toast" id="shareToast">✓ Link copied!</div>
 
 <script>
+// Parse URL parameters
+const params = new URLSearchParams(window.location.search);
+
+const formData = {
+    days: parseInt(params.get('days')) || 7,
+    pump: params.get('pump') || 'none',
+    units: parseInt(params.get('units')) || null,
+    cgm: params.get('cgm') || 'none',
+    lows: params.get('lows') || 'no',
+    buffer: params.get('buffer') || 'no',
+    set_days: parseInt(params.get('set_days')) || 3,
+    res_units: parseInt(params.get('res_units')) || 180,
+    cart_units: parseInt(params.get('cart_units')) || 300,
+    ilet_units: parseInt(params.get('ilet_units')) || 180
+};
+
+// Pump display names
+const pumpNames = {
+    'none': 'No pump',
+    'omnipod': 'Omnipod 5',
+    'tandem': 'Tandem t:slim X2',
+    'medtronic': 'Medtronic 780G / 770G',
+    'ilet': 'iLet Bionic Pancreas'
+};
+
+// CGM display names
+const cgmNames = {
+    'none': 'No CGM',
+    'dexcomg6': 'Dexcom G6',
+    'dexcomg7_10': 'Dexcom G7 10-day',
+    'dexcomg7_15': 'Dexcom G7 15-day',
+    'libre': 'FreeStyle Libre 2 / 3',
+    'guardian': 'Medtronic Guardian 4'
+};
+
+// Calculate trip length with buffer
+const hasBuffer = formData.buffer === 'yes';
+const bufferMultiplier = hasBuffer ? 1.2 : 1.0;
+const totalDays = Math.ceil(formData.days * bufferMultiplier);
+
+// Update header based on buffer
+if (!hasBuffer) {
+    document.getElementById('headerIntro').textContent = 'Based on your trip details';
+    document.getElementById('packingSubtitle').textContent = 'Calculated for your exact trip length';
+}
+
+// Build trip details rows
+const tripDetailsHTML = `
+    <div class="row">
+        <span class="label">Trip duration (days)</span>
+        <span class="value">${formData.days}</span>
+    </div>
+    <div class="row">
+        <span class="label">Pump</span>
+        <span class="value">${pumpNames[formData.pump]}</span>
+    </div>
+    ${formData.units ? `
+    <div class="row">
+        <span class="label">Insulin units/day</span>
+        <span class="value">${formData.units}</span>
+    </div>
+    ` : ''}
+    <div class="row">
+        <span class="label">CGM</span>
+        <span class="value">${cgmNames[formData.cgm]}</span>
+    </div>
+    <div class="row">
+        <span class="label">Low blood sugar treatments?</span>
+        <span class="value">${formData.lows === 'yes' ? 'Yes' : 'No'}</span>
+    </div>
+    <div class="row">
+        <span class="label">20% safety buffer?</span>
+        <span class="value">${hasBuffer ? 'Yes' : 'No'}</span>
+    </div>
+`;
+document.getElementById('tripDetailsRows').innerHTML = tripDetailsHTML;
+
+// Calculate supplies
+const supplies = [];
+const calcDetails = [];
+const notes = [];
+
+// Trip length explanation
+const bufferText = hasBuffer ? ` (${totalDays} days with 20% safety buffer)` : '';
+supplies.push(`For a ${formData.days}-day trip${bufferText}`);
+
+// CGM calculations
+if (formData.cgm !== 'none') {
+    let sensorDays, sensorName, transmitterNeeded = false;
+    
+    if (formData.cgm === 'dexcomg6') {
+        sensorDays = 10;
+        sensorName = 'Dexcom G6 sensors';
+        transmitterNeeded = true;
+        const sensorsNeeded = Math.ceil(totalDays / sensorDays);
+        const sensorsPacked = Math.max(sensorsNeeded, 2);
+        supplies.push(`${sensorName}: <strong>${sensorsPacked}</strong>`);
+        supplies.push(`Dexcom G6 transmitter: <strong>1</strong>`);
+        calcDetails.push(`<strong>${sensorName}:</strong> 1 sensor lasts ${sensorDays} days → need ${sensorsNeeded}, packed ${sensorsPacked} for safety`);
+        notes.push('Ensure your Dexcom G6 transmitter will not expire during travel (G6 transmitters last ~90 days). If it may expire during your trip, consider bringing an additional transmitter as a backup.');
+    } else if (formData.cgm === 'dexcomg7_10') {
+        sensorDays = 10;
+        sensorName = 'Dexcom G7 sensors';
+        const sensorsNeeded = Math.ceil(totalDays / sensorDays);
+        const sensorsPacked = Math.max(sensorsNeeded, 2);
+        supplies.push(`${sensorName}: <strong>${sensorsPacked}</strong>`);
+        calcDetails.push(`<strong>${sensorName}:</strong> 1 sensor lasts ${sensorDays} days → need ${sensorsNeeded}, packed ${sensorsPacked} for safety`);
+    } else if (formData.cgm === 'dexcomg7_15') {
+        sensorDays = 15;
+        sensorName = 'Dexcom G7 sensors (15-day)';
+        const sensorsNeeded = Math.ceil(totalDays / sensorDays);
+        const sensorsPacked = Math.max(sensorsNeeded, 2);
+        supplies.push(`${sensorName}: <strong>${sensorsPacked}</strong>`);
+        calcDetails.push(`<strong>${sensorName}:</strong> 1 sensor lasts ${sensorDays} days → need ${sensorsNeeded}, packed ${sensorsPacked} for safety`);
+    } else if (formData.cgm === 'libre') {
+        sensorDays = 14;
+        sensorName = 'FreeStyle Libre sensors';
+        const sensorsNeeded = Math.ceil(totalDays / sensorDays);
+        const sensorsPacked = Math.max(sensorsNeeded, 2);
+        supplies.push(`${sensorName}: <strong>${sensorsPacked}</strong>`);
+        calcDetails.push(`<strong>${sensorName}:</strong> 1 sensor lasts ${sensorDays} days → need ${sensorsNeeded}, packed ${sensorsPacked} for safety`);
+    } else if (formData.cgm === 'guardian') {
+        sensorDays = 7;
+        sensorName = 'Medtronic Guardian 4 sensors';
+        const sensorsNeeded = Math.ceil(totalDays / sensorDays);
+        const sensorsPacked = Math.max(sensorsNeeded + 1, 2);
+        supplies.push(`${sensorName}: <strong>${sensorsPacked}</strong>`);
+        calcDetails.push(`<strong>${sensorName}:</strong> 1 sensor lasts ${sensorDays} days → need ${sensorsNeeded}, packed ${sensorsPacked} for safety`);
+    }
+}
+
+// Pump calculations
+if (formData.pump === 'omnipod') {
+    const podDays = 3;
+    const podsNeeded = Math.ceil(totalDays / podDays);
+    const podsPacked = podsNeeded + 1;
+    supplies.push(`Omnipod 5 pods: <strong>${podsPacked}</strong>`);
+    calcDetails.push(`<strong>Omnipod 5 pods:</strong> Changed every ~${podDays} days → ${totalDays} days needs ${podsNeeded}, packed ${podsPacked}`);
+} else if (formData.pump === 'tandem' || formData.pump === 'medtronic' || formData.pump === 'ilet') {
+    const setDays = formData.set_days;
+    const setsNeeded = Math.ceil(totalDays / setDays);
+    const setsPacked = setsNeeded + 1;
+    supplies.push(`Infusion sets: <strong>${setsPacked}</strong>`);
+    calcDetails.push(`<strong>Infusion sets:</strong> Changed every ${setDays} days → ${totalDays} days needs ${setsNeeded}, packed ${setsPacked}`);
+    
+    // Reservoirs/cartridges
+    if (formData.pump === 'medtronic') {
+        supplies.push(`Medtronic reservoirs (${formData.res_units} units): <strong>${setsPacked}</strong>`);
+    } else if (formData.pump === 'tandem') {
+        supplies.push(`Tandem cartridges (${formData.cart_units} units): <strong>${setsPacked}</strong>`);
+    } else if (formData.pump === 'ilet') {
+        supplies.push(`iLet cartridges (${formData.ilet_units} units): <strong>${setsPacked}</strong>`);
+    }
+}
+
+// Insulin calculations
+if (formData.units && formData.units > 0) {
+    const totalUnits = formData.units * totalDays;
+    const vialsNeeded = Math.ceil(totalUnits / 1000);
+    const vialsPacked = Math.max(vialsNeeded, 2);
+    supplies.push(`Insulin vials (U-100, 1000 units): <strong>${vialsPacked}</strong>`);
+    calcDetails.push(`<strong>Insulin vials:</strong> ${formData.units} units/day × ${totalDays} days = ${totalUnits} units → ${vialsNeeded} vial${vialsNeeded > 1 ? 's' : ''} covers it, packed ${vialsPacked}`);
+} else if (formData.pump !== 'none') {
+    supplies.push(`Insulin vials: <strong>2</strong> (backup supply recommended)`);
+    calcDetails.push(`<strong>Insulin vials:</strong> No daily insulin specified, packed 2 vials as standard backup`);
+}
+
+// Low glucose treatments
+if (formData.lows === 'yes') {
+    const treatments = totalDays * 2;
+    supplies.push(`Low glucose treatments: <strong>${treatments}</strong>`);
+    calcDetails.push(`<strong>Low glucose treatments:</strong> 2 per day × ${totalDays} days = ${treatments} servings`);
+}
+
+// Render packing list
+document.getElementById('packingList').innerHTML = supplies.map(item => `<li>${item}</li>`).join('');
+
+// Render calculation details
+const tripCalc = hasBuffer 
+    ? `<strong>Trip length:</strong> ${formData.days} days × 1.20 buffer = ${totalDays} days total`
+    : `<strong>Trip length:</strong> ${formData.days} days (no buffer added)`;
+calcDetails.unshift(tripCalc);
+document.getElementById('calcList').innerHTML = calcDetails.map(item => `<li>${item}</li>`).join('');
+
+// Render notes
+if (notes.length > 0) {
+    document.getElementById('noteSection').style.display = 'block';
+    document.getElementById('notesList').innerHTML = notes.map(note => `<li>${note}</li>`).join('');
+}
+
+// Copy function with affiliate footer
 function copyList() {
     const list = document.getElementById('packingList');
-    const items = Array.from(list.querySelectorAll('li')).map(li => '• ' + li.textContent);
-    const text = items.join('\n');
+    const items = Array.from(list.querySelectorAll('li')).map(li => {
+        const text = li.textContent || li.innerText;
+        return '• ' + text;
+    });
+    
+    // Add affiliate section at the bottom
+    const footer = `
+
+---
+
+We also thought you might like our favorite recommended travel supplies:
+${window.location.origin}${window.location.pathname}#products`;
+
+    const text = items.join('\n') + footer;
     
     navigator.clipboard.writeText(text).then(() => {
-        const btn = document.querySelector('.copy-btn');
         const toast = document.getElementById('copyToast');
-        
-        btn.classList.add('copied');
         toast.classList.add('show');
         
         setTimeout(() => {
-            btn.classList.remove('copied');
             toast.classList.remove('show');
         }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+    });
+}
+
+// Share function - copies page URL
+function shareList() {
+    const url = window.location.href;
+    
+    navigator.clipboard.writeText(url).then(() => {
+        const toast = document.getElementById('shareToast');
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy link:', err);
     });
 }
 </script>
