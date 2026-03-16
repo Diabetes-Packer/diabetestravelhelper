@@ -38,7 +38,7 @@ const ARTICLES = [
   }
 ];
 
-const BASE = "https://diabetes-packer.github.io/diabetestravelhelper/";
+const BASE = "https://diabetes-packer.github.io/diabetestravelhelper/Blogs/";
 
 function injectRelatedArticles() {
   // Figure out which page we're on
