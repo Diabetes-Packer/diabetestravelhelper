@@ -1,11 +1,3 @@
-/* ============================================================
-   Diabetes Travel Helper - Blog Navigation
-   
-   TO ADD A NEW ARTICLE: add one object to ARTICLES below.
-   - Related Articles on every blog page updates automatically
-   - Travel Guides section on index.html updates automatically
-   ============================================================ */
-
 const ARTICLES = [
   {
     slug: "diabetes-packing-list.html",
@@ -41,7 +33,6 @@ const ARTICLES = [
 
 const BASE = "https://diabetes-packer.github.io/diabetestravelhelper/Blogs/";
 
-/* ── Related Articles (injected on each blog page) ── */
 function injectRelatedArticles() {
   const container = document.getElementById("related-articles");
   if (!container) return;
@@ -51,7 +42,7 @@ function injectRelatedArticles() {
   if (others.length === 0) return;
 
   const cards = others.map(a => `
-    <a class="related-card" href="${BASE}${a.slug}">
+    <a class="related-card" href="${BASE}${a.slug}" target="_blank" rel="noopener">
       <div class="rc-title">${a.emoji} ${a.title}</div>
       <div class="rc-desc">${a.desc}</div>
     </a>
@@ -65,13 +56,12 @@ function injectRelatedArticles() {
   `;
 }
 
-/* ── Travel Guides (injected on index.html homepage) ── */
 function injectTravelGuides() {
   const container = document.getElementById("travel-guides");
   if (!container) return;
 
   const cards = ARTICLES.map(a => `
-    <a href="${BASE}${a.slug}" style="display:block; padding:16px; background:rgba(15,23,42,0.02); border:1px solid rgba(15,23,42,0.08); border-radius:12px; text-decoration:none; transition:all 120ms ease; margin-bottom:12px;">
+    <a href="${BASE}${a.slug}" target="_blank" rel="noopener" style="display:block; padding:16px; background:rgba(15,23,42,0.02); border:1px solid rgba(15,23,42,0.08); border-radius:12px; text-decoration:none; transition:all 120ms ease; margin-bottom:12px;">
       <div style="display:flex; align-items:start; gap:12px;">
         <span style="font-size:24px;">${a.emoji}</span>
         <div style="flex:1;">
