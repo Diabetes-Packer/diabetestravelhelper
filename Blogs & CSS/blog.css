@@ -1,0 +1,316 @@
+/* ============================================================
+   Diabetes Travel Helper - Shared Blog Stylesheet
+   Edit this one file to update styles across all articles.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --teal: #0d9488;
+  --teal-light: #ccfbf1;
+  --teal-dark: #0f766e;
+  --text: #1c1917;
+  --muted: #57534e;
+  --border: #e7e5e4;
+  --bg: #ffffff;
+  --bg-subtle: #fafaf9;
+  --callout-bg: #f0fdfa;
+}
+
+/* ── Base ── */
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--text);
+  background: var(--bg);
+}
+a { color: var(--teal-dark); }
+a:hover { color: var(--teal); }
+
+/* ── Nav / Breadcrumb ── */
+.site-nav {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+}
+.site-nav a { color: var(--muted); text-decoration: none; }
+.site-nav a:hover { color: var(--teal); }
+.breadcrumb { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.breadcrumb span { color: #c4b5b0; }
+
+/* ── Layout ── */
+.article-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* ── Article Header ── */
+.article-header { margin-bottom: 40px; }
+.article-header .tag {
+  display: inline-block;
+  background: var(--teal-light);
+  color: var(--teal-dark);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.25;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.article-header .intro {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.article-meta {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  color: #a8a29e;
+}
+.divider {
+  border: none;
+  border-top: 2px solid var(--border);
+  margin: 32px 0;
+}
+
+/* ── Body Typography ── */
+h2 { font-size: 1.55rem; font-weight: 700; margin: 48px 0 16px; color: var(--text); }
+h3 { font-size: 1.15rem; font-weight: 700; margin: 32px 0 10px; color: var(--text); }
+p { margin-bottom: 20px; }
+ul, ol { padding-left: 24px; margin-bottom: 20px; }
+li { margin-bottom: 8px; }
+strong { font-weight: 700; }
+
+/* ── CTA Box ── */
+.cta-box {
+  background: var(--callout-bg);
+  border: 1.5px solid #99f6e4;
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin: 36px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.cta-box .cta-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: var(--teal-dark);
+}
+.cta-box p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.cta-btn {
+  display: inline-block;
+  background: var(--teal);
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+.cta-btn:hover { background: var(--teal-dark); }
+
+/* ── Tip Callout ── */
+.tip {
+  background: var(--bg-subtle);
+  border-left: 4px solid var(--teal);
+  padding: 16px 20px;
+  margin: 28px 0;
+  font-size: 0.95rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--muted);
+  border-radius: 0 6px 6px 0;
+}
+.tip strong { color: var(--text); }
+
+/* ── Warning Callout ── */
+.warning {
+  background: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  padding: 16px 20px;
+  margin: 28px 0;
+  font-size: 0.95rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #78350f;
+  border-radius: 0 6px 6px 0;
+}
+
+/* ── Product Card ── */
+.product-card {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin: 32px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-subtle);
+}
+.product-card .pc-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--teal-dark);
+  margin-bottom: 6px;
+}
+.product-card .pc-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.product-card .pc-stars {
+  color: #f59e0b;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+.product-card .pc-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+.product-card .pc-btn {
+  display: inline-block;
+  background: #f59e0b;
+  color: #1c1917 !important;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 9px 18px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+.product-card .pc-btn:hover { background: #d97706; }
+.product-card .pc-note {
+  font-size: 0.78rem;
+  color: #a8a29e;
+  margin-top: 8px;
+}
+
+/* ── Tables (TSA rules, comparison) ── */
+.rules-table,
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.9rem;
+}
+.rules-table th,
+.compare-table th {
+  background: var(--teal);
+  color: #fff;
+  text-align: left;
+  padding: 10px 14px;
+  font-weight: 600;
+}
+.rules-table td,
+.compare-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.rules-table tr:nth-child(even) td,
+.compare-table tr:nth-child(even) td { background: var(--bg-subtle); }
+.rules-table .yes { color: #059669; font-weight: 700; }
+.rules-table .check { color: #d97706; font-weight: 700; }
+.compare-table .pro { color: #059669; }
+.compare-table .con { color: #dc2626; }
+
+/* ── Checklist Box ── */
+.checklist-box {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px 26px;
+  margin: 28px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.92rem;
+}
+.checklist-box h3 { margin-top: 0; font-size: 1rem; margin-bottom: 12px; color: var(--teal-dark); }
+.checklist-box ul { margin-bottom: 0; }
+.checklist-box li { margin-bottom: 6px; }
+
+/* ── FAQ Section ── */
+.faq-section { margin-top: 56px; }
+.faq-section h2 { margin-top: 0; }
+details {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+summary {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.97rem;
+  padding: 16px 20px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-subtle);
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: '+'; font-size: 1.2rem; color: var(--teal); flex-shrink: 0; margin-left: 12px; }
+details[open] summary::after { content: '-'; }
+details p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+  padding: 0 20px 16px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ── Related Articles (injected by blog-nav.js) ── */
+.related { margin-top: 64px; padding-top: 32px; border-top: 2px solid var(--border); }
+.related h2 { margin-top: 0; font-size: 1.2rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.related-card {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin-top: 12px;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: border-color .15s, box-shadow .15s;
+}
+.related-card:hover { border-color: var(--teal); box-shadow: 0 2px 8px rgba(13,148,136,.1); }
+.related-card .rc-title { font-weight: 600; font-size: 0.97rem; color: var(--text); margin-bottom: 4px; }
+.related-card .rc-desc { font-size: 0.88rem; color: var(--muted); }
+
+/* ── Article Footer ── */
+.article-footer {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  color: #a8a29e;
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  body { font-size: 17px; }
+  .article-wrap { padding: 32px 16px 60px; }
+  .rules-table,
+  .compare-table { font-size: 0.82rem; }
+}
