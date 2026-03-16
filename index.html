@@ -6,7 +6,6 @@
   <title>Travel with Diabetes Pack Helper</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Prevent iOS/WebView zoom on form controls */
     @media (max-width: 768px) {
       input, select, textarea, button { font-size: 16px; }
     }
@@ -17,8 +16,7 @@
   <main class="container">
     <header class="page-header">
       <h1>Diabetes Packing Helper</h1>
-      <p class="intro">Get a personalized checklist for your trip—built with backups, so you don’t get caught short</p>
-
+      <p class="intro">Get a personalized checklist for your trip—built with backups, so you don't get caught short</p>
       <div class="trust-row" aria-label="trust badges">
         <span class="pill">Backups included</span>
         <span class="pill">Fast + simple</span>
@@ -29,17 +27,15 @@
     <section class="card form-card">
       <form action="results.html" method="GET" id="packForm" novalidate>
 
-        <!-- Trip days -->
         <div class="block field">
           <label for="days">Trip duration (days)</label>
           <input id="days" type="number" name="days" required min="1" step="1" inputmode="numeric" placeholder="e.g. 7">
         </div>
 
-        <!-- Pump -->
         <div class="block field">
           <label for="pumpSelect">Which diabetes pump do you use?</label>
           <select name="pump" id="pumpSelect" required>
-            <option value="none">I don’t use a pump</option>
+            <option value="none">I don't use a pump</option>
             <option value="omnipod">Omnipod 5</option>
             <option value="tandem">Tandem t:slim X2</option>
             <option value="medtronic">Medtronic 780G / 770G</option>
@@ -47,7 +43,6 @@
           </select>
         </div>
 
-        <!-- Pump-dependent: infusion set frequency (tubed only) -->
         <div class="block field" id="infusionSetBlock" style="display:none;">
           <label for="setDaysSelect">How often do you change your infusion set/site?</label>
           <select name="set_days" id="setDaysSelect">
@@ -58,7 +53,6 @@
           <div class="help">Choose what you actually do (extended-wear sets exist).</div>
         </div>
 
-        <!-- Pump-dependent: Medtronic reservoir size -->
         <div class="block field" id="reservoirBlock" style="display:none;">
           <label for="resUnitsSelect">Which Medtronic reservoir size do you use?</label>
           <select name="res_units" id="resUnitsSelect">
@@ -67,7 +61,6 @@
           </select>
         </div>
 
-        <!-- Pump-dependent: Tandem cartridge capacity (confirm) -->
         <div class="block field" id="cartridgeBlock" style="display:none;">
           <label for="cartUnitsSelect">Tandem cartridge capacity</label>
           <select name="cart_units" id="cartUnitsSelect">
@@ -75,7 +68,6 @@
           </select>
         </div>
 
-        <!-- Pump-dependent: iLet cartridge capacity (confirm) -->
         <div class="block field" id="iletBlock" style="display:none;">
           <label for="iletUnitsSelect">iLet cartridge capacity</label>
           <select name="ilet_units" id="iletUnitsSelect">
@@ -83,31 +75,24 @@
           </select>
         </div>
 
-        <!-- Total daily insulin (OPTIONAL) -->
         <div class="block field">
           <label for="unitsInput">Total daily insulin (units/day) <span class="pill optional">Optional</span></label>
           <input id="unitsInput" type="number" name="units" min="1" step="1" inputmode="numeric" placeholder="e.g. 50">
-          <div class="help">If you add this, we’ll calculate insulin + pump supply totals more accurately.</div>
+          <div class="help">If you add this, we'll calculate insulin + pump supply totals more accurately.</div>
         </div>
 
-       <!-- CGM -->
-<div class="block field">
-  <label for="cgm">Which Continuous Glucose Monitor (CGM) do you use?</label>
-  <select name="cgm" id="cgm" required>
-    <option value="none">I don’t use a CGM</option>
+        <div class="block field">
+          <label for="cgm">Which Continuous Glucose Monitor (CGM) do you use?</label>
+          <select name="cgm" id="cgm" required>
+            <option value="none">I don't use a CGM</option>
+            <option value="dexcomg6">Dexcom G6</option>
+            <option value="dexcomg7_10">Dexcom G7 10-day</option>
+            <option value="dexcomg7_15">Dexcom G7 15-day</option>
+            <option value="libre">FreeStyle Libre 2 / 3</option>
+            <option value="guardian">Medtronic Guardian 4</option>
+          </select>
+        </div>
 
-    <!-- Dexcom -->
-    <option value="dexcomg6">Dexcom G6</option>
-    <option value="dexcomg7_10">Dexcom G7 10-day</option>
-    <option value="dexcomg7_15">Dexcom G7 15-day</option>
-
-    <!-- Others -->
-    <option value="libre">FreeStyle Libre 2 / 3</option>
-    <option value="guardian">Medtronic Guardian 4</option>
-  </select>
-</div>
-
-        <!-- Lows -->
         <div class="block field">
           <label for="lows">Do you carry fast-acting glucose for lows?</label>
           <select name="lows" id="lows" required>
@@ -116,7 +101,6 @@
           </select>
         </div>
 
-        <!-- Buffer -->
         <div class="block field">
           <label for="buffer">Add ~20% safety buffer?</label>
           <select name="buffer" id="buffer" required>
@@ -126,118 +110,78 @@
           <div class="help">Recommended for travel — includes extra backups.</div>
         </div>
 
-        <!-- Optional email (OPTIONAL) -->
         <div class="block field">
           <label for="email">Optional email (send results later) <span class="pill optional">Optional</span></label>
           <input id="email" type="email" name="email" placeholder="you@email.com" inputmode="email" autocomplete="email">
-          <div class="help">Coming soon! We won’t send email yet—this just reserves the field for later.</div>
-       <div class="actions">
-  <button class="btn-primary" type="submit">Generate my personalized packing list</button>
-  <p class="fineprint">General guidance only — always confirm supplies with your care team.</p>
-</div>
+          <div class="help">Coming soon! We won't send email yet—this just reserves the field for later.</div>
+          <div class="actions">
+            <button class="btn-primary" type="submit">Generate my personalized packing list</button>
+            <p class="fineprint">General guidance only — always confirm supplies with your care team.</p>
+          </div>
+        </div>
 
       </form>
     </section>
   </main>
 
-  <!-- Helpful Resources -->
+  <!-- Helpful Travel Guides - auto-populated by Blogs/blog-nav.js -->
   <section class="container" style="margin-top: 32px;">
     <div class="card">
       <h2 style="font-size: clamp(24px, 2.8vw, 32px); margin: 0 0 8px 0; font-weight: 900; letter-spacing: -0.02em;">Helpful Travel Guides</h2>
       <p style="color: var(--muted); margin: 0 0 20px 0; font-weight: 600;">Expert tips for traveling safely with diabetes</p>
-      
-      <div style="border-top: 1px solid rgba(15, 23, 42, 0.10); padding-top: 18px;">
-        <a href="diabetes-packing-list.html" style="display: block; padding: 16px; background: rgba(15, 23, 42, 0.02); border: 1px solid rgba(15, 23, 42, 0.08); border-radius: 12px; text-decoration: none; transition: all 120ms ease;">
-          <div style="display: flex; align-items: start; gap: 12px;">
-            <span style="font-size: 24px;">📝</span>
-            <div style="flex: 1;">
-              <h3 style="margin: 0 0 6px 0; font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: -0.01em;">Complete Diabetes Travel Packing List for 2026</h3>
-              <p style="margin: 0; font-size: 15px; font-weight: 600; color: var(--muted); line-height: 1.5;">Everything you need to pack for safe travel with Type 1 diabetes. Includes TSA rules, insulin storage tips, and climate-specific advice.</p>
-            </div>
-          </div>
-        </a>
-      </div>
+      <div id="travel-guides"></div>
     </div>
   </section>
 
   <script>
-    // ---------- conditional pump fields ----------
     function isMobileDevice() {
       return window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
     }
 
     const pumpSelect = document.getElementById("pumpSelect");
-
     const infusionSetBlock = document.getElementById("infusionSetBlock");
-    const reservoirBlock  = document.getElementById("reservoirBlock");
-    const cartridgeBlock  = document.getElementById("cartridgeBlock");
-    const iletBlock       = document.getElementById("iletBlock");
-
-    const setDaysSelect   = document.getElementById("setDaysSelect");
-    const resUnitsSelect  = document.getElementById("resUnitsSelect");
-    const cartUnitsSelect = document.getElementById("cartUnitsSelect");
-    const iletUnitsSelect = document.getElementById("iletUnitsSelect");
+    const reservoirBlock   = document.getElementById("reservoirBlock");
+    const cartridgeBlock   = document.getElementById("cartridgeBlock");
+    const iletBlock        = document.getElementById("iletBlock");
+    const setDaysSelect    = document.getElementById("setDaysSelect");
+    const resUnitsSelect   = document.getElementById("resUnitsSelect");
+    const cartUnitsSelect  = document.getElementById("cartUnitsSelect");
+    const iletUnitsSelect  = document.getElementById("iletUnitsSelect");
 
     function updateConditionalFields() {
       const pump = pumpSelect.value;
       const isTubed = (pump === "tandem" || pump === "medtronic" || pump === "ilet");
-
       infusionSetBlock.style.display = isTubed ? "block" : "none";
       setDaysSelect.required = isTubed;
-
       reservoirBlock.style.display = (pump === "medtronic") ? "block" : "none";
       resUnitsSelect.required = (pump === "medtronic");
-
       cartridgeBlock.style.display = (pump === "tandem") ? "block" : "none";
       cartUnitsSelect.required = (pump === "tandem");
-
       iletBlock.style.display = (pump === "ilet") ? "block" : "none";
       iletUnitsSelect.required = (pump === "ilet");
     }
 
-    // ---------- Speed/Flow: auto-advance ----------
     const form = document.getElementById("packForm");
 
-    function getBlocks() {
-      return Array.from(form.querySelectorAll(".block"));
-    }
-
-    function isBlockVisible(block) {
-      return block && block.offsetParent !== null;
-    }
-
+    function getBlocks() { return Array.from(form.querySelectorAll(".block")); }
+    function isBlockVisible(block) { return block && block.offsetParent !== null; }
     function focusFirstControl(block) {
       if (!block) return;
       const el = block.querySelector("input, select, textarea, button");
       if (el) el.focus({ preventScroll: true });
     }
 
-   function scrollToBlock(block) {
-  if (!block) return;
-
-  // Focus first, without forcing scroll
-  focusFirstControl(block);
-
-  // Only scroll if the block is not comfortably visible
-  const rect = block.getBoundingClientRect();
-  const viewportH = window.innerHeight || document.documentElement.clientHeight;
-
-  const topSafe = 120;              // keep some breathing room from the top
-  const bottomSafe = viewportH - 140; // keep room above bottom (esp. mobile)
-
-  const isAbove = rect.top < topSafe;
-  const isBelow = rect.bottom > bottomSafe;
-
-  if (isAbove || isBelow) {
-    // Scroll so the block sits around ~20% from top (less jarring than "start")
-    const targetY = window.scrollY + rect.top - 120;
-
-    window.scrollTo({
-      top: Math.max(0, targetY),
-      behavior: "smooth"
-    });
-  }
-}
+    function scrollToBlock(block) {
+      if (!block) return;
+      focusFirstControl(block);
+      const rect = block.getBoundingClientRect();
+      const viewportH = window.innerHeight || document.documentElement.clientHeight;
+      const isAbove = rect.top < 120;
+      const isBelow = rect.bottom > viewportH - 140;
+      if (isAbove || isBelow) {
+        window.scrollTo({ top: Math.max(0, window.scrollY + rect.top - 120), behavior: "smooth" });
+      }
+    }
 
     function nextVisibleBlock(currentBlock) {
       const blocks = getBlocks();
@@ -272,19 +216,11 @@
     form.querySelectorAll("input").forEach(inp => {
       inp.addEventListener("keydown", (e) => {
         if (e.key !== "Enter") return;
-
         const currentBlock = inp.closest(".block");
         const next = nextVisibleBlock(currentBlock);
-
-        if (next) {
-          e.preventDefault();
-          autoAdvanceFrom(inp);
-        }
+        if (next) { e.preventDefault(); autoAdvanceFrom(inp); }
       });
     });
-
-    const days = document.getElementById("days");
-    const units = document.getElementById("unitsInput");
 
     function advanceIfValid(inp) {
       inp.addEventListener("blur", () => {
@@ -293,8 +229,11 @@
       });
     }
 
-    advanceIfValid(days);
-    advanceIfValid(units);
+    advanceIfValid(document.getElementById("days"));
+    advanceIfValid(document.getElementById("unitsInput"));
   </script>
+
+  <!-- Auto-populates the Travel Guides section above -->
+  <script src="Blogs/blog-nav.js"></script>
 </body>
 </html>

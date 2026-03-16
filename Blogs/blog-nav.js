@@ -2,7 +2,8 @@
    Diabetes Travel Helper - Blog Navigation
    
    TO ADD A NEW ARTICLE: add one object to ARTICLES below.
-   The Related Articles section on every page updates automatically.
+   - Related Articles on every blog page updates automatically
+   - Travel Guides section on index.html updates automatically
    ============================================================ */
 
 const ARTICLES = [
@@ -40,18 +41,14 @@ const ARTICLES = [
 
 const BASE = "https://diabetes-packer.github.io/diabetestravelhelper/Blogs/";
 
+/* ── Related Articles (injected on each blog page) ── */
 function injectRelatedArticles() {
-  // Figure out which page we're on
-  const currentSlug = window.location.pathname.split("/").pop() || "index.html";
-
-  // Filter out current page, take up to 4 others
-  const others = ARTICLES.filter(a => a.slug !== currentSlug).slice(0, 4);
-
-  if (others.length === 0) return;
-
-  // Find the placeholder div injected by each article's HTML
   const container = document.getElementById("related-articles");
   if (!container) return;
+
+  const currentSlug = window.location.pathname.split("/").pop() || "";
+  const others = ARTICLES.filter(a => a.slug !== currentSlug).slice(0, 4);
+  if (others.length === 0) return;
 
   const cards = others.map(a => `
     <a class="related-card" href="${BASE}${a.slug}">
@@ -68,4 +65,27 @@ function injectRelatedArticles() {
   `;
 }
 
-document.addEventListener("DOMContentLoaded", injectRelatedArticles);
+/* ── Travel Guides (injected on index.html homepage) ── */
+function injectTravelGuides() {
+  const container = document.getElementById("travel-guides");
+  if (!container) return;
+
+  const cards = ARTICLES.map(a => `
+    <a href="${BASE}${a.slug}" style="display:block; padding:16px; background:rgba(15,23,42,0.02); border:1px solid rgba(15,23,42,0.08); border-radius:12px; text-decoration:none; transition:all 120ms ease; margin-bottom:12px;">
+      <div style="display:flex; align-items:start; gap:12px;">
+        <span style="font-size:24px;">${a.emoji}</span>
+        <div style="flex:1;">
+          <h3 style="margin:0 0 6px 0; font-size:18px; font-weight:800; color:var(--text); letter-spacing:-0.01em;">${a.title}</h3>
+          <p style="margin:0; font-size:15px; font-weight:600; color:var(--muted); line-height:1.5;">${a.desc}</p>
+        </div>
+      </div>
+    </a>
+  `).join("");
+
+  container.innerHTML = `<div style="border-top:1px solid rgba(15,23,42,0.10); padding-top:18px;">${cards}</div>`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  injectRelatedArticles();
+  injectTravelGuides();
+});
