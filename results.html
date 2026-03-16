@@ -468,7 +468,7 @@ if (formData.lows === 'yes') {
 }
 
 // Render packing list with trip header
-const tripHeaderHTML = `<p style="font-weight: 800; font-size: 17px; margin: 0 0 12px 0; color: rgba(15, 23, 42, 0.92);">${tripHeader}</p>`;
+const tripHeaderHTML = `<p style="font-weight: 800; font-size: 17px; margin: 0 0 12px -22px; color: rgba(15, 23, 42, 0.92);">${tripHeader}</p>`;
 const suppliesHTML = supplies.map(item => `<li>${item}</li>`).join('');
 document.getElementById('packingList').innerHTML = tripHeaderHTML + suppliesHTML;
 
