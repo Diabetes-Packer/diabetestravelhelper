@@ -375,9 +375,9 @@ const supplies = [];
 const calcDetails = [];
 const notes = [];
 
-// Trip length explanation
+// Trip length explanation - will be added as subheader, not bullet
 const bufferText = hasBuffer ? ` (${totalDays} days with 20% safety buffer)` : '';
-supplies.push(`For a ${formData.days}-day trip${bufferText}`);
+const tripHeader = `For a ${formData.days}-day trip${bufferText}`;
 
 // CGM calculations
 if (formData.cgm !== 'none') {
@@ -467,8 +467,10 @@ if (formData.lows === 'yes') {
     calcDetails.push(`<strong>Low glucose treatments:</strong> 2 per day × ${totalDays} days = ${treatments} servings`);
 }
 
-// Render packing list
-document.getElementById('packingList').innerHTML = supplies.map(item => `<li>${item}</li>`).join('');
+// Render packing list with trip header
+const tripHeaderHTML = `<p style="font-weight: 800; font-size: 17px; margin: 0 0 12px 0; color: rgba(15, 23, 42, 0.92);">${tripHeader}</p>`;
+const suppliesHTML = supplies.map(item => `<li>${item}</li>`).join('');
+document.getElementById('packingList').innerHTML = tripHeaderHTML + suppliesHTML;
 
 // Render calculation details
 const tripCalc = hasBuffer 
@@ -485,11 +487,19 @@ if (notes.length > 0) {
 
 // Copy function with affiliate footer
 function copyList() {
+    // Get trip header text
+    const tripHeader = document.querySelector('#packingList p');
+    const tripText = tripHeader ? tripHeader.textContent : '';
+    
+    // Get list items
     const list = document.getElementById('packingList');
     const items = Array.from(list.querySelectorAll('li')).map(li => {
         const text = li.textContent || li.innerText;
         return '• ' + text;
     });
+    
+    // Combine with trip header at top
+    const listText = tripText + '\n\n' + items.join('\n');
     
     // Add affiliate section at the bottom
     const footer = `
@@ -499,7 +509,7 @@ function copyList() {
 We also thought you might like our favorite recommended travel supplies:
 ${window.location.origin}${window.location.pathname}#products`;
 
-    const text = items.join('\n') + footer;
+    const text = listText + footer;
     
     navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById('copyToast');
