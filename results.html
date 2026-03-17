@@ -82,15 +82,6 @@
       font-weight: 600;
       margin-bottom: 10px;
       width: fit-content;
-    }
-
-    .product-tag.essential {
-      background: #FEF8EE;
-      border: 1px solid #F6CC89;
-      color: #8A5A08;
-    }
-
-    .product-tag.device {
       background: #E8F5F2;
       border: 1px solid #C4E8DF;
       color: #1C6459;
@@ -249,25 +240,12 @@
 <div class="copy-toast" id="shareToast">Link copied</div>
 
 <script>
-// ─────────────────────────────────────────────
-// PRODUCT CATALOG
-//
-// showFor: array of device keys this product applies to.
-//   'universal' = shown to everyone
-//   device keys = shown only when user selected that device
-//
-// Products in showFor['universal'] that ALSO list
-// specific devices will have their tag label updated
-// to reflect the user's specific device(s) when matched.
-// ─────────────────────────────────────────────
 const PRODUCTS = {
-
-  // ── UNIVERSAL ──────────────────────────────
 
   insulinCooling: {
     name: 'FRIO Insulin Cooling Wallet',
     desc: 'Keeps insulin at safe temperatures using only water — no ice needed. Essential for warm climates and long travel days.',
-    tag: 'essential',
+    tag: 'device',
     showFor: ['universal'],
     img: 'https://m.media-amazon.com/images/I/81HmJxrBXpL._AC_SL400_.jpg',
     url: 'https://www.amazon.com/Insulin-Cooling-Reusable-Evaporative-Medication/dp/B0002262BM?linkCode=ll2&tag=diabetestrave-20&linkId=91f7eba3e80b6767d1e394a7603436ac&language=en_US&ref_=as_li_ss_tl'
@@ -276,7 +254,7 @@ const PRODUCTS = {
   medicalID: {
     name: 'Medical ID Bracelet',
     desc: 'Alerts first responders to your diabetes in an emergency. Non-negotiable for any diabetic traveler.',
-    tag: 'essential',
+    tag: 'device',
     showFor: ['universal'],
     img: 'https://m.media-amazon.com/images/I/71VDg2feMSL._AC_SY400_.jpg',
     url: 'https://www.amazon.com/MEALGUET-Diabetic-Medical-Alert-Bracelet/dp/B0D39LTRK7?linkCode=ll2&tag=diabetestrave-20'
@@ -285,18 +263,16 @@ const PRODUCTS = {
   backupMeter: {
     name: 'Backup Glucose Meter Kit',
     desc: 'The most recommended travel meter in the T1 community. Compact and highly accurate — essential backup for when your CGM needs one.',
-    tag: 'essential',
+    tag: 'device',
     showFor: ['universal'],
     img: 'https://m.media-amazon.com/images/I/81xtKyeFcBL._SL400_.jpg',
     url: 'https://www.amazon.com/Ascensia-CONTOUR-Glucose-Monitoring-System/dp/B0CWSFV5SS?linkCode=ll2&tag=diabetestrave-20&linkId=c461ce03c8f41cf90460e1fec13e02ba&language=en_US&ref_=as_li_ss_tl'
   },
 
-  // Universal but device-aware — tag label updates to show
-  // the user's specific device(s) when matched
   skinTac: {
     name: 'Skin Tac Adhesive Wipes',
     desc: 'Keeps pods and sensors firmly on your skin in heat, humidity, and water. One of the most recommended travel items in the diabetes community.',
-    tag: 'essential',
+    tag: 'device',
     showFor: ['universal', 'omnipod', 'dexcomg6', 'dexcomg7_10', 'dexcomg7_15', 'libre', 'guardian'],
     img: 'https://m.media-amazon.com/images/I/515rS3kSsTL._SL400_.jpg',
     url: 'https://www.amazon.com/Torbot-Adhesive-Barrier-Latex-free-Hypo-allergenic/dp/B00JWSDHJC?linkCode=ll2&tag=diabetestrave-20&linkId=9a9a2170c55e2171485b324aca78588e&language=en_US&ref_=as_li_ss_tl'
@@ -305,7 +281,7 @@ const PRODUCTS = {
   alcoholWipes: {
     name: 'Alcohol Wipes (travel pack)',
     desc: 'Clean skin prep before every pod or sensor placement. Individually wrapped and TSA-friendly.',
-    tag: 'essential',
+    tag: 'device',
     showFor: ['universal', 'omnipod', 'tandem', 'medtronic', 'ilet', 'dexcomg6', 'dexcomg7_10', 'dexcomg7_15', 'libre', 'guardian'],
     img: 'https://m.media-amazon.com/images/I/81sp4e5temL._AC_SL400_.jpg',
     url: 'https://www.amazon.com/MED-PRIDE-Alcohol-Medical-Grade-Individually-Wrapped/dp/B0FWN1MK71?linkCode=ll2&tag=diabetestrave-20&linkId=13e80c0080c91c0d4d3de288ae3d697e&language=en_US&ref_=as_li_ss_tl'
@@ -314,7 +290,7 @@ const PRODUCTS = {
   supplyOrganizer: {
     name: 'Diabetes Supply Organizer',
     desc: 'Keeps all your devices, sensors, reservoirs, and supplies organized in one TSA-friendly travel case.',
-    tag: 'essential',
+    tag: 'device',
     showFor: ['omnipod', 'tandem', 'medtronic', 'ilet', 'dexcomg6', 'dexcomg7_10', 'dexcomg7_15', 'libre', 'guardian'],
     img: 'https://m.media-amazon.com/images/I/711v7ZjYgZL._AC_SL400_.jpg',
     url: 'https://www.amazon.com/Medicool-Organizer-DP-DELX-BL/dp/B07NNST986?linkCode=ll2&tag=diabetestrave-20'
@@ -323,13 +299,11 @@ const PRODUCTS = {
   glucoseTabs: {
     name: 'Fast-Acting Glucose Tablets',
     desc: 'Quick, reliable treatment for low blood sugar. Shelf-stable, TSA-friendly, and easy to pack anywhere.',
-    tag: 'essential',
+    tag: 'device',
     showFor: ['lows'],
     img: 'https://m.media-amazon.com/images/I/81SMJP+RUnL._AC_SL400_.jpg',
     url: 'https://www.amazon.com/TRUEplus-Glucose-Tablets-50ct-Orange/dp/B01F69QD5U?linkCode=ll2&tag=diabetestrave-20'
   },
-
-  // ── OMNIPOD 5 ───────────────────────────────
 
   omnipodArmband: {
     name: 'Omnipod Armband Case',
@@ -339,8 +313,6 @@ const PRODUCTS = {
     img: 'https://m.media-amazon.com/images/I/81u3FNw-pHL._AC_SL400_.jpg',
     url: 'https://www.amazon.com/Diabetes-Band-Insulin-Monitoring-Systems/dp/B08MT1WZQR?linkCode=ll2&tag=diabetestrave-20&linkId=4c6d69f31b1d105ded587b52b1e3025b&language=en_US&ref_=as_li_ss_tl'
   },
-
-  // ── TANDEM t:slim X2 ────────────────────────
 
   tandemCharger: {
     name: 'Tandem t:slim Charging Cable',
@@ -369,8 +341,6 @@ const PRODUCTS = {
     url: 'AFFILIATE_URL_HERE'
   },
 
-  // ── MEDTRONIC 780G ──────────────────────────
-
   medtronicCase: {
     name: 'Medtronic Pump Clip Case',
     desc: 'Protects your 780G from drops and keeps it easily accessible on travel days.',
@@ -379,8 +349,6 @@ const PRODUCTS = {
     img: 'https://m.media-amazon.com/images/I/71NVTp870eL._AC_SL1500_.jpg',
     url: 'https://www.amazon.com/iGuerburn-Case-780G-Accessories-MiniMed/dp/B0F53MSB8L?linkCode=ll2&tag=diabetestrave-20&linkId=4df636289178175e34a9b953c0cf236d&language=en_US&ref_=as_li_ss_tl'
   },
-
-  // ── iLet ────────────────────────────────────
 
   iletCase: {
     name: 'iLet Bionic Pancreas Case',
@@ -391,8 +359,6 @@ const PRODUCTS = {
     url: 'https://www.amazon.com/Classic-Premium-Pouch-Insulin-Black/dp/B0CZ4DGSHQ?linkCode=ll2&tag=diabetestrave-20&linkId=3e427015deaf649556145e54f17bf342&language=en_US&ref_=as_li_ss_tl'
   },
 
-  // ── DEXCOM G6 ───────────────────────────────
-
   dexcomG6Patches: {
     name: 'Simpatch for Dexcom G6',
     desc: 'Waterproof overtape patches that keep your G6 sensor locked down in heat, sweat, and water. A must for active travel.',
@@ -401,8 +367,6 @@ const PRODUCTS = {
     img: 'https://m.media-amazon.com/images/I/71YFo+VU1bL._AC_SL400_.jpg',
     url: 'https://www.amazon.com/SIMPATCH-Adhesive-25-Pack-Waterproof-Patches/dp/B07QGX3HJW?linkCode=ll2&tag=diabetestrave-20&linkId=cf281bd0910aae6452adff30956069f3&language=en_US&ref_=as_li_ss_tl'
   },
-
-  // ── DEXCOM G7 ───────────────────────────────
 
   dexcomG7Patches: {
     name: 'Simpatch for Dexcom G7',
@@ -414,10 +378,6 @@ const PRODUCTS = {
   },
 
 };
-
-// ─────────────────────────────────────────────
-// PERSONALIZATION LOGIC
-// ─────────────────────────────────────────────
 
 function getActiveDevices(pump, cgm, lows) {
   const active = new Set();
@@ -436,15 +396,13 @@ const DEVICE_LABELS = {
 };
 
 function resolveTagLabel(product, activeDevices) {
-  // For universal products, check if user's devices are also in showFor
   if (product.showFor.includes('universal')) {
     const matched = product.showFor
       .filter(d => d !== 'universal' && activeDevices.has(d))
       .map(d => DEVICE_LABELS[d])
-      .filter((v, i, a) => a.indexOf(v) === i); // dedupe "Dexcom G7" appearing twice
+      .filter((v, i, a) => a.indexOf(v) === i);
     return matched.length > 0 ? matched.join(' & ') : 'Everyone needs this';
   }
-  // For device-specific products, list all the user's matching devices
   const matched = product.showFor
     .filter(d => activeDevices.has(d))
     .map(d => DEVICE_LABELS[d])
@@ -463,33 +421,22 @@ function buildProductList(pump, cgm, lows) {
     if (relevant) list.push(id);
   }
 
-  // 1. Device-specific pump products first — highest purchase intent
   if (pump === 'omnipod')                              { add('omnipodArmband'); }
   if (pump === 'tandem')                               { add('tandemCharger'); add('tandemCase'); }
   if (pump === 'medtronic')                            { add('medtronicCase'); }
   if (pump === 'ilet')                                 { add('iletCase'); }
   if (['tandem','medtronic','ilet'].includes(pump))    { add('infusionTape'); }
-
-  // 2. Device-specific CGM products
   if (cgm === 'dexcomg6')                              { add('dexcomG6Patches'); }
   if (cgm === 'dexcomg7_10' || cgm === 'dexcomg7_15') { add('dexcomG7Patches'); }
-  if (cgm === 'libre')                                 { add('libreArmband'); add('libreTape'); }
-  if (cgm === 'guardian')                              { add('guardianOvertape'); }
-
-  // 3. Conditional on lows
   add('glucoseTabs');
-
-  // 4. Semi-universals (shown to anyone with a device, tag reflects their specific device)
   add('skinTac');
   add('alcoholWipes');
   add('supplyOrganizer');
-
-  // 5. True universals — always shown
   add('insulinCooling');
   add('medicalID');
   add('backupMeter');
 
-  return [...new Set(list)]; // deduplicate, preserve order
+  return [...new Set(list)];
 }
 
 function renderProducts(productIds, pump, cgm, lows) {
@@ -514,7 +461,7 @@ function renderProducts(productIds, pump, cgm, lows) {
     const card = document.createElement('div');
     card.className = `product-card${isPlaceholder ? ' placeholder' : ''}`;
     card.innerHTML = `
-      <span class="product-tag ${p.tag}">${tagLabel}</span>
+      <span class="product-tag">${tagLabel}</span>
       <div class="product-img">${imgHtml}</div>
       <h3>${p.name}</h3>
       <p>${p.desc}</p>
@@ -532,9 +479,6 @@ function buildProductsSubhead(pump, cgm, lows) {
   return `Matched to your ${devices.join(' + ')}${lows === 'yes' ? ' and low glucose needs' : ''}`;
 }
 
-// ─────────────────────────────────────────────
-// PARSE URL PARAMS & RENDER PAGE
-// ─────────────────────────────────────────────
 const params = new URLSearchParams(window.location.search);
 
 const formData = {
@@ -573,7 +517,6 @@ document.getElementById('tripDetailsRows').innerHTML = `
 const supplies = [], calcDetails = [], notes = [];
 const tripHeader = `For a ${formData.days}-day trip${hasBuffer ? ` (${totalDays} days with 20% buffer)` : ''}`;
 
-// CGM supplies
 if (formData.cgm !== 'none') {
   if (formData.cgm === 'dexcomg6') {
     const need = Math.ceil(totalDays / 10), pack = Math.max(need, 2);
@@ -600,7 +543,6 @@ if (formData.cgm !== 'none') {
   }
 }
 
-// Pump supplies
 if (formData.pump === 'omnipod') {
   const need = Math.ceil(totalDays / 3), pack = need + 1;
   supplies.push(`Omnipod 5 pods: <strong>${pack}</strong>`);
@@ -614,7 +556,6 @@ if (formData.pump === 'omnipod') {
   if (formData.pump === 'ilet')      supplies.push(`iLet cartridges (${formData.ilet_units} units): <strong>${pack}</strong>`);
 }
 
-// Insulin
 if (formData.units && formData.units > 0) {
   const total = formData.units * totalDays, need = Math.ceil(total / 1000), pack = Math.max(need, 2);
   supplies.push(`Insulin vials (U-100, 1000 units): <strong>${pack}</strong>`);
@@ -624,7 +565,6 @@ if (formData.units && formData.units > 0) {
   calcDetails.push(`<strong>Insulin vials:</strong> Daily total not provided — packing 2 as standard backup`);
 }
 
-// Lows
 if (formData.lows === 'yes') {
   const treatments = totalDays * 2;
   supplies.push(`Fast-acting glucose treatments: <strong>${treatments}</strong>`);
@@ -649,7 +589,6 @@ const productIds = buildProductList(formData.pump, formData.cgm, formData.lows);
 renderProducts(productIds, formData.pump, formData.cgm, formData.lows);
 document.getElementById('productsSubhead').textContent = buildProductsSubhead(formData.pump, formData.cgm, formData.lows);
 
-// ── Copy list ──
 function copyList() {
   const header = document.querySelector('#packingList p');
   const items = Array.from(document.querySelectorAll('#packingList li')).map(li => '• ' + li.textContent);
@@ -657,7 +596,6 @@ function copyList() {
     .then(() => showToast('copyToast'));
 }
 
-// ── Share link ──
 async function shareList() {
   const url = window.location.href;
   if (navigator.share) {
