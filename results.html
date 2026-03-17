@@ -6,7 +6,6 @@
   <title>Your Packing List - Diabetes Travel Helper</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── Products section ── */
     .products-section { margin-top: 24px; }
 
     .products-header {
@@ -74,7 +73,6 @@
       box-shadow: 0 4px 16px rgba(28,26,22,0.08), 0 12px 36px rgba(28,26,22,0.07);
     }
 
-    /* Device-specific badge on a card */
     .product-tag {
       display: inline-flex;
       align-items: center;
@@ -156,7 +154,6 @@
       transform: translateY(-1px);
     }
 
-    /* Placeholder card for products not yet linked */
     .product-card.placeholder {
       border-style: dashed;
       opacity: 0.7;
@@ -188,22 +185,17 @@
 
 <div class="container">
 
-  <!-- Header -->
   <header class="page-header">
     <h1>Your Personalized Packing List</h1>
     <p class="intro" id="headerIntro">Based on your trip details and the optional safety buffer</p>
   </header>
 
-  <!-- Main results grid -->
   <div class="results-grid">
-
-    <!-- Left: Trip Details -->
     <div class="card">
       <h2>Your Trip Details</h2>
       <div id="tripDetailsRows"></div>
     </div>
 
-    <!-- Right: Packing List -->
     <div class="card">
       <div class="card-header-row">
         <div>
@@ -232,14 +224,12 @@
         <p>All quantities follow the "rule of 2x" for medical travel safety.</p>
       </details>
     </div>
-
   </div>
 
-  <!-- ── Personalized Products ── -->
   <div class="products-section card" id="products">
     <div class="products-header">
       <h2>Recommended for Your Trip</h2>
-      <span class="personalized-badge" id="personalizedBadge">Personalized for you</span>
+      <span class="personalized-badge">Personalized for you</span>
     </div>
     <p class="products-subhead" id="productsSubhead">Selected based on your specific devices and trip needs</p>
     <div class="products-grid" id="productsGrid"></div>
@@ -249,74 +239,92 @@
     </p>
   </div>
 
-  <!-- Footer -->
   <footer class="page-footer">
     <a href="index.html" class="back-link">← Create a new packing list</a>
   </footer>
 
 </div>
 
-<!-- Toasts -->
 <div class="copy-toast" id="copyToast">Copied to clipboard</div>
 <div class="copy-toast" id="shareToast">Link copied</div>
 
 <script>
 // ─────────────────────────────────────────────
 // PRODUCT CATALOG
-// Replace AFFILIATE_URL_HERE with real Amazon
-// affiliate links as you get them.
-// tag=diabetestrave-20 is already in your links.
+//
+// showFor: array of device keys this product applies to.
+//   'universal' = shown to everyone
+//   device keys = shown only when user selected that device
+//
+// Products in showFor['universal'] that ALSO list
+// specific devices will have their tag label updated
+// to reflect the user's specific device(s) when matched.
 // ─────────────────────────────────────────────
 const PRODUCTS = {
 
-  // ── UNIVERSAL (shown to everyone) ──────────
+  // ── UNIVERSAL ──────────────────────────────
 
   insulinCooling: {
-    id: 'insulinCooling',
     name: 'FRIO Insulin Cooling Wallet',
     desc: 'Keeps insulin at safe temperatures using only water — no ice needed. Essential for warm climates and long travel days.',
     tag: 'essential',
-    tagLabel: 'Everyone needs this',
+    showFor: ['universal'],
     img: 'https://m.media-amazon.com/images/I/81HmJxrBXpL._AC_SL400_.jpg',
     url: 'https://www.amazon.com/Insulin-Cooling-Reusable-Evaporative-Medication/dp/B0002262BM?linkCode=ll2&tag=diabetestrave-20&linkId=91f7eba3e80b6767d1e394a7603436ac&language=en_US&ref_=as_li_ss_tl'
   },
 
   medicalID: {
-    id: 'medicalID',
     name: 'Medical ID Bracelet',
     desc: 'Alerts first responders to your diabetes in an emergency. Non-negotiable for any diabetic traveler.',
     tag: 'essential',
-    tagLabel: 'Everyone needs this',
+    showFor: ['universal'],
     img: 'https://m.media-amazon.com/images/I/71VDg2feMSL._AC_SY400_.jpg',
     url: 'https://www.amazon.com/MEALGUET-Diabetic-Medical-Alert-Bracelet/dp/B0D39LTRK7?linkCode=ll2&tag=diabetestrave-20'
   },
 
   backupMeter: {
-    id: 'backupMeter',
     name: 'Backup Glucose Meter Kit',
-    desc: 'Even with a CGM, always travel with a backup meter — devices fail, lose signal, or run out of battery. The Contour Next One is compact, accurate, and trusted by the diabetes community.',
+    desc: 'The most recommended travel meter in the T1 community. Compact and highly accurate — essential backup for when your CGM needs one.',
     tag: 'essential',
-    tagLabel: 'Everyone needs this',
+    showFor: ['universal'],
     img: 'https://m.media-amazon.com/images/I/81xtKyeFcBL._SL400_.jpg',
-    url: 'https://www.amazon.com/Ascensia-CONTOUR-Glucose-Monitoring-System/dp/B0CWSFV5SS?crid=BN4IXYXJJIYN&dib=eyJ2IjoiMSJ9.LcUcEXEPau2lCoFjglaTbBEf47b3iO1bYl1mQjau7PDVYZu0hCJQd3Bg8nkkx27oy8BJwGb1TtN0R-hbiW1yuRNv3QgWhYRAqFSy84_huN-xPu1RJCYieNaO5B66IN5N5VmfX35Z_fL06KPECAWaA7YzuuzKas-Q3yYlhYt_3_CnfxewuQo3sLC5CVbSKCblmT-THbieGCGK9i-Oo67K3qydU-7rnO07L1TQkoAh4NZ2O_IHc2FeMV2pHvFPHb77G-sVudx_dLrIAqhAzXijEUI7n3uJGlljQQWNcoV9Bq0.C-OkgAo26AuXIDTM6KlUHFTjb4LTubGYrgkW3xCsPo4&dib_tag=se&keywords=Contour%2BNext%2BOne%2Bglucose%2Bmeter%2Bkit&qid=1773714507&sprefix=contour%2Bnext%2Bone%2Bglucose%2Bmeter%2Bkit%2Caps%2C218&sr=8-1&th=1&linkCode=ll2&tag=diabetestrave-20&linkId=c461ce03c8f41cf90460e1fec13e02ba&language=en_US&ref_=as_li_ss_tl'
+    url: 'https://www.amazon.com/Ascensia-CONTOUR-Glucose-Monitoring-System/dp/B0CWSFV5SS?linkCode=ll2&tag=diabetestrave-20&linkId=c461ce03c8f41cf90460e1fec13e02ba&language=en_US&ref_=as_li_ss_tl'
+  },
+
+  // Universal but device-aware — tag label updates to show
+  // the user's specific device(s) when matched
+  skinTac: {
+    name: 'Skin Tac Adhesive Wipes',
+    desc: 'Keeps pods and sensors firmly on your skin in heat, humidity, and water. One of the most recommended travel items in the diabetes community.',
+    tag: 'essential',
+    showFor: ['universal', 'omnipod', 'dexcomg6', 'dexcomg7_10', 'dexcomg7_15', 'libre', 'guardian'],
+    img: 'https://m.media-amazon.com/images/I/515rS3kSsTL._SL400_.jpg',
+    url: 'https://www.amazon.com/Torbot-Adhesive-Barrier-Latex-free-Hypo-allergenic/dp/B00JWSDHJC?linkCode=ll2&tag=diabetestrave-20&linkId=9a9a2170c55e2171485b324aca78588e&language=en_US&ref_=as_li_ss_tl'
+  },
+
+  alcoholWipes: {
+    name: 'Alcohol Wipes (travel pack)',
+    desc: 'Clean skin prep before every pod or sensor placement. Individually wrapped and TSA-friendly.',
+    tag: 'essential',
+    showFor: ['universal', 'omnipod', 'tandem', 'medtronic', 'ilet', 'dexcomg6', 'dexcomg7_10', 'dexcomg7_15', 'libre', 'guardian'],
+    img: 'https://m.media-amazon.com/images/I/81sp4e5temL._AC_SL400_.jpg',
+    url: 'https://www.amazon.com/MED-PRIDE-Alcohol-Medical-Grade-Individually-Wrapped/dp/B0FWN1MK71?linkCode=ll2&tag=diabetestrave-20&linkId=13e80c0080c91c0d4d3de288ae3d697e&language=en_US&ref_=as_li_ss_tl'
   },
 
   supplyOrganizer: {
-    id: 'supplyOrganizer',
     name: 'Diabetes Supply Organizer',
     desc: 'Keeps all your devices, sensors, reservoirs, and supplies organized in one TSA-friendly travel case.',
     tag: 'essential',
-    tagLabel: 'For device users',
+    showFor: ['omnipod', 'tandem', 'medtronic', 'ilet', 'dexcomg6', 'dexcomg7_10', 'dexcomg7_15', 'libre', 'guardian'],
     img: 'https://m.media-amazon.com/images/I/711v7ZjYgZL._AC_SL400_.jpg',
     url: 'https://www.amazon.com/Medicool-Organizer-DP-DELX-BL/dp/B07NNST986?linkCode=ll2&tag=diabetestrave-20'
   },
 
   glucoseTabs: {
-    id: 'glucoseTabs',
     name: 'Fast-Acting Glucose Tablets',
     desc: 'Quick, reliable treatment for low blood sugar. Shelf-stable, TSA-friendly, and easy to pack anywhere.',
     tag: 'essential',
-    tagLabel: 'You selected lows',
+    showFor: ['lows'],
     img: 'https://m.media-amazon.com/images/I/81SMJP+RUnL._AC_SL400_.jpg',
     url: 'https://www.amazon.com/TRUEplus-Glucose-Tablets-50ct-Orange/dp/B01F69QD5U?linkCode=ll2&tag=diabetestrave-20'
   },
@@ -324,146 +332,176 @@ const PRODUCTS = {
   // ── OMNIPOD 5 ───────────────────────────────
 
   omnipodArmband: {
-    id: 'omnipodArmband',
     name: 'Omnipod Armband Case',
     desc: 'Protects your pod during active travel days. Keeps it secure without interfering with readings.',
     tag: 'device',
-    tagLabel: 'Omnipod 5',
+    showFor: ['omnipod'],
     img: 'https://m.media-amazon.com/images/I/81u3FNw-pHL._AC_SL400_.jpg',
-    url: 'https://www.amazon.com/Diabetes-Band-Insulin-Monitoring-Systems/dp/B08MT1WZQR?crid=1UMVZT1U9Q0TR&dib=eyJ2IjoiMSJ9.Y_aqQP12-naFMjeCQn5VfZqnBZWIUigRAPpjSqTRTOXrWDd3yZpu4ISuIwI82mQ1JBv3fjW8DhjmdFS3Ay8eNBrIM3lRjaueht4ySi2PLzbDGKNHNbR7mTdVZceOykA_RL9xzG1u7Q3NVWzZ6nK8UsNUlc9ejMLhDrOngTjuYwGWpon1SGZS72rvmwJ41q7vHHF0Kim2PgszQ4SAMTg0cOxMoGyxW-7bhKuXI3NVmBPzh-vOxpgqK3mjThZuWQqKML3bTVWckaCHEAeYuYBOix30bnETWFnfqYgH7guURY8.hLn1Qerpz2n0TjV_lfxGtCs2ZNzfdf6FNsdH4dXo9L4&dib_tag=se&keywords=Omnipod%2B5%2Barmband%2Bcase&qid=1773715062&sprefix=omnipod%2B5%2Barmband%2Bcase%2Caps%2C214&sr=8-27&th=1&linkCode=ll2&tag=diabetestrave-20&linkId=4c6d69f31b1d105ded587b52b1e3025b&language=en_US&ref_=as_li_ss_tl'
-  },
-
-  skinTac: {
-    id: 'skinTac',
-    name: 'Skin Tac Adhesive Wipes',
-    desc: 'Dramatically improves pod adhesion in heat, humidity, and water — a must for travel. Single-use wipes, easy to pack.',
-    tag: 'device',
-    tagLabel: 'Omnipod 5',
-    img: 'https://m.media-amazon.com/images/I/515rS3kSsTL._SL400_.jpg',
-    url: 'AFFILIATEhttps://www.amazon.com/Torbot-Adhesive-Barrier-Latex-free-Hypo-allergenic/dp/B00JWSDHJC?crid=28YUHIWEF7LY9&dib=eyJ2IjoiMSJ9.ogtgJ_K6k5t8neXA3ddFmHJCtk22BgncHWTrW0tC7C-l8z3rzhlanbSA0nXiNBxqg8T6ogDFByRWlb5s8A2VE8Oj4HfUTTn7RLjfSDzERteTQ7qlj8fvzCxhTvMkVhnHiyw1UGovdrRgJdCFQ8VsRLm1BKc6lKODhQlxKEpwg_0zktSn4Bz_8l_xsV9LEW6dbFQ0pJMHTqb-7IGYcMgOSa9r_-4uWlNPzGQMS8SoQ66_ySRA0Xi4Gct7KfUseJAAfPq9F_YDZD5jKRerX0K0v59PexMg5Z9fK8qIgTo3sMo.YdwkPiCNddmRO6yk3GGle12rPVTZdu_ojUZYHj84plY&dib_tag=se&keywords=kin+Tac+wipes&qid=1773715427&sprefix=skin+tac+wipes%2Caps%2C190&sr=8-1&linkCode=ll2&tag=diabetestrave-20&linkId=9a9a2170c55e2171485b324aca78588e&language=en_US&ref_=as_li_ss_tl'
-  },
-
-  alcoholWipes: {
-    id: 'alcoholWipes',
-    name: 'Alcohol Wipes (travel pack)',
-    desc: 'Essential for clean pod placement on the go. Travel-sized packs fit easily in your carry-on.',
-    tag: 'device',
-    tagLabel: 'Omnipod 5',
-    img: 'https://m.media-amazon.com/images/I/81sp4e5temL._AC_SL400_.jpg',
-    url: 'https://www.amazon.com/MED-PRIDE-Alcohol-Medical-Grade-Individually-Wrapped/dp/B0FWN1MK71?crid=22R0XY88WCFO9&dib=eyJ2IjoiMSJ9.pmXnrBCbxEzxuErDaUPLSceMMT5HRZNxJ41KBG5yd8giMmHxfeKvChyNhpeIRmzKh9li1dtokx472iZ-9IfL7Ctgas6BpAJi1Ln_kNf4LKxIa0zINIxbNc5CE6IULfm4Gbgip5L06-IK-G3-aPGj-bP6eO6RXP3aEA-wHJEljGzQgvmww80q1ccJxSzSPva19ALh5vaQJr19Kbtpq1bkpNyUt-06vD5yU-fAbTNgflf8RZEnDr49PWAs0aFqD9vS1z1elbPc4__JGsJsRJBQOSoajR4HbKQjK8RzvoSMw28.1QOkQ-etXbguIkT1l3Qqhrm3BpRdPil-Dnc9vBagi5k&dib_tag=se&keywords=alcohol%2Bwipes%2Bfor%2Bdiabetes%2Btravel%2Bpack&qid=1773715790&sprefix=alcohol%2Bwipes%2Bfor%2Bdiabetes%2Btravel%2Bpac%2Caps%2C171&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll2&tag=diabetestrave-20&linkId=13e80c0080c91c0d4d3de288ae3d697e&language=en_US&ref_=as_li_ss_tl'
+    url: 'https://www.amazon.com/Diabetes-Band-Insulin-Monitoring-Systems/dp/B08MT1WZQR?linkCode=ll2&tag=diabetestrave-20&linkId=4c6d69f31b1d105ded587b52b1e3025b&language=en_US&ref_=as_li_ss_tl'
   },
 
   // ── TANDEM t:slim X2 ────────────────────────
 
   tandemCharger: {
-    id: 'tandemCharger',
     name: 'Tandem t:slim Charging Cable',
-    desc: 'The t:slim uses a micro-USB cable that is easy to forget or lose. Pack a dedicated spare — running out of battery mid-trip is a real risk.',
+    desc: 'The t:slim uses a micro-USB cable that\'s easy to forget or lose. A dedicated spare is essential — running out of battery mid-trip is a real risk.',
     tag: 'device',
-    tagLabel: 'Tandem t:slim X2',
+    showFor: ['tandem'],
     img: 'https://m.media-amazon.com/images/I/71cEMJRxReL._AC_SL1500_.jpg',
-    url: 'https://www.amazon.com/Tandem-Diabetes-Care-BC71095-Cable/dp/B00R57G2IK?crid=14G930SOY2ZL7&dib=eyJ2IjoiMSJ9.eHf2VGKl8CX5qDb_61oYQE-YaKstS5FZAogeUiYYXks19hyWAbMURK8tsMzb232Qxb8ASc9VQdzRn5nxW467x2I7zbJbj3L8XwfmrZGU6E6_90Mu3e9Eg2L0IpxzFSRvjbvarQ6SfCnUPHNcSA-HBEiEFVvnndlrbz12yb5TYWoKDM3iXzpEZI8hElR7roaMxzdjj7QY-fq0Osl6-DQDyFwP6CLbTz-hDzaGPY3XS7E.yRasvQeu2v2efdG-CA6GwJGO0W2HHAC2sfXfwyGtEgM&dib_tag=se&keywords=Tandem+t%3Aslim+X2+charging+cable&qid=1773716116&sprefix=tandem+t+slim+x2+charging+cable%2Caps%2C222&sr=8-1&linkCode=ll2&tag=diabetestrave-20&linkId=78c1b291701c7290318c312dcf3e6781&language=en_US&ref_=as_li_ss_tl'
+    url: 'https://www.amazon.com/Tandem-Diabetes-Care-BC71095-Cable/dp/B00R57G2IK?linkCode=ll2&tag=diabetestrave-20&linkId=78c1b291701c7290318c312dcf3e6781&language=en_US&ref_=as_li_ss_tl'
   },
 
   tandemCase: {
-    id: 'tandemCase',
     name: 'Tandem t:slim Belt Clip Case',
     desc: 'Keeps your pump secure and accessible during active travel days without risking drops or damage.',
     tag: 'device',
-    tagLabel: 'Tandem t:slim X2',
+    showFor: ['tandem'],
     img: 'https://m.media-amazon.com/images/I/513WRLYiLYL._AC_SL400_.jpg',
-    url: 'https://www.amazon.com/Tandem-Diabetes-Care-t-Black/dp/B01MYGJI6N?crid=57AYSKY7317F&dib=eyJ2IjoiMSJ9.bAOEvtO2xBiGLTm84OTBW7qaNuah-v7l0A7Pp0lKJYJYIYkacGPm0wsZxLDsbMeGbGOvq28uQqyfzXrznhHEBfpIRh9YvJe-tnco_g9L6F8_TxiEJBPGRSYHvhEY_LjYgXbq4GMn82kZMyZKgefC2RqolxPWaXXA7uH7VnrgbLQKRFz_5linPW29_C_UbCxLZQyqTcNPC4JmvTMUhPfLVgJTsMFu1SrrpjqTEFQc0pJkAEF6UdE-eVgadNabb-qU_Ej7z___XhA3epPWWNWG8bg-9KwAz1EtuvBR2kQ4ZtU.hJed4QV0ifO2iZzTUij06dHXVXImSRkDTXS9qkzYvIE&dib_tag=se&keywords=Tandem%2Bt%3Aslim%2BX2%2Bcase&qid=1773715919&sprefix=tandem%2Bt%2Bslim%2Bx2%2Bcase%2Caps%2C244&sr=8-1&th=1&linkCode=ll2&tag=diabetestrave-20&linkId=48c739253a8d6cae8784e491b375aab4&language=en_US&ref_=as_li_ss_tl'
+    url: 'https://www.amazon.com/Tandem-Diabetes-Care-t-Black/dp/B01MYGJI6N?linkCode=ll2&tag=diabetestrave-20&linkId=48c739253a8d6cae8784e491b375aab4&language=en_US&ref_=as_li_ss_tl'
+  },
+
+  infusionTape: {
+    name: 'IV Prep + Skin Barrier Wipes',
+    desc: 'Preps skin to maximize infusion set adhesion in heat and humidity. Widely recommended by tubed pump users for travel.',
+    tag: 'device',
+    showFor: ['tandem', 'medtronic', 'ilet'],
+    img: null,
+    url: 'AFFILIATE_URL_HERE'
   },
 
   // ── MEDTRONIC 780G ──────────────────────────
 
   medtronicCase: {
-    id: 'medtronicCase',
     name: 'Medtronic Pump Clip Case',
-    desc: 'Official Medtronic carry case — protects your 780G from drops and keeps it easily accessible on travel days.',
+    desc: 'Protects your 780G from drops and keeps it easily accessible on travel days.',
     tag: 'device',
-    tagLabel: 'Medtronic 780G',
+    showFor: ['medtronic'],
     img: 'https://m.media-amazon.com/images/I/71NVTp870eL._AC_SL1500_.jpg',
-    url: 'https://www.amazon.com/iGuerburn-Case-780G-Accessories-MiniMed/dp/B0F53MSB8L?content-id=amzn1.sym.c8b39f81-ded8-4d75-80c2-6dfa03cbb699%3Aamzn1.sym.c8b39f81-ded8-4d75-80c2-6dfa03cbb699&crid=F3B2POJNV0RJ&cv_ct_cx=Medtronic%2B780G%2Bcase&keywords=Medtronic%2B780G%2Bcase&pd_rd_i=B0F53MSB8L&pd_rd_r=4bb13041-4887-43b8-9d25-32678fcdcd04&pd_rd_w=hzA3B&pd_rd_wg=4FXYg&pf_rd_p=c8b39f81-ded8-4d75-80c2-6dfa03cbb699&pf_rd_r=6Z6R8JGWHAF7TRF0WJQT&qid=1773716556&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=medtronic%2B780g%2Bcase%2Caps%2C212&sr=1-1-5190daf0-67e3-427c-bea6-c72c1df98776&th=1&linkCode=ll2&tag=diabetestrave-20&linkId=4df636289178175e34a9b953c0cf236d&language=en_US&ref_=as_li_ss_tl'
+    url: 'https://www.amazon.com/iGuerburn-Case-780G-Accessories-MiniMed/dp/B0F53MSB8L?linkCode=ll2&tag=diabetestrave-20&linkId=4df636289178175e34a9b953c0cf236d&language=en_US&ref_=as_li_ss_tl'
   },
 
   // ── iLet ────────────────────────────────────
 
   iletCase: {
-    id: 'iletCase',
     name: 'iLet Bionic Pancreas Case',
     desc: 'Protective carrying case for your iLet — keeps it safe from the bumps and drops of travel.',
     tag: 'device',
-    tagLabel: 'iLet Bionic Pancreas',
+    showFor: ['ilet'],
     img: 'https://m.media-amazon.com/images/I/61Y0RAFgKjL._AC_SL1000_.jpg',
-    url: 'https://www.amazon.com/Classic-Premium-Pouch-Insulin-Black/dp/B0CZ4DGSHQ?crid=ZCWZXNTZ425G&dib=eyJ2IjoiMSJ9.bfiu0CuyP7gHCkl5Aondk-7i9fRdSB4Tghdn72tuXf94vppAiOryTY5O_x2Uy8F5UxB1pqCbDe-V_ThUo-72WQ.9j8hDOzuq4sNmNXbWdoSqMeZVtqgVeibwtdW2KPfYCo&dib_tag=se&keywords=iLet%2BBionic%2BPancreas%2Bcase&qid=1773716672&s=hpc&sprefix=ilet%2Bbionic%2Bpancreas%2Bcase%2Chpc%2C186&sr=1-5&th=1&linkCode=ll2&tag=diabetestrave-20&linkId=3e427015deaf649556145e54f17bf342&language=en_US&ref_=as_li_ss_tl'
+    url: 'https://www.amazon.com/Classic-Premium-Pouch-Insulin-Black/dp/B0CZ4DGSHQ?linkCode=ll2&tag=diabetestrave-20&linkId=3e427015deaf649556145e54f17bf342&language=en_US&ref_=as_li_ss_tl'
+  },
+
+  // ── DEXCOM G6 ───────────────────────────────
+
+  dexcomG6Patches: {
+    name: 'Simpatch for Dexcom G6',
+    desc: 'Waterproof overtape patches that keep your G6 sensor locked down in heat, sweat, and water. A must for active travel.',
+    tag: 'device',
+    showFor: ['dexcomg6'],
+    img: 'https://m.media-amazon.com/images/I/71YFo+VU1bL._AC_SL400_.jpg',
+    url: 'https://www.amazon.com/SIMPATCH-Adhesive-25-Pack-Waterproof-Patches/dp/B07QGX3HJW?linkCode=ll2&tag=diabetestrave-20&linkId=cf281bd0910aae6452adff30956069f3&language=en_US&ref_=as_li_ss_tl'
+  },
+
+  // ── DEXCOM G7 ───────────────────────────────
+
+  dexcomG7Patches: {
+    name: 'Simpatch for Dexcom G7',
+    desc: 'Waterproof overtape that keeps your G7 sensor edges secure in heat, humidity, and water. Essential for any active travel day.',
+    tag: 'device',
+    showFor: ['dexcomg7_10', 'dexcomg7_15'],
+    img: 'https://m.media-amazon.com/images/I/71fFjndbQ8L._AC_SL1500_.jpg',
+    url: 'https://www.amazon.com/SIMPATCH-Adhesive-Tape-Dexcom-25-Pack/dp/B0BV2L7SNX?linkCode=ll2&tag=diabetestrave-20&linkId=e0117727c49c82410b9053e456803c6a&language=en_US&ref_=as_li_ss_tl'
   },
 
 };
 
 // ─────────────────────────────────────────────
 // PERSONALIZATION LOGIC
-// Builds an ordered list of product IDs
-// based on the user's specific form answers.
 // ─────────────────────────────────────────────
-function buildProductList(pump, cgm, lows) {
-  const list = [];
 
-  // 1. Device-specific products first — highest relevance
-  // Pump-specific
-  if (pump === 'omnipod') {
-    list.push('skinTac', 'omnipodArmband', 'alcoholWipes');
-  } else if (pump === 'tandem') {
-    list.push('tandemCharger', 'tandemCase', 'infusionTape');
-  } else if (pump === 'medtronic') {
-    list.push('medtronicCase', 'infusionTape');
-  } else if (pump === 'ilet') {
-    list.push('iletCase', 'infusionTape');
-  }
-
-  // CGM-specific
-  if (cgm === 'dexcomg6') {
-    list.push('dexcomG6Patches', 'dexcomG6Tape');
-  } else if (cgm === 'dexcomg7_10' || cgm === 'dexcomg7_15') {
-    list.push('dexcomG7Patches');
-  } else if (cgm === 'libre') {
-    list.push('libreArmband', 'libreTape');
-  } else if (cgm === 'guardian') {
-    list.push('guardianOvertape');
-  }
-
-  // 2. Conditional universal products
-  if (lows === 'yes') {
-    list.push('glucoseTabs');
-  }
-
-  // 3. Supply organizer for anyone with a device
-  if (pump !== 'none' || cgm !== 'none') {
-    list.push('supplyOrganizer');
-  }
-
-  // 4. True universals — always last so device-specific stuff leads
-  list.push('insulinCooling', 'medicalID', 'backupMeter');
-
-  // Deduplicate while preserving order
-  return [...new Set(list)];
+function getActiveDevices(pump, cgm, lows) {
+  const active = new Set();
+  if (pump !== 'none') active.add(pump);
+  if (cgm !== 'none') active.add(cgm);
+  if (lows === 'yes') active.add('lows');
+  return active;
 }
 
-// ─────────────────────────────────────────────
-// RENDER PRODUCTS
-// ─────────────────────────────────────────────
-function renderProducts(productIds) {
+const DEVICE_LABELS = {
+  omnipod: 'Omnipod 5', tandem: 'Tandem t:slim X2',
+  medtronic: 'Medtronic 780G', ilet: 'iLet',
+  dexcomg6: 'Dexcom G6', dexcomg7_10: 'Dexcom G7',
+  dexcomg7_15: 'Dexcom G7', libre: 'FreeStyle Libre',
+  guardian: 'Guardian 4', lows: 'You selected lows'
+};
+
+function resolveTagLabel(product, activeDevices) {
+  // For universal products, check if user's devices are also in showFor
+  if (product.showFor.includes('universal')) {
+    const matched = product.showFor
+      .filter(d => d !== 'universal' && activeDevices.has(d))
+      .map(d => DEVICE_LABELS[d])
+      .filter((v, i, a) => a.indexOf(v) === i); // dedupe "Dexcom G7" appearing twice
+    return matched.length > 0 ? matched.join(' & ') : 'Everyone needs this';
+  }
+  // For device-specific products, list all the user's matching devices
+  const matched = product.showFor
+    .filter(d => activeDevices.has(d))
+    .map(d => DEVICE_LABELS[d])
+    .filter((v, i, a) => a.indexOf(v) === i);
+  return matched.length > 0 ? matched.join(' & ') : (DEVICE_LABELS[product.showFor[0]] || product.showFor[0]);
+}
+
+function buildProductList(pump, cgm, lows) {
+  const activeDevices = getActiveDevices(pump, cgm, lows);
+  const list = [];
+
+  function add(id) {
+    const p = PRODUCTS[id];
+    if (!p) return;
+    const relevant = p.showFor.includes('universal') || p.showFor.some(d => activeDevices.has(d));
+    if (relevant) list.push(id);
+  }
+
+  // 1. Device-specific pump products first — highest purchase intent
+  if (pump === 'omnipod')                              { add('omnipodArmband'); }
+  if (pump === 'tandem')                               { add('tandemCharger'); add('tandemCase'); }
+  if (pump === 'medtronic')                            { add('medtronicCase'); }
+  if (pump === 'ilet')                                 { add('iletCase'); }
+  if (['tandem','medtronic','ilet'].includes(pump))    { add('infusionTape'); }
+
+  // 2. Device-specific CGM products
+  if (cgm === 'dexcomg6')                              { add('dexcomG6Patches'); }
+  if (cgm === 'dexcomg7_10' || cgm === 'dexcomg7_15') { add('dexcomG7Patches'); }
+  if (cgm === 'libre')                                 { add('libreArmband'); add('libreTape'); }
+  if (cgm === 'guardian')                              { add('guardianOvertape'); }
+
+  // 3. Conditional on lows
+  add('glucoseTabs');
+
+  // 4. Semi-universals (shown to anyone with a device, tag reflects their specific device)
+  add('skinTac');
+  add('alcoholWipes');
+  add('supplyOrganizer');
+
+  // 5. True universals — always shown
+  add('insulinCooling');
+  add('medicalID');
+  add('backupMeter');
+
+  return [...new Set(list)]; // deduplicate, preserve order
+}
+
+function renderProducts(productIds, pump, cgm, lows) {
   const grid = document.getElementById('productsGrid');
+  const activeDevices = getActiveDevices(pump, cgm, lows);
 
   productIds.forEach(id => {
     const p = PRODUCTS[id];
     if (!p) return;
 
     const isPlaceholder = !p.img || p.url === 'AFFILIATE_URL_HERE';
-
-    const tagHtml = p.tag ? `
-      <span class="product-tag ${p.tag}">${p.tagLabel}</span>
-    ` : '';
+    const tagLabel = resolveTagLabel(p, activeDevices);
 
     const imgHtml = p.img
       ? `<img src="${p.img}" alt="${p.name}" loading="lazy">`
@@ -476,7 +514,7 @@ function renderProducts(productIds) {
     const card = document.createElement('div');
     card.className = `product-card${isPlaceholder ? ' placeholder' : ''}`;
     card.innerHTML = `
-      ${tagHtml}
+      <span class="product-tag ${p.tag}">${tagLabel}</span>
       <div class="product-img">${imgHtml}</div>
       <h3>${p.name}</h3>
       <p>${p.desc}</p>
@@ -486,172 +524,101 @@ function renderProducts(productIds) {
   });
 }
 
-// Update the products subhead based on what devices were selected
 function buildProductsSubhead(pump, cgm, lows) {
-  const pumpNames = {
-    none: null,
-    omnipod: 'Omnipod 5',
-    tandem: 'Tandem t:slim X2',
-    medtronic: 'Medtronic 780G/770G',
-    ilet: 'iLet Bionic Pancreas'
-  };
-  const cgmNames = {
-    none: null,
-    dexcomg6: 'Dexcom G6',
-    dexcomg7_10: 'Dexcom G7',
-    dexcomg7_15: 'Dexcom G7 (15-day)',
-    libre: 'FreeStyle Libre',
-    guardian: 'Medtronic Guardian 4'
-  };
-
-  const devices = [pumpNames[pump], cgmNames[cgm]].filter(Boolean);
-  if (devices.length === 0) return 'Essential supplies for every diabetic traveler';
+  const pL = { none:null, omnipod:'Omnipod 5', tandem:'Tandem t:slim X2', medtronic:'Medtronic 780G/770G', ilet:'iLet Bionic Pancreas' };
+  const cL = { none:null, dexcomg6:'Dexcom G6', dexcomg7_10:'Dexcom G7', dexcomg7_15:'Dexcom G7 (15-day)', libre:'FreeStyle Libre', guardian:'Medtronic Guardian 4' };
+  const devices = [pL[pump], cL[cgm]].filter(Boolean);
+  if (!devices.length) return 'Essential supplies for every diabetic traveler';
   return `Matched to your ${devices.join(' + ')}${lows === 'yes' ? ' and low glucose needs' : ''}`;
 }
 
 // ─────────────────────────────────────────────
-// PARSE URL PARAMS
+// PARSE URL PARAMS & RENDER PAGE
 // ─────────────────────────────────────────────
 const params = new URLSearchParams(window.location.search);
 
 const formData = {
-  days:      parseInt(params.get('days'))      || 7,
-  pump:      params.get('pump')               || 'none',
-  units:     parseInt(params.get('units'))     || null,
-  cgm:       params.get('cgm')                || 'none',
-  lows:      params.get('lows')               || 'no',
-  buffer:    params.get('buffer')             || 'no',
-  set_days:  parseInt(params.get('set_days')) || 3,
-  res_units: parseInt(params.get('res_units'))|| 180,
-  cart_units:parseInt(params.get('cart_units'))|| 300,
-  ilet_units:parseInt(params.get('ilet_units'))|| 180
+  days:       parseInt(params.get('days'))       || 7,
+  pump:       params.get('pump')                 || 'none',
+  units:      parseInt(params.get('units'))       || null,
+  cgm:        params.get('cgm')                  || 'none',
+  lows:       params.get('lows')                 || 'no',
+  buffer:     params.get('buffer')               || 'no',
+  set_days:   parseInt(params.get('set_days'))   || 3,
+  res_units:  parseInt(params.get('res_units'))  || 180,
+  cart_units: parseInt(params.get('cart_units')) || 300,
+  ilet_units: parseInt(params.get('ilet_units')) || 180
 };
 
-const pumpNames = {
-  none: 'No pump', omnipod: 'Omnipod 5',
-  tandem: 'Tandem t:slim X2', medtronic: 'Medtronic 780G / 770G',
-  ilet: 'iLet Bionic Pancreas'
-};
-
-const cgmNames = {
-  none: 'No CGM', dexcomg6: 'Dexcom G6',
-  dexcomg7_10: 'Dexcom G7 10-day', dexcomg7_15: 'Dexcom G7 15-day',
-  libre: 'FreeStyle Libre 2 / 3', guardian: 'Medtronic Guardian 4'
-};
+const pumpNames = { none:'No pump', omnipod:'Omnipod 5', tandem:'Tandem t:slim X2', medtronic:'Medtronic 780G / 770G', ilet:'iLet Bionic Pancreas' };
+const cgmNames  = { none:'No CGM', dexcomg6:'Dexcom G6', dexcomg7_10:'Dexcom G7 10-day', dexcomg7_15:'Dexcom G7 15-day', libre:'FreeStyle Libre 2 / 3', guardian:'Medtronic Guardian 4' };
 
 const hasBuffer = formData.buffer === 'yes';
-const bufferMultiplier = hasBuffer ? 1.2 : 1.0;
-const totalDays = Math.ceil(formData.days * bufferMultiplier);
+const totalDays = Math.ceil(formData.days * (hasBuffer ? 1.2 : 1.0));
 
-// ── Header ──
 if (!hasBuffer) {
   document.getElementById('headerIntro').textContent = 'Based on your trip details';
   document.getElementById('packingSubtitle').textContent = 'Calculated for your exact trip length';
 }
 
-// ── Trip details ──
 document.getElementById('tripDetailsRows').innerHTML = `
-  <div class="row">
-    <span class="label">Trip duration</span>
-    <span class="value">${formData.days} days</span>
-  </div>
-  <div class="row">
-    <span class="label">Pump</span>
-    <span class="value">${pumpNames[formData.pump]}</span>
-  </div>
-  ${formData.units ? `
-  <div class="row">
-    <span class="label">Insulin (units/day)</span>
-    <span class="value">${formData.units}</span>
-  </div>` : ''}
-  <div class="row">
-    <span class="label">CGM</span>
-    <span class="value">${cgmNames[formData.cgm]}</span>
-  </div>
-  <div class="row">
-    <span class="label">Carries fast-acting glucose</span>
-    <span class="value">${formData.lows === 'yes' ? 'Yes' : 'No'}</span>
-  </div>
-  <div class="row">
-    <span class="label">20% safety buffer</span>
-    <span class="value">${hasBuffer ? 'Yes' : 'No'}</span>
-  </div>
+  <div class="row"><span class="label">Trip duration</span><span class="value">${formData.days} days</span></div>
+  <div class="row"><span class="label">Pump</span><span class="value">${pumpNames[formData.pump]}</span></div>
+  ${formData.units ? `<div class="row"><span class="label">Insulin (units/day)</span><span class="value">${formData.units}</span></div>` : ''}
+  <div class="row"><span class="label">CGM</span><span class="value">${cgmNames[formData.cgm]}</span></div>
+  <div class="row"><span class="label">Carries fast-acting glucose</span><span class="value">${formData.lows === 'yes' ? 'Yes' : 'No'}</span></div>
+  <div class="row"><span class="label">20% safety buffer</span><span class="value">${hasBuffer ? 'Yes' : 'No'}</span></div>
 `;
 
-// ── Packing list calculation ──
-const supplies = [];
-const calcDetails = [];
-const notes = [];
+const supplies = [], calcDetails = [], notes = [];
+const tripHeader = `For a ${formData.days}-day trip${hasBuffer ? ` (${totalDays} days with 20% buffer)` : ''}`;
 
-const bufferText = hasBuffer ? ` (${totalDays} days with 20% buffer)` : '';
-const tripHeader = `For a ${formData.days}-day trip${bufferText}`;
-
-// CGM
+// CGM supplies
 if (formData.cgm !== 'none') {
-  let sensorDays, sensorName;
   if (formData.cgm === 'dexcomg6') {
-    sensorDays = 10; sensorName = 'Dexcom G6 sensors';
-    const need = Math.ceil(totalDays / sensorDays);
-    const pack = Math.max(need, 2);
-    supplies.push(`${sensorName}: <strong>${pack}</strong>`);
+    const need = Math.ceil(totalDays / 10), pack = Math.max(need, 2);
+    supplies.push(`Dexcom G6 sensors: <strong>${pack}</strong>`);
     supplies.push(`Dexcom G6 transmitter: <strong>1</strong>`);
-    calcDetails.push(`<strong>${sensorName}:</strong> 1 lasts ${sensorDays} days → need ${need}, packing ${pack}`);
-    notes.push('Check your Dexcom G6 transmitter expiry date before you leave — transmitters last ~90 days. If it may expire during your trip, bring a spare.');
+    calcDetails.push(`<strong>Dexcom G6 sensors:</strong> 1 lasts 10 days → need ${need}, packing ${pack}`);
+    notes.push('Check your Dexcom G6 transmitter expiry before you leave — transmitters last ~90 days. If it may expire during your trip, bring a spare.');
   } else if (formData.cgm === 'dexcomg7_10') {
-    sensorDays = 10; sensorName = 'Dexcom G7 sensors';
-    const need = Math.ceil(totalDays / sensorDays);
-    const pack = Math.max(need, 2);
-    supplies.push(`${sensorName}: <strong>${pack}</strong>`);
-    calcDetails.push(`<strong>${sensorName}:</strong> 1 lasts ${sensorDays} days → need ${need}, packing ${pack}`);
+    const need = Math.ceil(totalDays / 10), pack = Math.max(need, 2);
+    supplies.push(`Dexcom G7 sensors: <strong>${pack}</strong>`);
+    calcDetails.push(`<strong>Dexcom G7 sensors:</strong> 1 lasts 10 days → need ${need}, packing ${pack}`);
   } else if (formData.cgm === 'dexcomg7_15') {
-    sensorDays = 15; sensorName = 'Dexcom G7 sensors (15-day)';
-    const need = Math.ceil(totalDays / sensorDays);
-    const pack = Math.max(need, 2);
-    supplies.push(`${sensorName}: <strong>${pack}</strong>`);
-    calcDetails.push(`<strong>${sensorName}:</strong> 1 lasts ${sensorDays} days → need ${need}, packing ${pack}`);
+    const need = Math.ceil(totalDays / 15), pack = Math.max(need, 2);
+    supplies.push(`Dexcom G7 sensors (15-day): <strong>${pack}</strong>`);
+    calcDetails.push(`<strong>Dexcom G7 sensors:</strong> 1 lasts 15 days → need ${need}, packing ${pack}`);
   } else if (formData.cgm === 'libre') {
-    sensorDays = 14; sensorName = 'FreeStyle Libre sensors';
-    const need = Math.ceil(totalDays / sensorDays);
-    const pack = Math.max(need, 2);
-    supplies.push(`${sensorName}: <strong>${pack}</strong>`);
-    calcDetails.push(`<strong>${sensorName}:</strong> 1 lasts ${sensorDays} days → need ${need}, packing ${pack}`);
+    const need = Math.ceil(totalDays / 14), pack = Math.max(need, 2);
+    supplies.push(`FreeStyle Libre sensors: <strong>${pack}</strong>`);
+    calcDetails.push(`<strong>FreeStyle Libre sensors:</strong> 1 lasts 14 days → need ${need}, packing ${pack}`);
   } else if (formData.cgm === 'guardian') {
-    sensorDays = 7; sensorName = 'Medtronic Guardian 4 sensors';
-    const need = Math.ceil(totalDays / sensorDays);
-    const pack = Math.max(need + 1, 2);
-    supplies.push(`${sensorName}: <strong>${pack}</strong>`);
-    calcDetails.push(`<strong>${sensorName}:</strong> 1 lasts ${sensorDays} days → need ${need}, packing ${pack}`);
+    const need = Math.ceil(totalDays / 7), pack = Math.max(need + 1, 2);
+    supplies.push(`Medtronic Guardian 4 sensors: <strong>${pack}</strong>`);
+    calcDetails.push(`<strong>Guardian 4 sensors:</strong> 1 lasts 7 days → need ${need}, packing ${pack}`);
   }
 }
 
-// Pump
+// Pump supplies
 if (formData.pump === 'omnipod') {
-  const need = Math.ceil(totalDays / 3);
-  const pack = need + 1;
+  const need = Math.ceil(totalDays / 3), pack = need + 1;
   supplies.push(`Omnipod 5 pods: <strong>${pack}</strong>`);
   calcDetails.push(`<strong>Omnipod pods:</strong> Changed every ~3 days → need ${need}, packing ${pack}`);
 } else if (['tandem','medtronic','ilet'].includes(formData.pump)) {
-  const setDays = formData.set_days;
-  const need = Math.ceil(totalDays / setDays);
-  const pack = need + 1;
+  const need = Math.ceil(totalDays / formData.set_days), pack = need + 1;
   supplies.push(`Infusion sets: <strong>${pack}</strong>`);
-  calcDetails.push(`<strong>Infusion sets:</strong> Changed every ${setDays} days → need ${need}, packing ${pack}`);
-  if (formData.pump === 'medtronic') {
-    supplies.push(`Medtronic reservoirs (${formData.res_units} units): <strong>${pack}</strong>`);
-  } else if (formData.pump === 'tandem') {
-    supplies.push(`Tandem cartridges (${formData.cart_units} units): <strong>${pack}</strong>`);
-  } else if (formData.pump === 'ilet') {
-    supplies.push(`iLet cartridges (${formData.ilet_units} units): <strong>${pack}</strong>`);
-  }
+  calcDetails.push(`<strong>Infusion sets:</strong> Changed every ${formData.set_days} days → need ${need}, packing ${pack}`);
+  if (formData.pump === 'medtronic') supplies.push(`Medtronic reservoirs (${formData.res_units} units): <strong>${pack}</strong>`);
+  if (formData.pump === 'tandem')    supplies.push(`Tandem cartridges (${formData.cart_units} units): <strong>${pack}</strong>`);
+  if (formData.pump === 'ilet')      supplies.push(`iLet cartridges (${formData.ilet_units} units): <strong>${pack}</strong>`);
 }
 
 // Insulin
 if (formData.units && formData.units > 0) {
-  const totalUnits = formData.units * totalDays;
-  const need = Math.ceil(totalUnits / 1000);
-  const pack = Math.max(need, 2);
+  const total = formData.units * totalDays, need = Math.ceil(total / 1000), pack = Math.max(need, 2);
   supplies.push(`Insulin vials (U-100, 1000 units): <strong>${pack}</strong>`);
-  calcDetails.push(`<strong>Insulin vials:</strong> ${formData.units} units/day × ${totalDays} days = ${totalUnits} units → ${need} vial${need > 1 ? 's' : ''} needed, packing ${pack}`);
+  calcDetails.push(`<strong>Insulin vials:</strong> ${formData.units}/day × ${totalDays} days = ${total} units → ${need} vial${need > 1 ? 's' : ''} needed, packing ${pack}`);
 } else if (formData.pump !== 'none') {
   supplies.push(`Insulin vials: <strong>2</strong> (recommended backup)`);
   calcDetails.push(`<strong>Insulin vials:</strong> Daily total not provided — packing 2 as standard backup`);
@@ -664,48 +631,39 @@ if (formData.lows === 'yes') {
   calcDetails.push(`<strong>Glucose treatments:</strong> 2 per day × ${totalDays} days = ${treatments}`);
 }
 
-// Render packing list
-const tripHeaderEl = `<p style="font-weight:700;font-size:16px;margin:0 0 12px -20px;color:#1C1A16;">${tripHeader}</p>`;
-document.getElementById('packingList').innerHTML = tripHeaderEl + supplies.map(i => `<li>${i}</li>`).join('');
+document.getElementById('packingList').innerHTML =
+  `<p style="font-weight:700;font-size:16px;margin:0 0 12px -20px;color:#1C1A16;">${tripHeader}</p>` +
+  supplies.map(i => `<li>${i}</li>`).join('');
 
-// Render calc details
-const tripCalc = hasBuffer
+calcDetails.unshift(hasBuffer
   ? `<strong>Trip length:</strong> ${formData.days} days × 1.20 buffer = ${totalDays} days`
-  : `<strong>Trip length:</strong> ${formData.days} days (no buffer)`;
-calcDetails.unshift(tripCalc);
+  : `<strong>Trip length:</strong> ${formData.days} days (no buffer)`);
 document.getElementById('calcList').innerHTML = calcDetails.map(i => `<li>${i}</li>`).join('');
 
-// Render notes
 if (notes.length > 0) {
   document.getElementById('noteSection').style.display = 'block';
   document.getElementById('notesList').innerHTML = notes.map(n => `<li>${n}</li>`).join('');
 }
 
-// ── Render personalized products ──
 const productIds = buildProductList(formData.pump, formData.cgm, formData.lows);
-renderProducts(productIds);
+renderProducts(productIds, formData.pump, formData.cgm, formData.lows);
 document.getElementById('productsSubhead').textContent = buildProductsSubhead(formData.pump, formData.cgm, formData.lows);
 
 // ── Copy list ──
 function copyList() {
   const header = document.querySelector('#packingList p');
-  const headerText = header ? header.textContent : '';
-  const items = Array.from(document.querySelectorAll('#packingList li'))
-    .map(li => '• ' + li.textContent);
-  const text = headerText + '\n\n' + items.join('\n');
-  navigator.clipboard.writeText(text).then(() => showToast('copyToast'));
+  const items = Array.from(document.querySelectorAll('#packingList li')).map(li => '• ' + li.textContent);
+  navigator.clipboard.writeText((header ? header.textContent : '') + '\n\n' + items.join('\n'))
+    .then(() => showToast('copyToast'));
 }
 
 // ── Share link ──
 async function shareList() {
   const url = window.location.href;
   if (navigator.share) {
-    try {
-      await navigator.share({ title: 'My Diabetes Travel Packing List', url });
-    } catch(e) { if (e.name !== 'AbortError') fallbackCopy(url); }
-  } else {
-    fallbackCopy(url);
-  }
+    try { await navigator.share({ title: 'My Diabetes Travel Packing List', url }); }
+    catch(e) { if (e.name !== 'AbortError') fallbackCopy(url); }
+  } else { fallbackCopy(url); }
 }
 
 function fallbackCopy(url) {
