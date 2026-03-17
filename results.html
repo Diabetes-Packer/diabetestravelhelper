@@ -521,7 +521,7 @@ function buildProductList(pump, cgm, lows) {
   }
 
   // 4. True universals — always last so device-specific stuff leads
-  list.push('insulinCooling', 'medicalID', 'sharpsContainer');
+  list.push('insulinCooling', 'medicalID', 'backupMeter');
 
   // Deduplicate while preserving order
   return [...new Set(list)];
