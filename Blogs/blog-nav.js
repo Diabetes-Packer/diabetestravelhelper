@@ -35,6 +35,24 @@ const ARTICLES = [
     desc: "Can you wear a CGM through airport security? Dexcom, Libre, and Guardian rules explained for 2026.",
     emoji: "📡"
   }
+  {
+    slug: "how-much-insulin-to-pack-for-travel.html",
+    title: "How Much Insulin to Pack for Travel (2026 Guide)",
+    desc: "The 2x rule explained with exact calculations for vials, pens, and pumps. Never run short on insulin during a trip again.",
+    emoji: "💉"
+  },
+  {
+    slug: "flying-with-omnipod-5-airport-security-travel-guide.html",
+    title: "Flying with Omnipod 5: Airport Security & Travel Guide (2026)",
+    desc: "TSA rules, scanner safety, flight mode settings, cabin pressure effects, and exactly how many pods to pack.",
+    emoji: "🩺"
+  },
+  {
+    slug: "traveling-with-dexcom-g7-airport-security-travel-guide.html",
+    title: "Traveling with Dexcom G7: Airport Security & Flight Tips (2026)",
+    desc: "G7 security rules, how many sensors to pack, adhesion tips, and the international app warning every G7 user needs to know.",
+    emoji: "📡"
+  }
 ];
 
 const BASE = "https://diabetes-packer.github.io/diabetestravelhelper/Blogs/";
