@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diabetes Travel Guides — Expert Tips for Traveling with Diabetes (2026)</title>
+  <meta name="description" content="Free expert guides for traveling with diabetes. TSA rules, insulin packing, CGM security tips, pump travel guides, and more — updated for 2026." />
+  <meta name="keywords" content="diabetes travel guides, traveling with diabetes tips, diabetes travel resources, insulin travel guide, CGM travel tips, pump travel guide" />
+  <link rel="canonical" href="https://diabetes-packer.github.io/diabetestravelhelper/guides.html" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .guides-hero {
+      text-align: center;
+      padding: 48px 0 40px;
+    }
+
+    .guides-hero h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #1C1A16;
+      margin: 0 0 14px 0;
+    }
+
+    .guides-hero h1 em {
+      font-style: italic;
+      color: #1C6459;
+    }
+
+    .guides-hero p {
+      font-size: 17px;
+      color: #6B6860;
+      max-width: 520px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+
+    .guides-cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .guides-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 20px;
+      background: #1C6459;
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background 150ms ease, transform 150ms ease;
+    }
+
+    .guides-cta-btn:hover {
+      background: #0E3830;
+      transform: translateY(-1px);
+    }
+
+    .guides-cta-secondary {
+      font-size: 13px;
+      color: #6B6860;
+    }
+
+    /* Category sections */
+    .guides-section {
+      margin-bottom: 48px;
+    }
+
+    .guides-section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(28,26,22,0.08);
+    }
+
+    .guides-section-icon {
+      width: 32px;
+      height: 32px;
+      background: #E8F5F2;
+      border: 1px solid #C4E8DF;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .guides-section-title {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: #1C1A16;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .guides-section-count {
+      font-size: 12px;
+      color: #6B6860;
+      margin-left: auto;
+    }
+
+    /* Guide cards grid */
+    .guides-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .guides-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .guides-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .guide-card {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid rgba(28,26,22,0.10);
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(28,26,22,0.08), 0 12px 36px rgba(28,26,22,0.06);
+    }
+
+    .guide-card-emoji {
+      font-size: 22px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .guide-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1C1A16;
+      line-height: 1.35;
+      margin: 0 0 8px 0;
+      letter-spacing: -0.01em;
+    }
+
+    .guide-card-desc {
+      font-size: 13px;
+      color: #6B6860;
+      line-height: 1.5;
+      margin: 0 0 16px 0;
+      flex-grow: 1;
+    }
+
+    .guide-card-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1C6459;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Featured card — first in each section */
+    .guide-card.featured {
+      border-color: #C4E8DF;
+      background: linear-gradient(135deg, #f8fefd 0%, #fff 60%);
+    }
+
+    .guide-card.featured .guide-card-title {
+      color: #0E3830;
+    }
+
+    /* Tool CTA card */
+    .tool-cta-card {
+      background: #1C6459;
+      border-radius: 14px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .tool-cta-card-text h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(18px, 2.4vw, 24px);
+      font-weight: 400;
+      color: #fff;
+      margin: 0 0 6px 0;
+      letter-spacing: -0.01em;
+    }
+
+    .tool-cta-card-text p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .tool-cta-card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 22px;
+      background: #fff;
+      color: #1C6459;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .tool-cta-card-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    /* Site nav */
+    .site-nav {
+      border-bottom: 1px solid rgba(28,26,22,0.08);
+      padding: 16px 0;
+      margin-bottom: 0;
+    }
+
+    .site-nav-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-nav-logo {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: #1C1A16;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .site-nav-logo span {
+      color: #1C6459;
+      font-style: italic;
+    }
+
+    .site-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .site-nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: #6B6860;
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .site-nav-links a:hover,
+    .site-nav-links a.active {
+      color: #1C1A16;
+    }
+
+    .site-nav-links a.active {
+      color: #1C6459;
+    }
+
+    .site-nav-tool-btn {
+      padding: 8px 16px;
+      background: #1C6459;
+      color: #fff !important;
+      border-radius: 8px;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      transition: background 150ms ease !important;
+    }
+
+    .site-nav-tool-btn:hover {
+      background: #0E3830 !important;
+      color: #fff !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .guide-card:hover,
+      .guides-cta-btn:hover,
+      .tool-cta-card-btn:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Site nav -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html" class="site-nav-logo">
+      Diabetes <span>Travel Helper</span>
+    </a>
+    <div class="site-nav-links">
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html">Home</a>
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/guides.html" class="active">Guides</a>
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html" class="site-nav-tool-btn">Packing Calculator</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="guides-hero">
+    <h1>Diabetes Travel <em>Guides</em></h1>
+    <p>Expert, device-specific guides for traveling safely with diabetes — TSA rules, insulin packing, pump and CGM travel tips, all updated for 2026.</p>
+    <div class="guides-cta-row">
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html" class="guides-cta-btn">
+        Build my packing list →
+      </a>
+      <span class="guides-cta-secondary">Free · No account needed · Takes 60 seconds</span>
+    </div>
+  </div>
+
+  <!-- Tool CTA -->
+  <div class="tool-cta-card">
+    <div class="tool-cta-card-text">
+      <h2>Not sure what to pack?</h2>
+      <p>Our free calculator builds a personalized list based on your pump, CGM, and trip length — with safety backups built in.</p>
+    </div>
+    <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html" class="tool-cta-card-btn">
+      Calculate my supplies →
+    </a>
+  </div>
+
+  <!-- Section: Airport & TSA -->
+  <div class="guides-section">
+    <div class="guides-section-header">
+      <div class="guides-section-icon">✈️</div>
+      <h2 class="guides-section-title">Airport &amp; TSA</h2>
+      <span class="guides-section-count">4 guides</span>
+    </div>
+    <div class="guides-grid">
+      <a class="guide-card featured" href="https://diabetes-packer.github.io/diabetestravelhelper/Blogs/flying-with-diabetes-tsa-rules.html">
+        <span class="guide-card-emoji">✈️</span>
+        <h3 class="guide-card-title">Flying with Diabetes: TSA Rules &amp; Airport Tips (2026)</h3>
+        <p class="guide-card-desc">Get through airport security with insulin, pumps, and CGMs. Every TSA rule you need, plus what to keep in your carry-on.</p>
+        <span class="guide-card-link">Read guide →</span>
+      </a>
+      <a class="guide-card" href="https://diabetes-packer.github.io/diabetestravelhelper/Blogs/tsa-rules-continuous-glucose-monitor-cgm.html">
+        <span class="guide-card-emoji">📡</span>
+        <h3 class="guide-card-title">TSA Rules for Continuous Glucose Monitors (CGMs) in 2026</h3>
+        <p class="guide-card-desc">Can you wear a CGM through airport security? Dexcom, Libre, and Guardian rules explained.</p>
+        <span class="guide-card-link">Read guide →</span>
+      </a>
+      <a class="guide-card" href="https://diabetes-packer.github.io/diabetestravelhelper/Blogs/flying-with-omnipod-5-airport-security-travel-guide.html">
+        <span class="guide-card-emoji">🩺</span>
+        <h3 class="guide-card-title">Flying with Omnipod 5: Airport Security &amp; Travel Guide (2026)</h3>
+        <p class="guide-card-desc">TSA rules, scanner safety, flight mode settings, cabin pressure effects, and exactly how many pods to pack.</p>
+        <span class="guide-card-link">Read guide →</span>
+      </a>
+      <a class="guide-card" href="https://diabetes-packer.github.io/diabetestravelhelper/Blogs/traveling-with-dexcom-g7-airport-security-travel-guide.html">
+        <span class="guide-card-emoji">📡</span>
+        <h3 class="guide-card-title">Traveling with Dexcom G7: Airport Security &amp; Flight Tips (2026)</h3>
+        <p class="guide-card-desc">G7 security rules, how many sensors to pack, adhesion tips, and the international app warning every G7 user needs to know.</p>
+        <span class="guide-card-link">Read guide →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Section: Packing & Supplies -->
+  <div class="guides-section">
+    <div class="guides-section-header">
+      <div class="guides-section-icon">🎒</div>
+      <h2 class="guides-section-title">Packing &amp; Supplies</h2>
+      <span class="guides-section-count">3 guides</span>
+    </div>
+    <div class="guides-grid">
+      <a class="guide-card featured" href="https://diabetes-packer.github.io/diabetestravelhelper/Blogs/diabetes-packing-list.html">
+        <span class="guide-card-emoji">📝</span>
+        <h3 class="guide-card-title">Complete Diabetes Travel Packing List for 2026</h3>
+        <p class="guide-card-desc">Everything you need to pack for safe travel with Type 1 diabetes. TSA rules, insulin storage tips, and climate-specific advice.</p>
+        <span class="guide-card-link">Read guide →</span>
+      </a>
+      <a class="guide-card" href="https://diabetes-packer.github.io/diabetestravelhelper/Blogs/how-much-insulin-to-pack-for-travel.html">
+        <span class="guide-card-emoji">💉</span>
+        <h3 class="guide-card-title">How Much Insulin to Pack for Travel (2026 Guide)</h3>
+        <p class="guide-card-desc">The 2x rule explained with exact calculations for vials, pens, and pumps. Never run short on insulin during a trip again.</p>
+        <span class="guide-card-link">Read guide →</span>
+      </a>
+      <a class="guide-card" href="https://diabetes-packer.github.io/diabetestravelhelper/Blogs/how-to-keep-insulin-cool-while-traveling.html">
+        <span class="guide-card-emoji">🧊</span>
+        <h3 class="guide-card-title">How to Keep Insulin Cool While Traveling (2026)</h3>
+        <p class="guide-card-desc">Best cooling cases, FRIO bags, and storage strategies for every trip type — flights, road trips, hot climates, and off-grid adventures.</p>
+        <span class="guide-card-link">Read guide →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Section: Managing Diabetes While Traveling -->
+  <div class="guides-section">
+    <div class="guides-section-header">
+      <div class="guides-section-icon">🌍</div>
+      <h2 class="guides-section-title">Managing Diabetes While Traveling</h2>
+      <span class="guides-section-count">2 guides</span>
+    </div>
+    <div class="guides-grid">
+      <a class="guide-card featured" href="https://diabetes-packer.github.io/diabetestravelhelper/Blogs/international-travel-with-diabetes.html">
+        <span class="guide-card-emoji">🌍</span>
+        <h3 class="guide-card-title">International Travel with Diabetes: Complete Guide (2026)</h3>
+        <p class="guide-card-desc">Doctor's letters, customs rules, finding insulin abroad, travel insurance, and handling medical emergencies overseas.</p>
+        <span class="guide-card-link">Read guide →</span>
+      </a>
+      <a class="guide-card" href="https://diabetes-packer.github.io/diabetestravelhelper/Blogs/managing-blood-sugar-on-vacation.html">
+        <span class="guide-card-emoji">📊</span>
+        <h3 class="guide-card-title">Managing Blood Sugar on Vacation (2026)</h3>
+        <p class="guide-card-desc">Food, activity, and time zones — how to stay in control when your routine disappears.</p>
+        <span class="guide-card-link">Read guide →</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
