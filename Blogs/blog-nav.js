@@ -29,6 +29,12 @@ const ARTICLES = [
     desc: "Food, activity, and time zones - how to stay in control when your routine disappears.",
     emoji: "📊"
   }
+  {
+    slug: "tsa-rules-continuous-glucose-monitor-cgm.html",
+    title: "TSA Rules for Continuous Glucose Monitors (CGMs) in 2026",
+    desc: "Can you wear a CGM through airport security? Dexcom, Libre, and Guardian rules explained for 2026.",
+    emoji: "📡"
+  }
 ];
 
 const BASE = "https://diabetes-packer.github.io/diabetestravelhelper/Blogs/";
