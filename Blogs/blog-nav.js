@@ -138,7 +138,7 @@ function injectTravelGuides() {
 
   const viewAll = `
     <a href="${HOME}guides.html" style="display:flex; align-items:center; justify-content:center; gap:6px; padding:12px; border:1px solid rgba(28,100,89,0.25); border-radius:10px; text-decoration:none; font-size:14px; font-weight:600; color:#1C6459; background:#E8F5F2; margin-top:4px; transition:background 120ms ease;">
-      View all 9 guides →
+      View More Guides →
     </a>
   `;
 
