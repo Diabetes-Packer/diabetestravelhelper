@@ -1,63 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main pages -->
   <url>
     <loc>https://diabetes-packer.github.io/diabetestravelhelper/</loc>
-    <lastmod>2026-03-18</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://diabetes-packer.github.io/diabetestravelhelper/guides.html</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://diabetes-packer.github.io/diabetestravelhelper/results.html</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog posts -->
+  <url>
     <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/diabetes-packing-list.html</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/flying-with-diabetes-tsa-rules.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/how-to-keep-insulin-cool-while-traveling.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/international-travel-with-diabetes.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/managing-blood-sugar-on-vacation.html</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/tsa-rules-continuous-glucose-monitor-cgm.html</loc>
     <lastmod>2026-03-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/how-much-insulin-to-pack-for-travel.html</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/flying-with-omnipod-5-airport-security-travel-guide.html</loc>
     <lastmod>2026-03-22</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/traveling-with-dexcom-g7-airport-security-travel-guide.html</loc>
     <lastmod>2026-03-22</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/how-much-insulin-to-pack-for-travel.html</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/how-to-keep-insulin-cool-while-traveling.html</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/international-travel-with-diabetes.html</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/managing-blood-sugar-on-vacation.html</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>
