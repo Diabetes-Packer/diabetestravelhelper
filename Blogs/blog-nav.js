@@ -52,6 +52,12 @@ const ARTICLES = [
     title: "Traveling with Dexcom G7: Airport Security & Flight Tips (2026)",
     desc: "G7 security rules, how many sensors to pack, adhesion tips, and the international app warning every G7 user needs to know.",
     emoji: "📡"
+  },
+  {
+    slug: "diabetes-carry-on-packing-list.html",
+    title: "Diabetes Travel Emergency Kit: What to Pack in Your Carry-On (2026)",
+    desc: "A real carry-on packing list for Type 1 diabetics traveling with an insulin pump and CGM — built from international travel experience.",
+    emoji: "🧳"
   }
 ];
 
