@@ -58,6 +58,12 @@ const ARTICLES = [
     title: "Diabetes Travel Emergency Kit: What to Pack in Your Carry-On (2026)",
     desc: "A real carry-on packing list for Type 1 diabetics traveling with an insulin pump and CGM — built from international travel experience.",
     emoji: "🧳"
+  },
+  {
+    slug: "flying-with-type-1-diabetes-airport-security.html",
+    title: "Flying with Type 1 Diabetes: What to Expect at Airport Security (2026)",
+    desc: "What airport security is actually like with an Omnipod and Dexcom — what happens at the scanner, what to say, and how to get through without stress.",
+    emoji: "🛂"
   }
 ];
 
