@@ -813,6 +813,70 @@ button.btn-primary:focus-visible {
   font-size: 15px;
 }
 
+/* ===========================
+   PILL SELECTOR GROUPS (form)
+   =========================== */
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill-opt {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--stone-200);
+  background: var(--card);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+}
+
+.pill-opt:hover {
+  border-color: var(--teal-300);
+}
+
+.pill-opt.active {
+  border-color: var(--teal-500);
+  background: var(--teal-50);
+  color: var(--teal-700);
+  font-weight: 600;
+}
+
+.pill-opt:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--focus);
+}
+
+.pill-static {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--teal-100);
+  background: var(--teal-50);
+  color: var(--teal-700);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill-opt {
+    transition: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .product-card:hover,
   .product-link:hover {

@@ -91,46 +91,47 @@
         </div>
 
         <div class="block field">
-          <label for="pumpSelect">Which diabetes pump do you use?</label>
-          <select name="pump" id="pumpSelect" required>
-            <option value="none">I don't use a pump</option>
-            <option value="omnipod">Omnipod 5</option>
-            <option value="tandem">Tandem t:slim X2</option>
-            <option value="medtronic">Medtronic 780G / 770G</option>
-            <option value="ilet">iLet Bionic Pancreas</option>
-          </select>
+          <label>Which diabetes pump do you use?</label>
+          <div class="pill-group" role="radiogroup" aria-label="Pump type">
+            <button type="button" class="pill-opt active" data-group="pump" data-value="none">None</button>
+            <button type="button" class="pill-opt" data-group="pump" data-value="omnipod">Omnipod 5</button>
+            <button type="button" class="pill-opt" data-group="pump" data-value="tandem">Tandem t:slim X2</button>
+            <button type="button" class="pill-opt" data-group="pump" data-value="medtronic">Medtronic 780G</button>
+            <button type="button" class="pill-opt" data-group="pump" data-value="ilet">iLet</button>
+          </div>
+          <input type="hidden" name="pump" id="pumpHidden" value="none">
         </div>
 
         <div class="block field" id="infusionSetBlock" style="display:none;">
-          <label for="setDaysSelect">How often do you change your infusion set/site?</label>
-          <select name="set_days" id="setDaysSelect">
-            <option value="2">Every 2 days</option>
-            <option value="3" selected>Every 3 days</option>
-            <option value="7">Every 7 days (extended wear)</option>
-          </select>
+          <label>How often do you change your infusion set/site?</label>
+          <div class="pill-group" role="radiogroup" aria-label="Infusion set change frequency">
+            <button type="button" class="pill-opt" data-group="set_days" data-value="2">Every 2 days</button>
+            <button type="button" class="pill-opt active" data-group="set_days" data-value="3">Every 3 days</button>
+            <button type="button" class="pill-opt" data-group="set_days" data-value="7">Every 7 days</button>
+          </div>
+          <input type="hidden" name="set_days" id="setDaysHidden" value="3">
           <div class="help">Choose what you actually do (extended-wear sets exist).</div>
         </div>
 
         <div class="block field" id="reservoirBlock" style="display:none;">
-          <label for="resUnitsSelect">Which Medtronic reservoir size do you use?</label>
-          <select name="res_units" id="resUnitsSelect">
-            <option value="180" selected>180 units (1.8 mL)</option>
-            <option value="300">300 units (3.0 mL)</option>
-          </select>
+          <label>Which Medtronic reservoir size do you use?</label>
+          <div class="pill-group" role="radiogroup" aria-label="Reservoir size">
+            <button type="button" class="pill-opt active" data-group="res_units" data-value="180">180 units (1.8 mL)</button>
+            <button type="button" class="pill-opt" data-group="res_units" data-value="300">300 units (3.0 mL)</button>
+          </div>
+          <input type="hidden" name="res_units" id="resUnitsHidden" value="180">
         </div>
 
         <div class="block field" id="cartridgeBlock" style="display:none;">
-          <label for="cartUnitsSelect">Tandem cartridge capacity</label>
-          <select name="cart_units" id="cartUnitsSelect">
-            <option value="300" selected>300 units</option>
-          </select>
+          <label>Tandem cartridge capacity</label>
+          <span class="pill-static">300 units</span>
+          <input type="hidden" name="cart_units" value="300">
         </div>
 
         <div class="block field" id="iletBlock" style="display:none;">
-          <label for="iletUnitsSelect">iLet cartridge capacity</label>
-          <select name="ilet_units" id="iletUnitsSelect">
-            <option value="180" selected>180 units (1.8 mL)</option>
-          </select>
+          <label>iLet cartridge capacity</label>
+          <span class="pill-static">180 units (1.8 mL)</span>
+          <input type="hidden" name="ilet_units" value="180">
         </div>
 
         <div class="block field">
@@ -140,31 +141,40 @@
         </div>
 
         <div class="block field">
-          <label for="cgm">Which Continuous Glucose Monitor (CGM) do you use?</label>
-          <select name="cgm" id="cgm" required>
-            <option value="none">I don't use a CGM</option>
-            <option value="dexcomg6">Dexcom G6</option>
-            <option value="dexcomg7_10">Dexcom G7 10-day</option>
-            <option value="dexcomg7_15">Dexcom G7 15-day</option>
-            <option value="libre">FreeStyle Libre 2 / 3</option>
-            <option value="guardian">Medtronic Guardian 4</option>
-          </select>
+          <label>Which Continuous Glucose Monitor (CGM) do you use?</label>
+          <div class="pill-group" role="radiogroup" aria-label="CGM type">
+            <button type="button" class="pill-opt active" data-group="cgm" data-value="none">None</button>
+            <button type="button" class="pill-opt" data-group="cgm" data-value="dexcomg6">Dexcom G6</button>
+            <button type="button" class="pill-opt" data-group="cgm" data-value="dexcomg7">Dexcom G7</button>
+            <button type="button" class="pill-opt" data-group="cgm" data-value="libre">FreeStyle Libre 2/3</button>
+            <button type="button" class="pill-opt" data-group="cgm" data-value="guardian">Medtronic Guardian 4</button>
+          </div>
+          <div id="cgmG7Block" style="display:none;">
+            <label>Which Dexcom G7 do you use?</label>
+            <div class="pill-group" role="radiogroup" aria-label="Dexcom G7 wear duration">
+              <button type="button" class="pill-opt" data-group="cgm_g7" data-value="dexcomg7_10">10-day</button>
+              <button type="button" class="pill-opt" data-group="cgm_g7" data-value="dexcomg7_15">15-day</button>
+            </div>
+          </div>
+          <input type="hidden" name="cgm" id="cgmHidden" value="none">
         </div>
 
         <div class="block field">
-          <label for="lows">Do you carry fast-acting glucose for lows?</label>
-          <select name="lows" id="lows" required>
-            <option value="no">No</option>
-            <option value="yes">Yes</option>
-          </select>
+          <label>Do you carry fast-acting glucose for lows?</label>
+          <div class="pill-group" role="radiogroup" aria-label="Fast-acting glucose">
+            <button type="button" class="pill-opt active" data-group="lows" data-value="yes">Yes</button>
+            <button type="button" class="pill-opt" data-group="lows" data-value="no">No</button>
+          </div>
+          <input type="hidden" name="lows" id="lowsHidden" value="yes">
         </div>
 
         <div class="block field">
-          <label for="buffer">Add ~20% safety buffer?</label>
-          <select name="buffer" id="buffer" required>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
+          <label>Add ~20% safety buffer?</label>
+          <div class="pill-group" role="radiogroup" aria-label="Safety buffer">
+            <button type="button" class="pill-opt active" data-group="buffer" data-value="yes">Yes</button>
+            <button type="button" class="pill-opt" data-group="buffer" data-value="no">No</button>
+          </div>
+          <input type="hidden" name="buffer" id="bufferHidden" value="yes">
           <div class="help">Recommended for travel — includes extra backups.</div>
         </div>
 
@@ -195,103 +205,56 @@
   </section>
 
   <script>
-    function isMobileDevice() {
-      return window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
-    }
-
-    const pumpSelect = document.getElementById("pumpSelect");
+    const pumpHidden       = document.getElementById("pumpHidden");
     const infusionSetBlock = document.getElementById("infusionSetBlock");
     const reservoirBlock   = document.getElementById("reservoirBlock");
     const cartridgeBlock   = document.getElementById("cartridgeBlock");
     const iletBlock        = document.getElementById("iletBlock");
-    const setDaysSelect    = document.getElementById("setDaysSelect");
-    const resUnitsSelect   = document.getElementById("resUnitsSelect");
-    const cartUnitsSelect  = document.getElementById("cartUnitsSelect");
-    const iletUnitsSelect  = document.getElementById("iletUnitsSelect");
 
     function updateConditionalFields() {
-      const pump = pumpSelect.value;
+      const pump = pumpHidden.value;
       const isTubed = (pump === "tandem" || pump === "medtronic" || pump === "ilet");
       infusionSetBlock.style.display = isTubed ? "block" : "none";
-      setDaysSelect.required = isTubed;
       reservoirBlock.style.display = (pump === "medtronic") ? "block" : "none";
-      resUnitsSelect.required = (pump === "medtronic");
       cartridgeBlock.style.display = (pump === "tandem") ? "block" : "none";
-      cartUnitsSelect.required = (pump === "tandem");
       iletBlock.style.display = (pump === "ilet") ? "block" : "none";
-      iletUnitsSelect.required = (pump === "ilet");
     }
 
     const form = document.getElementById("packForm");
 
-    function getBlocks() { return Array.from(form.querySelectorAll(".block")); }
-    function isBlockVisible(block) { return block && block.offsetParent !== null; }
-    function focusFirstControl(block) {
-      if (!block) return;
-      const el = block.querySelector("input, select, textarea, button");
-      if (el) el.focus({ preventScroll: true });
-    }
+    form.querySelectorAll(".pill-opt").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const group = btn.dataset.group;
+        const value = btn.dataset.value;
+        form.querySelectorAll(`.pill-opt[data-group="${group}"]`).forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
 
-    function scrollToBlock(block) {
-      if (!block) return;
-      focusFirstControl(block);
-      const rect = block.getBoundingClientRect();
-      const viewportH = window.innerHeight || document.documentElement.clientHeight;
-      const isAbove = rect.top < 120;
-      const isBelow = rect.bottom > viewportH - 140;
-      if (isAbove || isBelow) {
-        window.scrollTo({ top: Math.max(0, window.scrollY + rect.top - 120), behavior: "smooth" });
-      }
-    }
+        if (group === "cgm_g7") {
+          document.getElementById("cgmHidden").value = value;
+        } else {
+          const hidden = form.querySelector(`input[name="${group}"]`);
+          if (hidden) hidden.value = value;
+        }
 
-    function nextVisibleBlock(currentBlock) {
-      const blocks = getBlocks();
-      const idx = blocks.indexOf(currentBlock);
-      if (idx === -1) return null;
-      for (let i = idx + 1; i < blocks.length; i++) {
-        if (isBlockVisible(blocks[i])) return blocks[i];
-      }
-      return null;
-    }
+        if (group === "pump") updateConditionalFields();
 
-    function autoAdvanceFrom(controlEl) {
-      const currentBlock = controlEl.closest(".block");
-      const next = nextVisibleBlock(currentBlock);
-      if (next) scrollToBlock(next);
-    }
-
-    pumpSelect.addEventListener("change", () => {
-      updateConditionalFields();
-      if (!isMobileDevice()) autoAdvanceFrom(pumpSelect);
+        if (group === "cgm") {
+          const g7Block = document.getElementById("cgmG7Block");
+          if (value === "dexcomg7") {
+            g7Block.style.display = "block";
+            const defaultBtn = form.querySelector('.pill-opt[data-group="cgm_g7"][data-value="dexcomg7_10"]');
+            form.querySelectorAll('.pill-opt[data-group="cgm_g7"]').forEach(b => b.classList.remove("active"));
+            defaultBtn.classList.add("active");
+            document.getElementById("cgmHidden").value = "dexcomg7_10";
+          } else {
+            g7Block.style.display = "none";
+            form.querySelectorAll('.pill-opt[data-group="cgm_g7"]').forEach(b => b.classList.remove("active"));
+          }
+        }
+      });
     });
 
     updateConditionalFields();
-
-    form.querySelectorAll("select").forEach(sel => {
-      if (sel.id === "pumpSelect") return;
-      sel.addEventListener("change", () => {
-        if (!isMobileDevice()) autoAdvanceFrom(sel);
-      });
-    });
-
-    form.querySelectorAll("input").forEach(inp => {
-      inp.addEventListener("keydown", (e) => {
-        if (e.key !== "Enter") return;
-        const currentBlock = inp.closest(".block");
-        const next = nextVisibleBlock(currentBlock);
-        if (next) { e.preventDefault(); autoAdvanceFrom(inp); }
-      });
-    });
-
-    function advanceIfValid(inp) {
-      inp.addEventListener("blur", () => {
-        if (isMobileDevice()) return;
-        if (inp.value && inp.checkValidity()) autoAdvanceFrom(inp);
-      });
-    }
-
-    advanceIfValid(document.getElementById("days"));
-    advanceIfValid(document.getElementById("unitsInput"));
   </script>
 
   <!-- Auto-populates the Travel Guides section above -->
