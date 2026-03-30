@@ -70,6 +70,12 @@ const ARTICLES = [
     title: "What I Actually Pack for Every Trip with Diabetes (After a Year Traveling Europe)",
     desc: "A real packing list from a year of constant travel through Europe with an Omnipod and Dexcom G6 — and the 20% rule that makes the math simple every time.",
     emoji: "🎒"
+  },
+  {
+    slug: "best-low-blood-sugar-snacks-for-travel.html",
+    title: "Best Low Blood Sugar Snacks for Travel: Ranked (2026)",
+    desc: "Six low treatments ranked from best to worst for travel — what works on planes, abroad, and on the trail, from someone who's been there.",
+    emoji: "🍬"
   }
 ];
 
