@@ -116,6 +116,99 @@ body {
   color: var(--teal-700);
 }
 
+/* ---- Site Hero ---- */
+.site-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 72px 24px 96px;
+  text-align: center;
+  background: linear-gradient(160deg, #1C6459 0%, #0E3830 55%, #1C1A16 100%);
+}
+
+/* Circles dialed way back — atmosphere only, not decoration */
+.site-hero::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(246, 204, 137, 0.03);
+  top: -90px;
+  right: -60px;
+  pointer-events: none;
+}
+
+.site-hero::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(91, 189, 166, 0.04);
+  bottom: -40px;
+  left: -60px;
+  pointer-events: none;
+}
+
+/* Sentence case, weight 500 — label not heading */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(246, 204, 137, 0.30);
+  background: rgba(255, 255, 255, 0.06);
+  color: #F6CC89;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  margin-bottom: 18px;
+}
+
+.site-hero h1 {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-size: clamp(44px, 6vw, 60px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.10;
+  color: #FFFFFF;
+}
+
+.site-hero h1 em {
+  font-style: italic;
+  color: #F6CC89;
+}
+
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 540px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+}
+
+.site-hero .trust-row .pill {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(246, 204, 137, 0.30);
+  color: #F6CC89;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Dot separator — needs breathing room to read as distinct from text */
+.site-hero .trust-row .pill::before {
+  content: "•";
+  color: #F6CC89;
+  margin-right: 5px;
+}
+
+.site-hero + .container {
+  margin-top: 0;
+}
+
 #bufferLine {
   margin: 0;
   color: var(--muted);
@@ -475,6 +568,12 @@ details.calc p {
   border-left: 3px solid var(--teal-500);
   border-top-left-radius: calc(var(--radius) - 2px);
   border-bottom-left-radius: calc(var(--radius) - 2px);
+  margin-top: -44px;
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-card form {
