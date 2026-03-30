@@ -45,8 +45,11 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     .guides-hero {
+      position: relative;
+      overflow: hidden;
       text-align: center;
-      padding: 48px 0 40px;
+      padding: 72px 24px 96px;
+      background: linear-gradient(160deg, #1C6459 0%, #0E3830 55%, #1C1A16 100%);
     }
 
     .guides-hero h1 {
@@ -55,18 +58,18 @@
       font-weight: 400;
       letter-spacing: -0.02em;
       line-height: 1.1;
-      color: #1C1A16;
+      color: #ffffff;
       margin: 0 0 14px 0;
     }
 
     .guides-hero h1 em {
       font-style: italic;
-      color: #1C6459;
+      color: #F6CC89;
     }
 
     .guides-hero p {
       font-size: 17px;
-      color: #6B6860;
+      color: rgba(255,255,255,0.65);
       max-width: 520px;
       margin: 0 auto 28px;
       line-height: 1.6;
@@ -85,8 +88,8 @@
       align-items: center;
       gap: 6px;
       padding: 11px 20px;
-      background: #1C6459;
-      color: #fff;
+      background: #fff;
+      color: #1C6459;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 600;
@@ -95,13 +98,13 @@
     }
 
     .guides-cta-btn:hover {
-      background: #0E3830;
+      background: rgba(255,255,255,0.9);
       transform: translateY(-1px);
     }
 
     .guides-cta-secondary {
       font-size: 13px;
-      color: #6B6860;
+      color: rgba(255,255,255,0.65);
     }
 
     /* Category sections */
@@ -226,29 +229,33 @@
 
     /* Tool CTA card */
     .tool-cta-card {
-      background: #1C6459;
+      background: #E8F5F2;
+      border: 1px solid #C4E8DF;
       border-radius: 14px;
       padding: 28px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
+      margin-top: -48px;
       margin-bottom: 48px;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
     }
 
     .tool-cta-card-text h2 {
       font-family: 'Instrument Serif', Georgia, serif;
       font-size: clamp(18px, 2.4vw, 24px);
       font-weight: 400;
-      color: #fff;
+      color: #1C6459;
       margin: 0 0 6px 0;
       letter-spacing: -0.01em;
     }
 
     .tool-cta-card-text p {
       font-size: 14px;
-      color: rgba(255,255,255,0.75);
+      color: #1C6459;
       margin: 0;
       line-height: 1.5;
     }
@@ -380,19 +387,19 @@
   </div>
 </nav>
 
-<div class="container">
-
-  <!-- Hero -->
-  <div class="guides-hero">
-    <h1>Diabetes Travel <em>Guides</em></h1>
-    <p>Expert, device-specific guides for traveling safely with diabetes — TSA rules, insulin packing, pump and CGM travel tips, all updated for 2026.</p>
-    <div class="guides-cta-row">
-      <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html" class="guides-cta-btn">
-        Build my packing list →
-      </a>
-      <span class="guides-cta-secondary">Free · No account needed · Takes 60 seconds</span>
-    </div>
+<!-- Hero -->
+<div class="guides-hero">
+  <h1>Diabetes Travel <em>Guides</em></h1>
+  <p>Expert, device-specific guides for traveling safely with diabetes — TSA rules, insulin packing, pump and CGM travel tips, all updated for 2026.</p>
+  <div class="guides-cta-row">
+    <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html" class="guides-cta-btn">
+      Build my packing list →
+    </a>
+    <span class="guides-cta-secondary">Free · No account needed · Takes 60 seconds</span>
   </div>
+</div>
+
+<div class="container">
 
   <!-- Tool CTA -->
   <div class="tool-cta-card">
