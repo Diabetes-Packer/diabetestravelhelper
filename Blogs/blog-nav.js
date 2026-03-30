@@ -64,6 +64,12 @@ const ARTICLES = [
     title: "Flying with Type 1 Diabetes: What to Expect at Airport Security (2026)",
     desc: "What airport security is actually like with an Omnipod and Dexcom — what happens at the scanner, what to say, and how to get through without stress.",
     emoji: "🛂"
+  },
+  {
+    slug: "what-i-actually-pack-for-every-trip-with-diabetes.html",
+    title: "What I Actually Pack for Every Trip with Diabetes (After a Year Traveling Europe)",
+    desc: "A real packing list from a year of constant travel through Europe with an Omnipod and Dexcom G6 — and the 20% rule that makes the math simple every time.",
+    emoji: "🎒"
   }
 ];
 

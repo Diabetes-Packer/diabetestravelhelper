@@ -88,5 +88,11 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://diabetes-packer.github.io/diabetestravelhelper/Blogs/what-i-actually-pack-for-every-trip-with-diabetes.html</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
 </urlset>
