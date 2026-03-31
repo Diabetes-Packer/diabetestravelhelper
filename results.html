@@ -408,11 +408,11 @@ function getActiveDevices(pump, cgm, lows) {
 }
 
 const DEVICE_LABELS = {
-  omnipod: 'Omnipod 5', tandem: 'Tandem t:slim X2',
-  medtronic: 'Medtronic 780G', ilet: 'iLet',
+  omnipod: 'Omnipod 5', tandem: 'Tandem t:slim X2', tandem_mobi: 'Tandem Mobi',
+  medtronic: 'Medtronic 780G', ilet: 'iLet', twiist: 'twiist',
   dexcomg6: 'Dexcom G6', dexcomg7_10: 'Dexcom G7',
   dexcomg7_15: 'Dexcom G7', libre: 'FreeStyle Libre',
-  guardian: 'Guardian 4', lows: 'You selected lows'
+  guardian: 'Guardian 4', eversense: 'Eversense 365', lows: 'You selected lows'
 };
 
 function resolveTagLabel(product, activeDevices) {
@@ -443,9 +443,10 @@ function buildProductList(pump, cgm, lows) {
 
   if (pump === 'omnipod')                              { add('omnipodArmband'); }
   if (pump === 'tandem')                               { add('tandemCharger'); add('tandemCase'); }
+  if (pump === 'tandem_mobi')                          { add('tandemCase'); }
   if (pump === 'medtronic')                            { add('medtronicCase'); }
   if (pump === 'ilet')                                 { add('iletCase'); }
-  if (['tandem','medtronic','ilet'].includes(pump))    { add('infusionTape'); }
+  if (['tandem','tandem_mobi','medtronic','ilet','twiist'].includes(pump)) { add('infusionTape'); }
   if (cgm === 'dexcomg6')                              { add('dexcomG6Patches'); }
   if (cgm === 'dexcomg7_10' || cgm === 'dexcomg7_15') { add('dexcomG7Patches'); }
   add('glucoseTabs');
@@ -492,8 +493,8 @@ function renderProducts(productIds, pump, cgm, lows) {
 }
 
 function buildProductsSubhead(pump, cgm, lows) {
-  const pL = { none:null, omnipod:'Omnipod 5', tandem:'Tandem t:slim X2', medtronic:'Medtronic 780G/770G', ilet:'iLet Bionic Pancreas' };
-  const cL = { none:null, dexcomg6:'Dexcom G6', dexcomg7_10:'Dexcom G7', dexcomg7_15:'Dexcom G7 (15-day)', libre:'FreeStyle Libre', guardian:'Medtronic Guardian 4' };
+  const pL = { none:null, omnipod:'Omnipod 5', tandem:'Tandem t:slim X2', tandem_mobi:'Tandem Mobi', medtronic:'Medtronic 780G/770G', ilet:'iLet Bionic Pancreas', twiist:'twiist' };
+  const cL = { none:null, dexcomg6:'Dexcom G6', dexcomg7_10:'Dexcom G7', dexcomg7_15:'Dexcom G7 (15-day)', libre:'FreeStyle Libre', guardian:'Medtronic Guardian 4', eversense:'Eversense 365' };
   const devices = [pL[pump], cL[cgm]].filter(Boolean);
   if (!devices.length) return 'Essential supplies for every diabetic traveler';
   return `Matched to your ${devices.join(' + ')}${lows === 'yes' ? ' and low glucose needs' : ''}`;
@@ -514,8 +515,8 @@ const formData = {
   ilet_units: parseInt(params.get('ilet_units')) || 180
 };
 
-const pumpNames = { none:'No pump', omnipod:'Omnipod 5', tandem:'Tandem t:slim X2', medtronic:'Medtronic 780G / 770G', ilet:'iLet Bionic Pancreas' };
-const cgmNames  = { none:'No CGM', dexcomg6:'Dexcom G6', dexcomg7_10:'Dexcom G7 10-day', dexcomg7_15:'Dexcom G7 15-day', libre:'FreeStyle Libre 2 / 3', guardian:'Medtronic Guardian 4' };
+const pumpNames = { none:'No pump', omnipod:'Omnipod 5', tandem:'Tandem t:slim X2', tandem_mobi:'Tandem Mobi', medtronic:'Medtronic 780G / 770G', ilet:'iLet Bionic Pancreas', twiist:'twiist' };
+const cgmNames  = { none:'No CGM', dexcomg6:'Dexcom G6', dexcomg7_10:'Dexcom G7 10-day', dexcomg7_15:'Dexcom G7 15-day', libre:'FreeStyle Libre 2 / 3', guardian:'Medtronic Guardian 4', eversense:'Eversense 365' };
 
 const hasBuffer = formData.buffer === 'yes';
 const totalDays = Math.ceil(formData.days * (hasBuffer ? 1.2 : 1.0));
@@ -561,19 +562,27 @@ if (formData.cgm !== 'none') {
     supplies.push(`Medtronic Guardian 4 sensors: <strong>${pack}</strong>`);
     calcDetails.push(`<strong>Guardian 4 sensors:</strong> 1 lasts 7 days → need ${need}, packing ${pack}`);
   }
+  else if (formData.cgm === 'eversense') {
+    supplies.push(`Eversense 365 transmitter adhesive patches: <strong>${totalDays}</strong>`);
+    calcDetails.push(`<strong>Eversense 365:</strong> Sensor is implanted and lasts up to 1 year — no sensor to pack. Pack 1 adhesive patch per day for the external transmitter.`);
+    notes.push('Eversense 365: Your sensor is implanted and stays in for up to a year — nothing to pack for the sensor itself. Pack enough daily adhesive patches for your transmitter and make sure your transmitter is fully charged before you leave (it needs 15 minutes of charging per day).');
+  }
 }
 
 if (formData.pump === 'omnipod') {
   const need = Math.ceil(totalDays / 3), pack = need + 1;
   supplies.push(`Omnipod 5 pods: <strong>${pack}</strong>`);
   calcDetails.push(`<strong>Omnipod pods:</strong> Changed every ~3 days → need ${need}, packing ${pack}`);
-} else if (['tandem','medtronic','ilet'].includes(formData.pump)) {
+} else if (['tandem','tandem_mobi','medtronic','ilet','twiist'].includes(formData.pump)) {
   const need = Math.ceil(totalDays / formData.set_days), pack = need + 1;
   supplies.push(`Infusion sets: <strong>${pack}</strong>`);
   calcDetails.push(`<strong>Infusion sets:</strong> Changed every ${formData.set_days} days → need ${need}, packing ${pack}`);
-  if (formData.pump === 'medtronic') supplies.push(`Medtronic reservoirs (${formData.res_units} units): <strong>${pack}</strong>`);
-  if (formData.pump === 'tandem')    supplies.push(`Tandem cartridges (${formData.cart_units} units): <strong>${pack}</strong>`);
-  if (formData.pump === 'ilet')      supplies.push(`iLet cartridges (${formData.ilet_units} units): <strong>${pack}</strong>`);
+  if (formData.pump === 'twiist') { notes.push('twiist: The pump battery is rechargeable and swapped with every cassette change (every 3 days). Pack at least 2 spare batteries so you always have one charged and ready.'); }
+  if (formData.pump === 'medtronic')   supplies.push(`Medtronic reservoirs (${formData.res_units} units): <strong>${pack}</strong>`);
+  if (formData.pump === 'tandem')      supplies.push(`Tandem cartridges (300 units): <strong>${pack}</strong>`);
+  if (formData.pump === 'tandem_mobi') supplies.push(`Tandem Mobi cartridges (200 units): <strong>${pack}</strong>`);
+  if (formData.pump === 'ilet')        supplies.push(`iLet cartridges (${formData.ilet_units} units): <strong>${pack}</strong>`);
+  if (formData.pump === 'twiist')      supplies.push(`twiist cassettes (300 units): <strong>${pack}</strong>`);
 }
 
 if (formData.units && formData.units > 0) {

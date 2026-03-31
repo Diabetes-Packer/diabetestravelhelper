@@ -97,6 +97,8 @@
             <button type="button" class="pill-opt" data-group="pump" data-value="tandem">Tandem t:slim X2</button>
             <button type="button" class="pill-opt" data-group="pump" data-value="medtronic">Medtronic 780G</button>
             <button type="button" class="pill-opt" data-group="pump" data-value="ilet">iLet</button>
+            <button type="button" class="pill-opt" data-group="pump" data-value="tandem_mobi">Tandem Mobi</button>
+            <button type="button" class="pill-opt" data-group="pump" data-value="twiist">twiist</button>
           </div>
           <input type="hidden" name="pump" id="pumpHidden" value="none">
         </div>
@@ -147,6 +149,7 @@
             <button type="button" class="pill-opt" data-group="cgm" data-value="dexcomg7">Dexcom G7</button>
             <button type="button" class="pill-opt" data-group="cgm" data-value="libre">FreeStyle Libre 2/3</button>
             <button type="button" class="pill-opt" data-group="cgm" data-value="guardian">Medtronic Guardian 4</button>
+            <button type="button" class="pill-opt" data-group="cgm" data-value="eversense">Eversense 365</button>
           </div>
           <div id="cgmG7Block" style="display:none;">
             <label>Which Dexcom G7 do you use?</label>
@@ -212,7 +215,7 @@
 
     function updateConditionalFields() {
       const pump = pumpHidden.value;
-      const isTubed = (pump === "tandem" || pump === "medtronic" || pump === "ilet");
+      const isTubed = (pump === "tandem" || pump === "tandem_mobi" || pump === "medtronic" || pump === "ilet" || pump === "twiist");
       infusionSetBlock.style.display = isTubed ? "block" : "none";
       reservoirBlock.style.display = (pump === "medtronic") ? "block" : "none";
       cartridgeBlock.style.display = (pump === "tandem") ? "block" : "none";
