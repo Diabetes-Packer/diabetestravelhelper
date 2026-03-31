@@ -43,18 +43,63 @@ details p a:not([class]):hover {
   border-bottom-color: var(--teal);
 }
 
-/* ── Nav / Breadcrumb ── */
+/* ── Nav ── */
 .site-nav {
   background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  padding: 14px 24px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 14px;
+  border-bottom: 1px solid rgba(28, 26, 22, 0.08);
+  padding: 16px 0;
 }
-.site-nav a { color: var(--muted); text-decoration: none; }
-.site-nav a:hover { color: var(--teal); }
-.breadcrumb { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-.breadcrumb span { color: #c4b5b0; }
+.site-nav-inner {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-nav-logo {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #1c1917;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.site-nav-logo span {
+  color: #1C6459;
+  font-style: italic;
+}
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.site-nav-links a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B6860;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.site-nav-links a:hover,
+.site-nav-links a.active { color: #1c1917; }
+.site-nav-links a.active { color: #1C6459; }
+.site-nav-tool-btn {
+  padding: 8px 16px;
+  background: #1C6459;
+  color: #fff !important;
+  border-radius: 8px;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  transition: background 150ms ease !important;
+}
+.site-nav-tool-btn:hover {
+  background: #0E3830 !important;
+  color: #fff !important;
+}
+@media (max-width: 480px) {
+  .site-nav-tool-btn { display: none; }
+  .site-nav-links { gap: 16px; }
+}
 
 /* ── Layout ── */
 .article-wrap {
