@@ -988,3 +988,59 @@ button.btn-primary:focus-visible {
     transform: none;
   }
 }
+
+/* ===========================
+   RESULTS PAGE HERO
+   Scoped to body.results-page — cannot bleed into index or guides
+   =========================== */
+
+body.results-page .results-hero {
+  background: linear-gradient(160deg, #1C6459 0%, #0E3830 55%, #1C1A16 100%);
+  padding: 52px 24px 64px;
+  text-align: center;
+}
+body.results-page .results-hero h1 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 12px 0 0;
+}
+body.results-page .results-hero h1 em {
+  font-style: italic;
+  color: #F6CC89;
+}
+body.results-page .results-hero-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.75);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+body.results-page .results-hero-sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  margin: 10px 0 16px;
+}
+body.results-page .results-adjust-link {
+  display: inline-block;
+  color: rgba(255,255,255,0.55);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.07);
+}
+body.results-page .container {
+  margin-top: -28px;
+  position: relative;
+  z-index: 2;
+}

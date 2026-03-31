@@ -42,7 +42,7 @@
     }
 
     .products-subhead {
-      margin: 0 0 20px 0;
+      margin: 2px 0 20px 0;
       color: #6B6860;
       font-size: 15px;
     }
@@ -201,13 +201,15 @@
     gtag('config', 'G-VZWEQF1WNK');
   </script>
 </head>
-<body>
+<body class="results-page">
 
 <div class="container">
 
-  <header class="page-header">
-    <h1>Your Personalized Packing List</h1>
-    <p class="intro" id="headerIntro">Based on your trip details and the optional safety buffer</p>
+  <header class="site-hero results-hero">
+    <div class="results-hero-eyebrow">Your results</div>
+    <h1>Your packing list <em>is ready.</em></h1>
+    <p class="results-hero-sub" id="heroSummary"></p>
+    <a href="index.html" class="results-adjust-link">← Adjust trip details</a>
   </header>
 
   <div class="results-grid">
@@ -223,8 +225,8 @@
           <p class="subtle-line" id="packingSubtitle">Includes extra backups for safety</p>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button class="copy-btn" onclick="copyList()">Copy list</button>
-          <button class="copy-btn" onclick="shareList()">Share link</button>
+          <button class="copy-btn" onclick="copyList()">⎘ Copy</button>
+          <button class="copy-btn" onclick="shareList()">↗ Share</button>
         </div>
       </div>
 
@@ -519,6 +521,7 @@ const pumpNames = { none:'No pump', omnipod:'Omnipod 5', tandem:'Tandem t:slim X
 const cgmNames  = { none:'No CGM', dexcomg6:'Dexcom G6', dexcomg7_10:'Dexcom G7 10-day', dexcomg7_15:'Dexcom G7 15-day', libre:'FreeStyle Libre 2 / 3', guardian:'Medtronic Guardian 4', eversense:'Eversense 365' };
 
 const hasBuffer = formData.buffer === 'yes';
+document.getElementById('heroSummary').textContent = [formData.days + '-day trip', cgmNames[formData.cgm] !== 'No CGM' ? cgmNames[formData.cgm] : null, pumpNames[formData.pump] !== 'No pump' ? pumpNames[formData.pump] : null, hasBuffer ? '20% buffer' : null].filter(Boolean).join(' · ');
 const totalDays = Math.ceil(formData.days * (hasBuffer ? 1.2 : 1.0));
 
 if (!hasBuffer) {
