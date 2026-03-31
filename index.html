@@ -129,6 +129,18 @@
           <input type="hidden" name="cart_units" value="300">
         </div>
 
+        <div class="block field" id="tandemMobiBlock" style="display:none;">
+          <label>Tandem Mobi cartridge capacity</label>
+          <span class="pill-static">200 units</span>
+          <input type="hidden" name="mobi_units" value="200">
+        </div>
+
+        <div class="block field" id="twiistBlock" style="display:none;">
+          <label>twiist cassette capacity</label>
+          <span class="pill-static">300 units</span>
+          <input type="hidden" name="twiist_units" value="300">
+        </div>
+
         <div class="block field" id="iletBlock" style="display:none;">
           <label>iLet cartridge capacity</label>
           <span class="pill-static">180 units (1.8 mL)</span>
@@ -207,13 +219,17 @@
     const reservoirBlock   = document.getElementById("reservoirBlock");
     const cartridgeBlock   = document.getElementById("cartridgeBlock");
     const iletBlock        = document.getElementById("iletBlock");
+    const tandemMobiBlock  = document.getElementById("tandemMobiBlock");
+    const twiistBlock      = document.getElementById("twiistBlock");
 
     function updateConditionalFields() {
       const pump = pumpHidden.value;
       const isTubed = (pump === "tandem" || pump === "tandem_mobi" || pump === "medtronic" || pump === "ilet" || pump === "twiist");
       infusionSetBlock.style.display = isTubed ? "block" : "none";
       reservoirBlock.style.display = (pump === "medtronic") ? "block" : "none";
-      cartridgeBlock.style.display = (pump === "tandem") ? "block" : "none";
+      cartridgeBlock.style.display   = (pump === "tandem") ? "block" : "none";
+      tandemMobiBlock.style.display  = (pump === "tandem_mobi") ? "block" : "none";
+      twiistBlock.style.display      = (pump === "twiist") ? "block" : "none";
       iletBlock.style.display = (pump === "ilet") ? "block" : "none";
     }
 
