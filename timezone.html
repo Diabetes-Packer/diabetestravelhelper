@@ -4,11 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="p:domain_verify" content="b1b3646e99ec0552ab16246da0aaa8b3"/>
-<title>Insulin Time Zone Calculator — Adjust Your Diabetes Schedule for Travel</title>
-<meta name="description" content="Free insulin time zone planner for diabetes travel. Enter your home and destination time zones and get a shifted dosing schedule — timing shifts only, never dose changes. Built by a diabetic, for diabetics."/>
+<title>Insulin Time Zone Calculator, Adjust Your Diabetes Schedule for Travel</title>
+<meta name="description" content="Free insulin time zone planner for diabetes travel. Enter your home and destination time zones and get a shifted dosing schedule, timing shifts only, never dose changes. Built by a diabetic, for diabetics."/>
 <meta property="og:site_name" content="Diabetes Travel Helper"/>
-<meta property="og:title" content="Insulin Time Zone Calculator — Adjust Your Diabetes Schedule for Travel"/>
-<meta property="og:description" content="Crossing time zones with diabetes? Get a clear shifted dosing schedule for your trip — free, fast, no account needed."/>
+<meta property="og:title" content="Insulin Time Zone Calculator, Adjust Your Diabetes Schedule for Travel"/>
+<meta property="og:description" content="Crossing time zones with diabetes? Get a clear shifted dosing schedule for your trip, free, fast, no account needed."/>
 <meta property="og:url" content="https://diabetes-packer.github.io/diabetestravelhelper/timezone.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:image" content="https://diabetes-packer.github.io/diabetestravelhelper/assets/social-banner.png"/>
@@ -18,7 +18,7 @@
 <meta name="twitter:image" content="https://diabetes-packer.github.io/diabetestravelhelper/assets/social-banner.png"/>
 <link rel="canonical" href="https://diabetes-packer.github.io/diabetestravelhelper/timezone.html"/>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Insulin Time Zone Calculator","url":"https://diabetes-packer.github.io/diabetestravelhelper/timezone.html","description":"A free planner that shifts diabetes dosing schedules across time zones — timing adjustments only, never dose changes.","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"Person","description":"Built by a diabetic, for diabetics"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Insulin Time Zone Calculator","url":"https://diabetes-packer.github.io/diabetestravelhelper/timezone.html","description":"A free planner that shifts diabetes dosing schedules across time zones, timing adjustments only, never dose changes.","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"Person","description":"Built by a diabetic, for diabetics"}}
 </script>
 <link rel="stylesheet" href="style.css" />
 <style>@media (max-width: 768px) { input, select, textarea, button { font-size: 16px; } }</style>
@@ -74,7 +74,7 @@
 <header class="site-hero">
   <span class="hero-eyebrow">Free timing planner</span>
   <h1>Cross time zones <em>without missing a dose</em></h1>
-  <p class="hero-sub">Enter your home and destination time zones — get a clear shifted dosing schedule for your trip. Timing shifts only, never dose changes.</p>
+  <p class="hero-sub">Enter your home and destination time zones, get a clear shifted dosing schedule for your trip. Timing shifts only, never dose changes.</p>
   <div class="trust-row" aria-label="trust badges">
     <span class="pill">Timing only</span>
     <span class="pill">Pump + MDI</span>
@@ -114,7 +114,7 @@
         <span class="help" style="font-size:13px;color:#6B6860;">The time you normally take your once-daily long-acting insulin at home.</span>
       </div>
       <button type="submit" class="btn-primary">Build my time zone plan →</button>
-      <p class="fineprint" style="font-size:13px;color:#6B6860;text-align:center;">General guidance only — always confirm schedule changes with your care team.</p>
+      <p class="fineprint" style="font-size:13px;color:#6B6860;text-align:center;">General guidance only, always confirm schedule changes with your care team.</p>
     </form>
   </div>
   <div id="tz-results" hidden></div>
@@ -225,7 +225,7 @@
     var results = document.getElementById('tz-results');
     if (home === dest){
       results.hidden = false;
-      results.innerHTML = '<div class="card"><h2>Same time zone</h2><p>No changes needed — your schedule stays exactly as it is at home. Safe travels!</p></div>';
+      results.innerHTML = '<div class="card"><h2>Same time zone</h2><p>No changes needed, your schedule stays exactly as it is at home. Safe travels!</p></div>';
       results.scrollIntoView({behavior:'smooth'});
       return;
     }
@@ -237,20 +237,20 @@
     var dHLabel = (absH % 1 === 0 ? absH : absH.toFixed(1)) + ' hour' + (absH === 1 ? '' : 's');
     var html = '';
     html += '<div class="card"><h2>Your time zone plan</h2>';
-    html += '<p><strong>' + esc(zoneLabel(home)) + ' → ' + esc(zoneLabel(dest)) + '</strong> · ' + dHLabel + ' ' + dirWord + ' — your travel day gets ' + dayWord + '.</p>';
+    html += '<p><strong>' + esc(zoneLabel(home)) + ' → ' + esc(zoneLabel(dest)) + '</strong> · ' + dHLabel + ' ' + dirWord + ', your travel day gets ' + dayWord + '.</p>';
 
     if (absH <= 2){
-      html += '<p>Good news: this is a small shift. Keep your normal schedule and set phone alarms to <strong>home time</strong> for the whole trip — no math needed.</p>';
+      html += '<p>Good news: this is a small shift. Keep your normal schedule and set phone alarms to <strong>home time</strong> for the whole trip, no math needed.</p>';
     } else if (regimen === 'pump'){
       html += '<p>Your pump delivers basal insulin continuously, so there is no schedule to shift. The main job is keeping your devices on the right clock:</p>';
       html += '<table class="schedule-table"><tr><th>When</th><th>What to do</th></tr>';
-      html += '<tr><td class="day-label">Departure day</td><td>Keep your pump and CGM on <strong>home time</strong> during the flight — one consistent clock avoids confusion. Bolus with meals as usual.</td></tr>';
-      html += '<tr><td class="day-label">On arrival</td><td>Update your pump and CGM clock to <strong>destination time</strong>. Your basal keeps running — nothing else changes.</td></tr>';
+      html += '<tr><td class="day-label">Departure day</td><td>Keep your pump and CGM on <strong>home time</strong> during the flight, one consistent clock avoids confusion. Bolus with meals as usual.</td></tr>';
+      html += '<tr><td class="day-label">On arrival</td><td>Update your pump and CGM clock to <strong>destination time</strong>. Your basal keeps running, nothing else changes.</td></tr>';
       if (retVal){
         html += '<tr><td class="day-label">Return day</td><td>Switch your pump and CGM clock back to <strong>home time</strong> when you land.</td></tr>';
       }
       html += '</table>';
-      html += '<p style="margin-top:12px;">Traveling ' + dirWord + ' means your travel day is ' + dayWord + ' by ' + dHLabel + ' — watch for lows if the day is longer, and keep fast-acting glucose handy.</p>';
+      html += '<p style="margin-top:12px;">Traveling ' + dirWord + ' means your travel day is ' + dayWord + ' by ' + dHLabel + ', watch for lows if the day is longer, and keep fast-acting glucose handy.</p>';
     } else {
       var basal = parseTime(document.getElementById('basal-time').value || '21:00');
       var gradualDays = Math.ceil(absH/2);
@@ -262,16 +262,16 @@
         html += '<tr><td class="day-label">Gentler option</td><td>Big shift? Ease in: move your dose about 2 hours ' + dirPhrase + ' each day, starting <strong>' + gradualDays + ' days before departure</strong>.</td></tr>';
       }
       if (retVal){
-        html += '<tr><td class="day-label">Return day</td><td>Shift back the same way — <strong>' + fmt(basal) + ' home time</strong> once you\u2019re back' + (absH > 6 ? ', or ease back 2 hours per day' : '') + '.</td></tr>';
+        html += '<tr><td class="day-label">Return day</td><td>Shift back the same way, <strong>' + fmt(basal) + ' home time</strong> once you\u2019re back' + (absH > 6 ? ', or ease back 2 hours per day' : '') + '.</td></tr>';
       }
       html += '</table>';
-      html += '<p style="margin-top:12px;">Tip: set a phone alarm labeled with both times (e.g. \u201cBasal — 9 PM Tokyo / 5 AM home\u201d) so there\u2019s no guesswork.</p>';
+      html += '<p style="margin-top:12px;">Tip: set a phone alarm labeled with both times (e.g. \u201cBasal, 9 PM Tokyo / 5 AM home\u201d) so there\u2019s no guesswork.</p>';
     }
 
     if (absH > 5){
-      html += '<div class="note" style="margin-top:16px;"><strong>Long-haul trips</strong><span>Crossing more than 5 time zones? Talk to your care team before you fly — they may want to fine-tune this plan for you.</span></div>';
+      html += '<div class="note" style="margin-top:16px;"><strong>Long-haul trips</strong><span>Crossing more than 5 time zones? Talk to your care team before you fly, they may want to fine-tune this plan for you.</span></div>';
     }
-    html += '<div class="note" style="margin-top:16px;"><strong>Timing only</strong><span>This planner shifts <em>when</em> you take insulin — never <em>how much</em>. Always confirm any schedule change with your care team before travel.</span></div>';
+    html += '<div class="note" style="margin-top:16px;"><strong>Timing only</strong><span>This planner shifts <em>when</em> you take insulin, never <em>how much</em>. Always confirm any schedule change with your care team before travel.</span></div>';
     html += '<div class="result-actions"><button class="btn-primary" onclick="window.print()" style="width:auto;padding:12px 24px;">Print my plan</button></div>';
     html += '</div>';
     results.hidden = false;
@@ -282,14 +282,14 @@
 </script>
 <footer class="site-footer">
   <div class="site-footer-inner">
-    <p class="site-footer-brand">Diabetes Travel Helper — <em>built by a diabetic, for diabetics.</em></p>
+    <p class="site-footer-brand">Diabetes Travel Helper, <em>built by a diabetic, for diabetics.</em></p>
     <nav class="site-footer-links">
       <a href="about.html">About</a>
       <a href="privacy.html">Privacy</a>
       <a href="contact.html">Contact</a>
       <a href="terms.html">Terms</a>
     </nav>
-    <p class="site-footer-disclaimer">General guidance only — not medical advice. Always confirm your diabetes plan with your care team.</p>
+    <p class="site-footer-disclaimer">General guidance only, not medical advice. Always confirm your diabetes plan with your care team.</p>
   </div>
 </footer>
 </body>

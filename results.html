@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://diabetes-packer.github.io/diabetestravelhelper/index.html">
-  <meta name="description" content="Your personalized diabetes travel packing list — exact quantities for your pump, CGM, insulin, and backup supplies. Free calculator, no account needed.">
-  <title>Your Diabetes Travel Packing List — Diabetes Travel Helper</title>
+  <meta name="description" content="Your personalized diabetes travel packing list, exact quantities for your pump, CGM, insulin, and backup supplies. Free calculator, no account needed.">
+  <title>Your Diabetes Travel Packing List, Diabetes Travel Helper</title>
   <link rel="stylesheet" href="style.css">
   <style>
     .products-section { margin-top: 24px; }
@@ -177,8 +177,8 @@
 
   <!-- SEO & social -->
   <meta property="og:site_name" content="Diabetes Travel Helper" />
-  <meta property="og:title" content="Your Diabetes Travel Packing List — Diabetes Travel Helper" />
-  <meta property="og:description" content="Your personalized diabetes travel packing list — exact quantities for your pump, CGM, insulin, and backup supplies." />
+  <meta property="og:title" content="Your Diabetes Travel Packing List, Diabetes Travel Helper" />
+  <meta property="og:description" content="Your personalized diabetes travel packing list, exact quantities for your pump, CGM, insulin, and backup supplies." />
   <meta property="og:type" content="website" />
   <!-- Social sharing image -->
   <meta property="og:image" content="https://diabetes-packer.github.io/diabetestravelhelper/assets/social-banner.png" />
@@ -271,7 +271,7 @@
           <span class="subtext">See how your supplies were calculated</span>
         </summary>
         <ul id="calcList"></ul>
-        <p>General guidance only — always confirm supplies with your care team.</p>
+        <p>General guidance only, always confirm supplies with your care team.</p>
       </details>
     </div>
   </div>
@@ -303,7 +303,7 @@ const PRODUCTS = {
 
   insulinCooling: {
     name: 'FRIO Insulin Cooling Wallet',
-    desc: 'Keeps insulin at safe temperatures using only water — no ice needed. Essential for warm climates and long travel days.',
+    desc: 'Keeps insulin at safe temperatures using only water, no ice needed. Essential for warm climates and long travel days.',
     tag: 'device',
     showFor: ['universal'],
     img: 'https://m.media-amazon.com/images/I/81HmJxrBXpL._AC_SL400_.jpg',
@@ -321,7 +321,7 @@ const PRODUCTS = {
 
   backupMeter: {
     name: 'Backup Glucose Meter Kit',
-    desc: 'The most recommended travel meter in the T1 community. Compact and highly accurate — essential backup for when your CGM needs one.',
+    desc: 'The most recommended travel meter in the T1 community. Compact and highly accurate, essential backup for when your CGM needs one.',
     tag: 'device',
     showFor: ['universal'],
     img: 'https://m.media-amazon.com/images/I/81xtKyeFcBL._SL400_.jpg',
@@ -375,7 +375,7 @@ const PRODUCTS = {
 
   tandemCharger: {
     name: 'Tandem t:slim Charging Cable',
-    desc: 'The t:slim uses a micro-USB cable that\'s easy to forget or lose. A dedicated spare is essential — running out of battery mid-trip is a real risk.',
+    desc: 'The t:slim uses a micro-USB cable that\'s easy to forget or lose. A dedicated spare is essential, running out of battery mid-trip is a real risk.',
     tag: 'device',
     showFor: ['tandem'],
     img: 'https://m.media-amazon.com/images/I/71cEMJRxReL._AC_SL1500_.jpg',
@@ -402,7 +402,7 @@ const PRODUCTS = {
 
   iletCase: {
     name: 'iLet Bionic Pancreas Case',
-    desc: 'Protective carrying case for your iLet — keeps it safe from the bumps and drops of travel.',
+    desc: 'Protective carrying case for your iLet, keeps it safe from the bumps and drops of travel.',
     tag: 'device',
     showFor: ['ilet'],
     img: 'https://m.media-amazon.com/images/I/61Y0RAFgKjL._AC_SL1000_.jpg',
@@ -575,7 +575,7 @@ if (formData.cgm !== 'none') {
     supplies.push(`Dexcom G6 sensors: <strong>${pack}</strong>`);
     supplies.push(`Dexcom G6 transmitter: <strong>1</strong>`);
     calcDetails.push(`<strong>Dexcom G6 sensors:</strong> 1 lasts 10 days → need ${need}, packing ${pack}`);
-    notes.push('Check your Dexcom G6 transmitter expiry before you leave — transmitters last ~90 days. If it may expire during your trip, bring a spare.');
+    notes.push('Check your Dexcom G6 transmitter expiry before you leave, transmitters last ~90 days. If it may expire during your trip, bring a spare.');
   } else if (formData.cgm === 'dexcomg7_10') {
     const need = Math.ceil(totalDays / 10), pack = Math.max(need, 2);
     supplies.push(`Dexcom G7 sensors: <strong>${pack}</strong>`);
@@ -595,8 +595,8 @@ if (formData.cgm !== 'none') {
   }
   else if (formData.cgm === 'eversense') {
     supplies.push(`Eversense 365 transmitter adhesive patches: <strong>${totalDays}</strong>`);
-    calcDetails.push(`<strong>Eversense 365:</strong> Sensor is implanted and lasts up to 1 year — no sensor to pack. Pack 1 adhesive patch per day for the external transmitter.`);
-    notes.push('Eversense 365: Your sensor is implanted and stays in for up to a year — nothing to pack for the sensor itself. Pack enough daily adhesive patches for your transmitter and make sure your transmitter is fully charged before you leave (it needs 15 minutes of charging per day).');
+    calcDetails.push(`<strong>Eversense 365:</strong> Sensor is implanted and lasts up to 1 year, no sensor to pack. Pack 1 adhesive patch per day for the external transmitter.`);
+    notes.push('Eversense 365: Your sensor is implanted and stays in for up to a year, nothing to pack for the sensor itself. Pack enough daily adhesive patches for your transmitter and make sure your transmitter is fully charged before you leave (it needs 15 minutes of charging per day).');
   }
 }
 
@@ -622,7 +622,7 @@ if (formData.units && formData.units > 0) {
   calcDetails.push(`<strong>Insulin vials:</strong> ${formData.units}/day × ${totalDays} days = ${total} units → ${need} vial${need > 1 ? 's' : ''} needed, packing ${pack}`);
 } else if (formData.pump !== 'none') {
   supplies.push(`Insulin vials: <strong>2</strong> (recommended backup)`);
-  calcDetails.push(`<strong>Insulin vials:</strong> Daily total not provided — packing 2 as standard backup`);
+  calcDetails.push(`<strong>Insulin vials:</strong> Daily total not provided, packing 2 as standard backup`);
 }
 
 if (formData.lows === 'yes') {
@@ -677,14 +677,14 @@ function showToast(id) {
 
 <footer class="site-footer">
   <div class="site-footer-inner">
-    <p class="site-footer-brand">Diabetes Travel Helper — <em>built by a diabetic, for diabetics.</em></p>
+    <p class="site-footer-brand">Diabetes Travel Helper, <em>built by a diabetic, for diabetics.</em></p>
     <nav class="site-footer-links">
       <a href="about.html">About</a>
       <a href="privacy.html">Privacy</a>
       <a href="contact.html">Contact</a>
       <a href="terms.html">Terms</a>
     </nav>
-    <p class="site-footer-disclaimer">General guidance only — not medical advice. Always confirm your diabetes plan with your care team.</p>
+    <p class="site-footer-disclaimer">General guidance only, not medical advice. Always confirm your diabetes plan with your care team.</p>
   </div>
 </footer>
 </body>
