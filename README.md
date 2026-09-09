@@ -2,7 +2,7 @@
 
 Free travel packing calculator for people with diabetes (type 1 and type 2, including parents of kids with diabetes). Enter your trip details, pump/CGM setup, and insulin regimen, and get a personalized packing list with a safety buffer.
 
-Live site: https://diabetes-packer.github.io/diabetestravelhelper/
+Live site: https://travelwithdiabetes.com/
 
 ## Features
 - Personalized packing-quantity calculator (pump type, infusion sets, reservoirs, daily insulin, CGM)
