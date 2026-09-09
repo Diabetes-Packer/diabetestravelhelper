@@ -47,7 +47,7 @@ details p a:not([class]):hover {
 .site-nav {
   background: var(--bg);
   border-bottom: 1px solid rgba(28, 26, 22, 0.08);
-  padding: 16px 0;
+  padding: 20px 0;
 }
 .site-nav-inner {
   width: min(1120px, calc(100% - 32px));
