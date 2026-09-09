@@ -311,17 +311,16 @@ const PRODUCTS = {
   },
 
   medicalID: {
-    name: 'Medical ID Bracelet',
-    desc: 'Alerts first responders to your diabetes in an emergency. Non-negotiable for any diabetic traveler.',
+    name: 'ROAD iD Medical Alert Bracelet',
+    desc: 'Silicone medical ID bracelet with a custom-engraved stainless steel ID plate. Alerts first responders to your diabetes in an emergency.',
     tag: 'device',
     showFor: ['universal'],
-    img: 'https://m.media-amazon.com/images/I/71VDg2feMSL._AC_SY400_.jpg',
-    url: 'https://www.amazon.com/MEALGUET-Diabetic-Medical-Alert-Bracelet/dp/B0D39LTRK7?linkCode=ll2&tag=diabetestrave-20'
+    url: 'https://www.amazon.com/ROAD-iD-Elite-Medical-Alert-Bracelet/dp/B01LQDVR2E?linkCode=ll2&tag=diabetestrave-20'
   },
 
   backupMeter: {
     name: 'Backup Glucose Meter Kit',
-    desc: 'The most recommended travel meter in the T1 community. Compact and highly accurate, essential backup for when your CGM needs one.',
+    desc: 'Compact meter with Bluetooth and ISO 15197:2013 accuracy. A solid backup for when your CGM needs one.',
     tag: 'device',
     showFor: ['universal'],
     img: 'https://m.media-amazon.com/images/I/81xtKyeFcBL._SL400_.jpg',
@@ -348,7 +347,7 @@ const PRODUCTS = {
 
   supplyOrganizer: {
     name: 'Diabetes Supply Organizer',
-    desc: 'Keeps all your devices, sensors, reservoirs, and supplies organized in one TSA-friendly travel case.',
+    desc: 'Keeps all your devices, sensors, reservoirs, and supplies organized in one travel case.',
     tag: 'device',
     showFor: ['omnipod', 'tandem', 'medtronic', 'ilet', 'dexcomg6', 'dexcomg7_10', 'dexcomg7_15', 'libre', 'guardian'],
     img: 'https://m.media-amazon.com/images/I/711v7ZjYgZL._AC_SL400_.jpg',
@@ -357,7 +356,7 @@ const PRODUCTS = {
 
   glucoseTabs: {
     name: 'Fast-Acting Glucose Tablets',
-    desc: 'Quick, reliable treatment for low blood sugar. Shelf-stable, TSA-friendly, and easy to pack anywhere.',
+    desc: 'Quick, reliable treatment for low blood sugar. Shelf-stable and easy to pack anywhere.',
     tag: 'device',
     showFor: ['lows'],
     img: 'https://m.media-amazon.com/images/I/81SMJP+RUnL._AC_SL400_.jpg',
@@ -366,7 +365,7 @@ const PRODUCTS = {
 
   omnipodArmband: {
     name: 'Omnipod Armband Case',
-    desc: 'Protects your pod during active travel days. Keeps it secure without interfering with readings.',
+    desc: 'Protects your pod during active travel days and keeps it secure on your arm.',
     tag: 'device',
     showFor: ['omnipod'],
     img: 'https://m.media-amazon.com/images/I/81u3FNw-pHL._AC_SL400_.jpg',
@@ -391,24 +390,6 @@ const PRODUCTS = {
     url: 'https://www.amazon.com/Tandem-Diabetes-Care-t-Black/dp/B01MYGJI6N?linkCode=ll2&tag=diabetestrave-20&linkId=48c739253a8d6cae8784e491b375aab4&language=en_US&ref_=as_li_ss_tl'
   },
 
-  medtronicCase: {
-    name: 'Medtronic Pump Clip Case',
-    desc: 'Protects your 780G from drops and keeps it easily accessible on travel days.',
-    tag: 'device',
-    showFor: ['medtronic'],
-    img: 'https://m.media-amazon.com/images/I/71NVTp870eL._AC_SL1500_.jpg',
-    url: 'https://www.amazon.com/iGuerburn-Case-780G-Accessories-MiniMed/dp/B0F53MSB8L?linkCode=ll2&tag=diabetestrave-20&linkId=4df636289178175e34a9b953c0cf236d&language=en_US&ref_=as_li_ss_tl'
-  },
-
-  iletCase: {
-    name: 'iLet Bionic Pancreas Case',
-    desc: 'Protective carrying case for your iLet, keeps it safe from the bumps and drops of travel.',
-    tag: 'device',
-    showFor: ['ilet'],
-    img: 'https://m.media-amazon.com/images/I/61Y0RAFgKjL._AC_SL1000_.jpg',
-    url: 'https://www.amazon.com/Classic-Premium-Pouch-Insulin-Black/dp/B0CZ4DGSHQ?linkCode=ll2&tag=diabetestrave-20&linkId=3e427015deaf649556145e54f17bf342&language=en_US&ref_=as_li_ss_tl'
-  },
-
   dexcomG6Patches: {
     name: 'Simpatch for Dexcom G6',
     desc: 'Waterproof overtape patches that keep your G6 sensor locked down in heat, sweat, and water. A must for active travel.',
@@ -416,15 +397,6 @@ const PRODUCTS = {
     showFor: ['dexcomg6'],
     img: 'https://m.media-amazon.com/images/I/71YFo+VU1bL._AC_SL400_.jpg',
     url: 'https://www.amazon.com/SIMPATCH-Adhesive-25-Pack-Waterproof-Patches/dp/B07QGX3HJW?linkCode=ll2&tag=diabetestrave-20&linkId=cf281bd0910aae6452adff30956069f3&language=en_US&ref_=as_li_ss_tl'
-  },
-
-  dexcomG7Patches: {
-    name: 'Simpatch for Dexcom G7',
-    desc: 'Waterproof overtape that keeps your G7 sensor edges secure in heat, humidity, and water. Essential for any active travel day.',
-    tag: 'device',
-    showFor: ['dexcomg7_10', 'dexcomg7_15'],
-    img: 'https://m.media-amazon.com/images/I/71fFjndbQ8L._AC_SL1500_.jpg',
-    url: 'https://www.amazon.com/SIMPATCH-Adhesive-Tape-Dexcom-25-Pack/dp/B0BV2L7SNX?linkCode=ll2&tag=diabetestrave-20&linkId=e0117727c49c82410b9053e456803c6a&language=en_US&ref_=as_li_ss_tl'
   },
 
 };
@@ -474,11 +446,7 @@ function buildProductList(pump, cgm, lows) {
   if (pump === 'omnipod')                              { add('omnipodArmband'); }
   if (pump === 'tandem')                               { add('tandemCharger'); add('tandemCase'); }
   if (pump === 'tandem_mobi')                          { add('tandemCase'); }
-  if (pump === 'medtronic')                            { add('medtronicCase'); }
-  if (pump === 'ilet')                                 { add('iletCase'); }
-  if (['tandem','tandem_mobi','medtronic','ilet','twiist'].includes(pump)) { add('infusionTape'); }
   if (cgm === 'dexcomg6')                              { add('dexcomG6Patches'); }
-  if (cgm === 'dexcomg7_10' || cgm === 'dexcomg7_15') { add('dexcomG7Patches'); }
   add('glucoseTabs');
   add('skinTac');
   add('alcoholWipes');
@@ -498,7 +466,7 @@ function renderProducts(productIds, pump, cgm, lows) {
     const p = PRODUCTS[id];
     if (!p) return;
 
-    const isPlaceholder = !p.img || p.url === 'AFFILIATE_URL_HERE';
+    const isPlaceholder = p.url === 'AFFILIATE_URL_HERE';
     const tagLabel = resolveTagLabel(p, activeDevices);
 
     const imgHtml = p.img
@@ -553,7 +521,6 @@ document.getElementById('heroSummary').textContent = [formData.days + '-day trip
 const totalDays = Math.ceil(formData.days * (hasBuffer ? 1.2 : 1.0));
 
 if (!hasBuffer) {
-  document.getElementById('headerIntro').textContent = 'Based on your trip details';
   document.getElementById('packingSubtitle').textContent = 'Calculated for your exact trip length';
 }
 
