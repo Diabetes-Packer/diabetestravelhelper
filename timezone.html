@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="p:domain_verify" content="b1b3646e99ec0552ab16246da0aaa8b3"/>
+<title>Insulin Time Zone Calculator — Adjust Your Diabetes Schedule for Travel</title>
+<meta name="description" content="Free insulin time zone planner for diabetes travel. Enter your home and destination time zones and get a shifted dosing schedule — timing shifts only, never dose changes. Built by a diabetic, for diabetics."/>
+<meta property="og:site_name" content="Diabetes Travel Helper"/>
+<meta property="og:title" content="Insulin Time Zone Calculator — Adjust Your Diabetes Schedule for Travel"/>
+<meta property="og:description" content="Crossing time zones with diabetes? Get a clear shifted dosing schedule for your trip — free, fast, no account needed."/>
+<meta property="og:url" content="https://diabetes-packer.github.io/diabetestravelhelper/timezone.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://diabetes-packer.github.io/diabetestravelhelper/assets/social-banner.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://diabetes-packer.github.io/diabetestravelhelper/assets/social-banner.png"/>
+<link rel="canonical" href="https://diabetes-packer.github.io/diabetestravelhelper/timezone.html"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Insulin Time Zone Calculator","url":"https://diabetes-packer.github.io/diabetestravelhelper/timezone.html","description":"A free planner that shifts diabetes dosing schedules across time zones — timing adjustments only, never dose changes.","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"Person","description":"Built by a diabetic, for diabetics"}}
+</script>
+<link rel="stylesheet" href="style.css" />
+<style>@media (max-width: 768px) { input, select, textarea, button { font-size: 16px; } }</style>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VZWEQF1WNK"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VZWEQF1WNK');</script>
+<style>
+.schedule-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+.schedule-table th { text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: #6B6860; padding: 8px 10px; border-bottom: 2px solid rgba(28,26,22,0.10); }
+.schedule-table td { padding: 12px 10px; border-bottom: 1px solid rgba(28,26,22,0.08); vertical-align: top; font-size: 15px; }
+.schedule-table tr:last-child td { border-bottom: none; }
+.schedule-table .day-label { font-weight: 700; white-space: nowrap; }
+.result-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+#tz-results .card { margin-top: 20px; }
+.pill-opt { appearance: none; padding: 7px 14px; border-radius: 999px; border: 1.5px solid #D8D5D0; background: #FFFFFF; font: 500 14px 'DM Sans', sans-serif; cursor: pointer; }
+.pill-opt.active { border-color: #2A9080; background: #E8F5F2; color: #1C6459; font-weight: 600; }
+@media print {
+  .site-nav, .site-hero, #tz-form-card, .result-actions, .site-footer { display: none !important; }
+  #tz-results .card { box-shadow: none; border: 1px solid #ccc; }
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html" class="site-nav-logo">Diabetes <span>Travel Helper</span></a>
+    <div class="site-nav-links">
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html">Home</a>
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/guides.html">Guides</a>
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html" class="site-nav-tool-btn">Packing Calculator</a>
+    </div>
+  </div>
+</nav>
+<header class="site-hero">
+  <span class="hero-eyebrow">Free timing planner</span>
+  <h1>Cross time zones <em>without missing a dose</em></h1>
+  <p class="hero-sub">Enter your home and destination time zones — get a clear shifted dosing schedule for your trip. Timing shifts only, never dose changes.</p>
+  <div class="trust-row" aria-label="trust badges">
+    <span class="pill">Timing only</span>
+    <span class="pill">Pump + MDI</span>
+    <span class="pill">Printable plan</span>
+  </div>
+</header>
+<main class="container">
+  <div class="card form-card" id="tz-form-card">
+    <form id="tz-form" style="display:grid;gap:20px;">
+      <div class="block" style="display:grid;gap:7px;">
+        <label for="home-tz" style="font-weight:600;font-size:15px;">Home time zone</label>
+        <select id="home-tz" required></select>
+      </div>
+      <div class="block" style="display:grid;gap:7px;">
+        <label for="dest-tz" style="font-weight:600;font-size:15px;">Destination time zone</label>
+        <select id="dest-tz" required></select>
+      </div>
+      <div class="block" style="display:grid;gap:7px;">
+        <label for="dep-date" style="font-weight:600;font-size:15px;">Departure date</label>
+        <input type="date" id="dep-date" required />
+      </div>
+      <div class="block" style="display:grid;gap:7px;">
+        <label for="ret-date" style="font-weight:600;font-size:15px;">Return date <span class="pill optional">optional</span></label>
+        <input type="date" id="ret-date" />
+        <span class="help" style="font-size:13px;color:#6B6860;">Add this to get a shift-back plan for your return trip.</span>
+      </div>
+      <div class="block" style="display:grid;gap:7px;">
+        <span style="font-weight:600;font-size:15px;">Your regimen</span>
+        <div class="pill-group" id="regimen-group" role="radiogroup" aria-label="Your regimen">
+          <button type="button" class="pill-opt" data-value="pump" role="radio" aria-checked="false">Insulin pump</button>
+          <button type="button" class="pill-opt" data-value="mdi" role="radio" aria-checked="false">Daily injections (MDI)</button>
+        </div>
+      </div>
+      <div class="block" id="basal-block" style="display:none;gap:7px;">
+        <label for="basal-time" style="font-weight:600;font-size:15px;">Usual long-acting (basal) insulin time</label>
+        <input type="time" id="basal-time" value="21:00" />
+        <span class="help" style="font-size:13px;color:#6B6860;">The time you normally take your once-daily long-acting insulin at home.</span>
+      </div>
+      <button type="submit" class="btn-primary">Build my time zone plan →</button>
+      <p class="fineprint" style="font-size:13px;color:#6B6860;text-align:center;">General guidance only — always confirm schedule changes with your care team.</p>
+    </form>
+  </div>
+  <div id="tz-results" hidden></div>
+</main>
+<footer class="site-footer" style="font-size:0.85rem;color:#6b7280;text-align:center;padding:1.5rem 1rem;max-width:60rem;margin:0 auto;">
+  <p>Flying across time zones with diabetes raises one big question: when do I take my insulin? Our free insulin time zone calculator builds a shifted dosing schedule for your trip — enter your home and destination time zones, travel dates, and regimen, and get a clear plan for departure day, your time at your destination, and the trip home. It adjusts timing only, never dose amounts. Built by a diabetic, for diabetics.</p>
+</footer>
+<script>
+(function(){
+  var ZONES = [
+    ["Pacific/Honolulu","Honolulu"],
+    ["America/Anchorage","Anchorage"],
+    ["America/Los_Angeles","Los Angeles"],
+    ["America/Denver","Denver"],
+    ["America/Chicago","Chicago"],
+    ["America/New_York","New York"],
+    ["America/Halifax","Halifax"],
+    ["America/Sao_Paulo","São Paulo"],
+    ["America/Buenos_Aires","Buenos Aires"],
+    ["Atlantic/Azores","Azores"],
+    ["Europe/London","London"],
+    ["Europe/Paris","Paris"],
+    ["Europe/Berlin","Berlin"],
+    ["Europe/Athens","Athens"],
+    ["Europe/Moscow","Moscow"],
+    ["Africa/Cairo","Cairo"],
+    ["Africa/Johannesburg","Johannesburg"],
+    ["Asia/Dubai","Dubai"],
+    ["Asia/Karachi","Karachi"],
+    ["Asia/Kolkata","Mumbai / Delhi"],
+    ["Asia/Dhaka","Dhaka"],
+    ["Asia/Bangkok","Bangkok"],
+    ["Asia/Singapore","Singapore"],
+    ["Asia/Hong_Kong","Hong Kong"],
+    ["Asia/Shanghai","Shanghai"],
+    ["Asia/Taipei","Taipei"],
+    ["Asia/Tokyo","Tokyo"],
+    ["Asia/Seoul","Seoul"],
+    ["Australia/Perth","Perth"],
+    ["Australia/Sydney","Sydney"],
+    ["Pacific/Auckland","Auckland"]
+  ];
+  var homeSel = document.getElementById('home-tz');
+  var destSel = document.getElementById('dest-tz');
+  ZONES.forEach(function(z){
+    var o1 = document.createElement('option'); o1.value = z[0]; o1.textContent = z[1]; homeSel.appendChild(o1);
+    var o2 = document.createElement('option'); o2.value = z[0]; o2.textContent = z[1]; destSel.appendChild(o2);
+  });
+  homeSel.selectedIndex = -1; destSel.selectedIndex = -1;
+
+  var regimen = null;
+  var pills = document.querySelectorAll('#regimen-group .pill-opt');
+  var basalBlock = document.getElementById('basal-block');
+  pills.forEach(function(p){
+    p.addEventListener('click', function(){
+      pills.forEach(function(q){ q.classList.remove('active'); q.setAttribute('aria-checked','false'); });
+      p.classList.add('active'); p.setAttribute('aria-checked','true');
+      regimen = p.getAttribute('data-value');
+      basalBlock.style.display = (regimen === 'mdi') ? 'grid' : 'none';
+    });
+  });
+
+  function tzOffsetMinutes(tz, date){
+    try {
+      var dtf = new Intl.DateTimeFormat('en-US',{timeZone:tz,hour12:false,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+      var parts = {};
+      dtf.formatToParts(date).forEach(function(p){ parts[p.type] = p.value; });
+      var asUTC = Date.UTC(+parts.year, +parts.month - 1, +parts.day, (+parts.hour)%24, +parts.minute, +parts.second);
+      return Math.round((asUTC - date.getTime())/60000);
+    } catch(e){ return 0; }
+  }
+  function fmt(mins){
+    mins = ((mins % 1440) + 1440) % 1440;
+    var h = Math.floor(mins/60), m = mins%60;
+    var ap = h >= 12 ? 'PM' : 'AM';
+    var h12 = h % 12; if (h12 === 0) h12 = 12;
+    return h12 + ':' + (m < 10 ? '0'+m : m) + ' ' + ap;
+  }
+  function parseTime(s){ var a = s.split(':'); return (+a[0])*60 + (+a[1]); }
+  function zoneLabel(v){ for (var i=0;i<ZONES.length;i++) if (ZONES[i][0]===v) return ZONES[i][1]; return v; }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  document.getElementById('tz-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!regimen){ alert('Please choose your regimen (pump or daily injections).'); return; }
+    var home = homeSel.value, dest = destSel.value;
+    var dep = new Date(document.getElementById('dep-date').value + 'T12:00:00');
+    var retVal = document.getElementById('ret-date').value;
+    var results = document.getElementById('tz-results');
+    if (home === dest){
+      results.hidden = false;
+      results.innerHTML = '<div class="card"><h2>Same time zone</h2><p>No changes needed — your schedule stays exactly as it is at home. Safe travels!</p></div>';
+      results.scrollIntoView({behavior:'smooth'});
+      return;
+    }
+    var dMin = tzOffsetMinutes(dest, dep) - tzOffsetMinutes(home, dep);
+    var dH = dMin/60;
+    var dirWord = dH > 0 ? 'east' : 'west';
+    var dayWord = dH > 0 ? 'shorter' : 'longer';
+    var absH = Math.abs(dH);
+    var dHLabel = (absH % 1 === 0 ? absH : absH.toFixed(1)) + ' hour' + (absH === 1 ? '' : 's');
+    var html = '';
+    html += '<div class="card"><h2>Your time zone plan</h2>';
+    html += '<p><strong>' + esc(zoneLabel(home)) + ' → ' + esc(zoneLabel(dest)) + '</strong> · ' + dHLabel + ' ' + dirWord + ' — your travel day gets ' + dayWord + '.</p>';
+
+    if (absH <= 2){
+      html += '<p>Good news: this is a small shift. Keep your normal schedule and set phone alarms to <strong>home time</strong> for the whole trip — no math needed.</p>';
+    } else if (regimen === 'pump'){
+      html += '<p>Your pump delivers basal insulin continuously, so there is no schedule to shift. The main job is keeping your devices on the right clock:</p>';
+      html += '<table class="schedule-table"><tr><th>When</th><th>What to do</th></tr>';
+      html += '<tr><td class="day-label">Departure day</td><td>Keep your pump and CGM on <strong>home time</strong> during the flight — one consistent clock avoids confusion. Bolus with meals as usual.</td></tr>';
+      html += '<tr><td class="day-label">On arrival</td><td>Update your pump and CGM clock to <strong>destination time</strong>. Your basal keeps running — nothing else changes.</td></tr>';
+      if (retVal){
+        html += '<tr><td class="day-label">Return day</td><td>Switch your pump and CGM clock back to <strong>home time</strong> when you land.</td></tr>';
+      }
+      html += '</table>';
+      html += '<p style="margin-top:12px;">Traveling ' + dirWord + ' means your travel day is ' + dayWord + ' by ' + dHLabel + ' — watch for lows if the day is longer, and keep fast-acting glucose handy.</p>';
+    } else {
+      var basal = parseTime(document.getElementById('basal-time').value || '21:00');
+      var gradualDays = Math.ceil(absH/2);
+      html += '<table class="schedule-table"><tr><th>Day</th><th>Take your long-acting insulin at</th></tr>';
+      html += '<tr><td class="day-label">Departure day</td><td><strong>' + fmt(basal) + ' home time</strong> before you fly (that\u2019s ' + fmt(basal + dMin) + ' destination time).</td></tr>';
+      html += '<tr><td class="day-label">At your destination</td><td>Switch to <strong>' + fmt(basal) + ' local time</strong> from your first night there.</td></tr>';
+      if (absH > 6){
+        var dirPhrase = dH > 0 ? 'earlier' : 'later';
+        html += '<tr><td class="day-label">Gentler option</td><td>Big shift? Ease in: move your dose about 2 hours ' + dirPhrase + ' each day, starting <strong>' + gradualDays + ' days before departure</strong>.</td></tr>';
+      }
+      if (retVal){
+        html += '<tr><td class="day-label">Return day</td><td>Shift back the same way — <strong>' + fmt(basal) + ' home time</strong> once you\u2019re back' + (absH > 6 ? ', or ease back 2 hours per day' : '') + '.</td></tr>';
+      }
+      html += '</table>';
+      html += '<p style="margin-top:12px;">Tip: set a phone alarm labeled with both times (e.g. \u201cBasal — 9 PM Tokyo / 5 AM home\u201d) so there\u2019s no guesswork.</p>';
+    }
+
+    if (absH > 5){
+      html += '<div class="note" style="margin-top:16px;"><strong>Long-haul trips</strong><span>Crossing more than 5 time zones? Talk to your care team before you fly — they may want to fine-tune this plan for you.</span></div>';
+    }
+    html += '<div class="note" style="margin-top:16px;"><strong>Timing only</strong><span>This planner shifts <em>when</em> you take insulin — never <em>how much</em>. Always confirm any schedule change with your care team before travel.</span></div>';
+    html += '<div class="result-actions"><button class="btn-primary" onclick="window.print()" style="width:auto;padding:12px 24px;">Print my plan</button></div>';
+    html += '</div>';
+    results.hidden = false;
+    results.innerHTML = html;
+    results.scrollIntoView({behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>
