@@ -76,6 +76,66 @@ const ARTICLES = [
     title: "Best Low Blood Sugar Snacks for Travel: Ranked (2026)",
     desc: "Six low treatments ranked from best to worst for travel — what works on planes, abroad, and on the trail, from someone who's been there.",
     emoji: "🍬"
+  },
+  {
+    slug: "flying-with-dexcom-g6-airport-security.html",
+    title: "Flying with Dexcom G6: Airport Security Guide (2026)",
+    desc: "The G6 plays by different airport rules than the G7. Dexcom's official guidance plus what I actually do at the checkpoint.",
+    emoji: "📡"
+  },
+  {
+    slug: "flying-with-freestyle-libre-airport-security.html",
+    title: "Flying with Freestyle Libre: Airport Security Guide (2026)",
+    desc: "Abbott's airport guidance for the Freestyle Libre in plain language, plus the TSA procedure that applies to any CGM.",
+    emoji: "💧"
+  },
+  {
+    slug: "flying-with-tandem-tslim-airport-security.html",
+    title: "Flying with Tandem t:slim X2: Airport Security (2026)",
+    desc: "Tandem's official checkpoint rules: when to disconnect, when to stay connected, and exactly what to tell the officer.",
+    emoji: "🩺"
+  },
+  {
+    slug: "flying-with-medtronic-minimed-airport-security.html",
+    title: "Flying with Medtronic MiniMed: Airport Security Guide (2026)",
+    desc: "Medtronic's stricter scanner rules, how to handle the Guardian sensor, and managing the flight itself.",
+    emoji: "🩺"
+  },
+  {
+    slug: "tubed-insulin-pumps-airport-security.html",
+    title: "Tubed Insulin Pumps and Airport Security: What Medtronic and Tandem Users Need to Know (2026)",
+    desc: "Why tubed pumps get different treatment than the Omnipod, and what Medtronic and Tandem officially tell their users.",
+    emoji: "🔗"
+  },
+  {
+    slug: "xray-body-scanner-metal-detector-diabetes-devices.html",
+    title: "X-Ray vs. Body Scanner vs. Metal Detector: What's Actually Safe for Insulin Pumps and CGMs (2026)",
+    desc: "One page that settles it: which screening method is safe for your insulin pump and CGM, and which to avoid.",
+    emoji: "🛡️"
+  },
+  {
+    slug: "diabetes-travel-letter-doctors-note-tsa.html",
+    title: "Do You Need a Travel Letter for Diabetes? The TSA Doctor's Note, Explained (2026)",
+    desc: "TSA does not require a doctor's note. When a letter actually helps, what it should say, and the simple habit I use instead.",
+    emoji: "📝"
+  },
+  {
+    slug: "tsa-medical-baggage-allowance-diabetes.html",
+    title: "TSA Medical Baggage: Your Extra Carry-On Allowance for Diabetes Supplies (2026)",
+    desc: "What extra you can bring for diabetes supplies, how the checkpoint treats medical bags, and how I split carry-on vs. checked.",
+    emoji: "🧳"
+  },
+  {
+    slug: "dexcom-g7-heat-cold-temperature-limits.html",
+    title: "Dexcom G7 in Heat and Cold: Temperature Limits for Travel (2026)",
+    desc: "Dexcom's exact temperature numbers for the G7, what heat and cold actually do to your sensor, and how to pack spares for extreme climates.",
+    emoji: "🌡️"
+  },
+  {
+    slug: "dexcom-g7-international-travel-app.html",
+    title: "Dexcom G7 International Travel: App Region Locks and How to Prepare (2026)",
+    desc: "The app region lock that blindsides G7 travelers abroad, and how to prepare before you leave home.",
+    emoji: "🌍"
   }
 ];
 
