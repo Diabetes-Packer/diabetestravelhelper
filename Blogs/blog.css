@@ -82,7 +82,7 @@ details p a:not([class]):hover {
 }
 .site-nav-links a:hover,
 .site-nav-links a.active { color: #1c1917; }
-.site-nav-links a.active { color: #1C6459; }
+.site-nav-links a.active { color: #1C6459; box-shadow: inset 0 -2px 0 #1C6459; padding-bottom: 4px; }
 .site-nav-tool-btn {
   padding: 8px 16px;
   background: #1C6459;
