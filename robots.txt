@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://diabetes-packer.github.io/diabetestravelhelper/sitemap.xml
+Sitemap: https://travelwithdiabetes.com/sitemap.xml
