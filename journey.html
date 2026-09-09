@@ -76,6 +76,9 @@
 .j-add { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: #1C6459; background: #E8F5F2; border: 1.5px dashed #2A9080; border-radius: 8px; padding: 10px 16px; cursor: pointer; margin-top: 4px; width: 100%; }
 .j-add:hover { background: #C4E8DF; }
 .j-calc-wrap { text-align: center; margin: 24px 0 32px; }
+.j-dxmode { display: flex; gap: 8px; margin-bottom: 14px; }
+.j-dxmode button { flex: 1; padding: 10px 12px; border-radius: 999px; border: 1.5px solid rgba(28,26,22,0.14); background: #fff; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: #6B6860; cursor: pointer; transition: all 150ms ease; }
+.j-dxmode button.active { border-color: #2A9080; background: #E8F5F2; color: #1C6459; }
 .j-cta { appearance: none; -webkit-appearance: none; border: none; background: #1C6459; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; padding: 15px 40px; border-radius: 12px; cursor: pointer; letter-spacing: 0.01em; box-shadow: 0 4px 16px rgba(28,100,89,0.30); transition: background 150ms ease, transform 150ms ease; text-decoration: none; display: inline-block; }
 .j-cta:hover { background: #0E3830; transform: translateY(-1px); color: #fff; }
 .j-cta:active { transform: translateY(0); }
@@ -131,17 +134,20 @@
       <div class="j-icon t1">🩺</div>
       <div><h2>Your diabetes diagnosis</h2><p>When did your journey begin?</p></div>
     </div>
-    <div class="j-row">
-      <div class="j-field">
+    <div class="j-field">
+      <div class="j-dxmode" role="group" aria-label="Choose how to enter your diagnosis">
+        <button type="button" id="dxmode-year" class="active" onclick="setDxMode('year')">Diagnosis year</button>
+        <button type="button" id="dxmode-years" onclick="setDxMode('years')">Years with diabetes</button>
+      </div>
+      <div id="dx-year-wrap">
         <label>Year diagnosed <span>(or approximate)</span></label>
         <input type="number" id="year-diagnosed" min="1920" placeholder="e.g. 2005" />
       </div>
-      <div class="j-field">
-        <label>Or: years with diabetes</label>
+      <div id="dx-years-wrap" style="display:none;">
+        <label>Years with diabetes</label>
         <input type="number" id="years-diabetic" min="0" max="100" step="0.5" placeholder="e.g. 20" />
       </div>
     </div>
-    <div class="j-hint" style="margin-top:-8px;margin-bottom:12px;">Fill either field. If you enter a diagnosis year, we calculate the rest.</div>
     <div class="j-field">
       <label>Estimated lows (hypos) per week</label>
       <div class="j-range-wrap">
@@ -383,11 +389,24 @@
 
   var lastShareText = '';
 
+  var dxMode = 'year';
+  window.setDxMode = function(mode){
+    dxMode = mode;
+    document.getElementById('dxmode-year').classList.toggle('active', mode === 'year');
+    document.getElementById('dxmode-years').classList.toggle('active', mode === 'years');
+    document.getElementById('dx-year-wrap').style.display = mode === 'year' ? '' : 'none';
+    document.getElementById('dx-years-wrap').style.display = mode === 'years' ? '' : 'none';
+  };
+
   window.calculate = function(){
-    var yearDx = parseInt(document.getElementById('year-diagnosed').value) || 0;
-    var yearsDx = parseFloat(document.getElementById('years-diabetic').value) || 0;
-    if (yearDx > 0 && yearsDx === 0) yearsDx = Math.max(0, CURRENT_YEAR - yearDx);
-    if (yearsDx <= 0){ alert('Please enter how long you have had diabetes (years, or year of diagnosis).'); return; }
+    var yearsDx = 0;
+    if (dxMode === 'year'){
+      var yearDx = parseInt(document.getElementById('year-diagnosed').value) || 0;
+      if (yearDx > 0) yearsDx = Math.max(0, CURRENT_YEAR - yearDx);
+    } else {
+      yearsDx = parseFloat(document.getElementById('years-diabetic').value) || 0;
+    }
+    if (yearsDx <= 0){ alert('Please enter how long you have had diabetes (diagnosis year or years).'); return; }
 
     var daysDx = yearsDx * 365.25;
     var weeksDx = yearsDx * 52.18;
