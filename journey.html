@@ -172,14 +172,14 @@
       <div><h2>Injections (MDI)</h2><p>Multiple daily injections, pens or syringes</p></div>
     </div>
     <label class="j-toggle" for="mdi-toggle">
-      <div><div class="t-label">I have used injections / pens</div><div class="t-sub">Include any period on MDI</div></div>
+      <div><div class="t-label">I use injections / pens</div><div class="t-sub">Include any period on MDI</div></div>
       <span class="j-switch"><input type="checkbox" id="mdi-toggle" onchange="toggleSection('mdi-toggle','mdi-section')" /><span class="j-sw"></span></span>
     </label>
     <div id="mdi-section" class="j-sub">
       <div id="mdi-periods">
         <div class="j-period" data-type="mdi">
           <div class="j-row">
-            <div class="j-field"><label>Years on MDI</label><input type="number" class="mdi-years" min="0" max="80" step="0.5" placeholder="e.g. 10" /></div>
+            <div class="j-field"><label>Years using MDI</label><input type="number" class="mdi-years" min="0" max="80" step="0.5" placeholder="e.g. 10" /></div>
             <div class="j-field"><label>Injections per day</label><input type="number" class="mdi-inj-day" min="1" max="12" step="1" placeholder="e.g. 5" value="5" /></div>
           </div>
         </div>
@@ -195,7 +195,7 @@
       <div><h2>Insulin pump</h2><p>Any pump, tubed or patch</p></div>
     </div>
     <label class="j-toggle" for="pump-toggle">
-      <div><div class="t-label">I have used an insulin pump</div><div class="t-sub">Include all pump periods</div></div>
+      <div><div class="t-label">I use an insulin pump</div><div class="t-sub">Include all pump periods</div></div>
       <span class="j-switch"><input type="checkbox" id="pump-toggle" onchange="toggleSection('pump-toggle','pump-section')" /><span class="j-sw"></span></span>
     </label>
     <div id="pump-section" class="j-sub">
@@ -222,7 +222,7 @@
             </select>
           </div>
           <div class="j-row">
-            <div class="j-field"><label>Years on this pump</label><input type="number" class="pump-years" min="0" max="40" step="0.5" placeholder="e.g. 5" /></div>
+            <div class="j-field"><label>Years using this pump</label><input type="number" class="pump-years" min="0" max="40" step="0.5" placeholder="e.g. 5" /></div>
             <div class="j-field"><label>Set / pod change every (days)</label><input type="number" class="pump-set-days" min="1" max="5" step="0.5" value="3" placeholder="3" /></div>
           </div>
           <div class="j-hint">Omnipod pods: every 3 days &nbsp;|&nbsp; Tubed sets: every 2-3 days &nbsp;|&nbsp; Enter your average</div>
@@ -239,14 +239,14 @@
       <div><h2>Finger-prick testing</h2><p>Blood glucose meter checks</p></div>
     </div>
     <label class="j-toggle" for="prick-toggle">
-      <div><div class="t-label">I have finger-pricked to test BG</div><div class="t-sub">BGM / glucometer use</div></div>
+      <div><div class="t-label">I check BG with finger pricks</div><div class="t-sub">BGM / glucometer use</div></div>
       <span class="j-switch"><input type="checkbox" id="prick-toggle" onchange="toggleSection('prick-toggle','prick-section')" /><span class="j-sw"></span></span>
     </label>
     <div id="prick-section" class="j-sub">
       <div id="prick-periods">
         <div class="j-period" data-type="prick">
           <div class="j-row">
-            <div class="j-field"><label>Years of finger pricking</label><input type="number" class="prick-years" min="0" max="80" step="0.5" placeholder="e.g. 15" /></div>
+            <div class="j-field"><label>Years of finger-prick testing</label><input type="number" class="prick-years" min="0" max="80" step="0.5" placeholder="e.g. 15" /></div>
             <div class="j-field"><label>Pricks per day</label><input type="number" class="prick-day" min="1" max="20" step="1" value="6" placeholder="6" /></div>
           </div>
         </div>
@@ -262,7 +262,7 @@
       <div><h2>Continuous glucose monitor (CGM)</h2><p>Sensors worn on the body</p></div>
     </div>
     <label class="j-toggle" for="cgm-toggle">
-      <div><div class="t-label">I have used a CGM</div><div class="t-sub">Dexcom, Libre, Guardian, Eversense, etc.</div></div>
+      <div><div class="t-label">I use a CGM</div><div class="t-sub">Dexcom, Libre, Guardian, Eversense, etc.</div></div>
       <span class="j-switch"><input type="checkbox" id="cgm-toggle" onchange="toggleSection('cgm-toggle','cgm-section')" /><span class="j-sw"></span></span>
     </label>
     <div id="cgm-section" class="j-sub">
@@ -297,7 +297,7 @@
               </optgroup>
             </select>
           </div>
-          <div class="j-field"><label>Years wearing this CGM</label><input type="number" class="cgm-years" min="0" max="40" step="0.5" placeholder="e.g. 4" /></div>
+          <div class="j-field"><label>Years using this CGM</label><input type="number" class="cgm-years" min="0" max="40" step="0.5" placeholder="e.g. 4" /></div>
         </div>
       </div>
       <button class="j-add" onclick="addCGMPeriod()">+ Add another CGM / period</button>
@@ -502,7 +502,7 @@
     }
     if (juiceBoxes > 0) persp.push({ pico: '\uD83D\uDEC1', text: fmt(juiceBoxes) + ' juice boxes is about <strong>' + fmtDec(juiceBoxes * 0.2, 0) + ' litres</strong> of juice.' });
     persp.push({ pico: '\uD83C\uDF0D', text: 'On a CGM you have generated roughly <strong>' + fmt(Math.round(daysDx * 288)) + ' glucose readings</strong>, more data points than most long-term studies.' });
-    persp.push({ pico: '\uD83D\uDCAA', text: 'Every one of those ' + fmt(Math.round(daysDx)) + ' days asked you to make medical decisions most people never think about. That takes strength.' });
+    persp.push({ pico: '\uD83D\uDCAA', text: 'Every one of those ' + fmt(Math.round(daysDx)) + ' days asks you to make medical decisions most people never think about. That takes strength.' });
     document.getElementById('j-perspective').innerHTML = '<h3>Put it in perspective</h3>' +
       persp.map(function(p){ return '<div class="j-persp-item"><span class="pico">' + p.pico + '</span><span>' + p.text + '</span></div>'; }).join('');
 
