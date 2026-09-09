@@ -422,6 +422,7 @@ details p {
 .affil-box li { margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: #3A372F; }
 .affil-box li a { color: #1C6459; font-weight: 600; }
 .affil-box .affil-disclosure { font-size: 12px; color: #8A867C; margin: 0; }
+.affil-note { font-size: 12px; color: #8A867C; margin: 10px 0 28px; }
 
 /* ── Horizontal scroll for wide tables on mobile ── */
 .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; border: 1px solid var(--border); border-radius: 10px; }
