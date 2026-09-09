@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="p:domain_verify" content="b1b3646e99ec0552ab16246da0aaa8b3"/>
+
+  <!-- SEO: title + description -->
+  <title>About | Diabetes Travel Helper</title>
+  <meta name="description" content="Free diabetes travel calculator. Enter your trip length, pump type, CGM, and insulin dose — get an exact packing list with backup supplies built in. Built by a diabetic, for diabetics."/>
+
+  <!-- Fixes "GitHub Pages documentation" showing in Google -->
+  <meta property="og:site_name" content="Diabetes Travel Helper"/>
+  <meta property="og:title" content="Diabetes Travel Calculator — Free Packing List for Diabetics"/>
+  <meta property="og:description" content="Calculate exactly how many pump supplies, CGM sensors, insulin, and backup gear to pack for any trip. Free, fast, no account needed."/>
+  <meta property="og:url" content="https://diabetes-packer.github.io/diabetestravelhelper/"/>
+  <meta property="og:type" content="website"/>
+  <!-- Social sharing image -->
+  <meta property="og:image" content="https://diabetes-packer.github.io/diabetestravelhelper/assets/social-banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://diabetes-packer.github.io/diabetestravelhelper/assets/social-banner.png" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://diabetes-packer.github.io/diabetestravelhelper/"/>
+
+  <!-- Structured data: tells Google this is a calculator tool -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Diabetes Travel Calculator",
+    "url": "https://diabetes-packer.github.io/diabetestravelhelper/",
+    "description": "A free calculator that generates a personalized diabetes travel packing list based on trip length, pump type, CGM model, and insulin usage.",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "creator": {
+      "@type": "Person",
+      "description": "Built by a diabetic, for diabetics"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    @media (max-width: 768px) {
+      input, select, textarea, button { font-size: 16px; }
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZWEQF1WNK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VZWEQF1WNK');
+  </script>
+<style>
+.site-nav { border-bottom: 1px solid rgba(28,26,22,0.08); padding: 16px 0; margin-bottom: 0; }
+.site-nav-inner { width: min(1120px, calc(100% - 32px)); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.site-nav-logo { font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; font-weight: 400; color: #1C1A16; text-decoration: none; letter-spacing: -0.01em; }
+.site-nav-logo span { color: #1C6459; font-style: italic; }
+.site-nav-links { display: flex; align-items: center; gap: 24px; }
+.site-nav-links a { font-size: 14px; font-weight: 600; color: #6B6860; text-decoration: none; transition: color 150ms ease; }
+.site-nav-links a:hover { color: #1C1A16; }
+.site-nav-links a.active { color: #1C6459; box-shadow: inset 0 -2px 0 #1C6459; padding-bottom: 4px; }
+.site-nav-tool-btn { padding: 8px 16px; background: #1C6459; color: #fff !important; border-radius: 8px; font-size: 13px !important; font-weight: 600 !important; transition: background 150ms ease !important; }
+.site-nav-tool-btn:hover { background: #0E3830 !important; color: #fff !important; }
+
+@media (max-width: 480px) {
+  .site-nav-tool-btn { display: none; }
+  .site-nav-links { gap: 16px; }
+}
+</style>
+<style>
+.info-wrap { width: min(720px, calc(100% - 32px)); margin: 0 auto; padding: 56px 0 24px; }
+.info-wrap h1 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 5vw, 44px); letter-spacing: -0.02em; margin: 0 0 16px; color: #1C1A16; }
+.info-wrap h2 { font-size: 20px; margin: 32px 0 8px; color: #1C1A16; }
+.info-wrap p, .info-wrap li { color: #3A372F; font-size: 16px; line-height: 1.7; }
+.info-wrap p { margin: 0 0 14px; }
+.info-wrap ul { margin: 0 0 14px 20px; }
+.info-wrap li { margin-bottom: 6px; }
+.info-wrap a { color: #1C6459; }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html" class="site-nav-logo">Diabetes <span>Travel Helper</span></a>
+    <div class="site-nav-links">
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html">Home</a>
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/guides.html">Guides</a>
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/timezone.html">Time Zone Planner</a>
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html" class="site-nav-tool-btn">Packing Calculator</a>
+    </div>
+  </div>
+</nav>
+<main class="info-wrap">
+<h1>About</h1>
+
+<p>Diabetes Travel Helper started with a simple frustration: packing for a trip with diabetes means juggling pump supplies, CGM sensors, insulin, and backups — and forgetting one thing can ruin a trip.</p>
+<p>So we built free tools to take the guesswork out:</p>
+<ul>
+<li><strong>Packing Calculator</strong> — tell it your pump, CGM, and trip length, and it builds a personalized packing list with safety buffers.</li>
+<li><strong>Time Zone Planner</strong> — crossing time zones with insulin? Get a shifted timing schedule for your trip.</li>
+<li><strong>Travel Guides</strong> — plain-English guides on TSA rules, airport security with devices, keeping insulin cool, and more.</li>
+</ul>
+<p>This site is built by a diabetic, for diabetics. Everything here is general guidance — always confirm your diabetes plan with your care team.</p>
+<p><a href="index.html">Try the packing calculator →</a></p>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p class="site-footer-brand">Diabetes Travel Helper — <em>built by a diabetic, for diabetics.</em></p>
+    <nav class="site-footer-links">
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+    <p class="site-footer-disclaimer">General guidance only — not medical advice. Always confirm your diabetes plan with your care team.</p>
+  </div>
+</footer>
+</body>
+</html>
