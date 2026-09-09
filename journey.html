@@ -473,7 +473,7 @@
     if (totalPricks > 0) push({ emoji: '\uD83E\uDE78', value: Math.round(totalPricks), label: 'Finger-prick tests done', note: 'That is ' + fmt(totalPricks) + ' tiny wounds in service of staying safe' });
     if (totalSensors > 0) push({ emoji: '\uD83D\uDCe1', value: Math.round(totalSensors), label: 'CGM sensors worn', note: totalLibreScans > 0 ? 'Plus about ' + fmt(totalLibreScans) + ' manual Libre scans' : fmtDec(totalCGMDays / 365.25, 1) + ' years of continuous glucose data' });
     pushLow({ emoji: '\u26A1', value: Math.round(totalHypos), label: 'Estimated hypo episodes survived', note: 'Based on ' + hyposWeek + ' per week average' });
-    pushLow({ emoji: '\uD83E\uDDC3', value: Math.round(juiceBoxes), label: 'Juice boxes / fast-acting drinks', note: 'About ' + fmtDec(juiceBoxes * 0.2, 0) + ' litres of juice consumed for lows' });
+    pushLow({ emoji: '\uD83E\uDDC3', value: Math.round(juiceBoxes), label: 'Juice boxes / fast-acting drinks', note: 'About ' + fmt(juiceBoxes * 0.2) + ' litres of juice consumed for lows' });
     pushLow({ emoji: '\uD83C\uDF6C', value: Math.round(glucoseTabs), label: 'Glucose / dextrose tablets', note: 'About ' + fmtDec(glucoseTabs * 4 / 1000, 1) + ' kg of glucose tablets' });
     pushLow({ emoji: '\uD83C\uDF6D', value: Math.round(sugarPackets), label: 'Sugar sachets / packets', note: 'The backup that lived in every pocket' });
     push({ emoji: '\uD83C\uDF19', value: Math.round(sleeplessNights), label: 'Nights disrupted by highs / lows', note: 'About ' + fmtDec(lostSleepDays, 0) + ' days of lost sleep total' });
@@ -520,9 +520,11 @@
     var persp = [];
     if (totalInjections > 0 || totalSetChanges > 0){
       var tn = totalInjections + totalSetChanges;
-      persp.push({ pico: '\uD83D\uDCCF', text: 'Your needles and cannulas laid end to end would stretch <strong>' + fmtDec(tn * 0.012 / 1000, 1) + ' km</strong>.' });
+      var needleM = tn * 0.012;
+      var needleText = needleM >= 1000 ? fmtDec(needleM / 1000, 1) + ' km' : fmt(needleM) + ' metres';
+      persp.push({ pico: '\uD83D\uDCCF', text: 'Your needles and cannulas laid end to end would stretch <strong>' + needleText + '</strong>.' });
     }
-    if (juiceBoxes > 0) persp.push({ pico: '\uD83D\uDEC1', text: fmt(juiceBoxes) + ' juice boxes is about <strong>' + fmtDec(juiceBoxes * 0.2, 0) + ' litres</strong> of juice.' });
+    if (juiceBoxes > 0) persp.push({ pico: '\uD83D\uDEC1', text: fmt(juiceBoxes) + ' juice boxes is about <strong>' + fmt(juiceBoxes * 0.2) + ' litres</strong> of juice.' });
     persp.push({ pico: '\uD83C\uDF0D', text: 'On a CGM you have generated roughly <strong>' + fmt(Math.round(daysDx * 288)) + ' glucose readings</strong>, more data points than most long-term studies.' });
     persp.push({ pico: '\uD83D\uDCAA', text: 'Every one of those ' + fmt(Math.round(daysDx)) + ' days asks you to make medical decisions most people never think about. That takes strength.' });
     document.getElementById('j-perspective').innerHTML = '<h3>Put it in perspective</h3>' +
