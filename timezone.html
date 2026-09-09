@@ -29,6 +29,14 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZWEQF1WNK"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VZWEQF1WNK');</script>
 <style>
+.site-nav { border-bottom: 1px solid rgba(28,26,22,0.08); padding: 16px 0; margin-bottom: 0; }
+.site-nav-inner { width: min(1120px, calc(100% - 32px)); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.site-nav-logo { font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; font-weight: 400; color: #1C1A16; text-decoration: none; letter-spacing: -0.01em; }
+.site-nav-logo span { color: #1C6459; font-style: italic; }
+.site-nav-links { display: flex; align-items: center; gap: 24px; }
+.site-nav-links a { font-size: 14px; font-weight: 600; color: #6B6860; text-decoration: none; transition: color 150ms ease; }
+.site-nav-links a:hover { color: #1C1A16; }
+.site-nav-links a.active { color: #1C6459; }
 .schedule-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
 .schedule-table th { text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: #6B6860; padding: 8px 10px; border-bottom: 2px solid rgba(28,26,22,0.10); }
 .schedule-table td { padding: 12px 10px; border-bottom: 1px solid rgba(28,26,22,0.08); vertical-align: top; font-size: 15px; }
@@ -51,7 +59,7 @@
     <div class="site-nav-links">
       <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html">Home</a>
       <a href="https://diabetes-packer.github.io/diabetestravelhelper/guides.html">Guides</a>
-      <a href="https://diabetes-packer.github.io/diabetestravelhelper/index.html" class="site-nav-tool-btn">Packing Calculator</a>
+      <a href="https://diabetes-packer.github.io/diabetestravelhelper/timezone.html" class="active">Time Zone Planner</a>
     </div>
   </div>
 </nav>
@@ -143,11 +151,32 @@
   ];
   var homeSel = document.getElementById('home-tz');
   var destSel = document.getElementById('dest-tz');
-  ZONES.forEach(function(z){
-    var o1 = document.createElement('option'); o1.value = z[0]; o1.textContent = z[1]; homeSel.appendChild(o1);
-    var o2 = document.createElement('option'); o2.value = z[0]; o2.textContent = z[1]; destSel.appendChild(o2);
-  });
+  var depInput = document.getElementById('dep-date');
+  function labelDate(){
+    var v = depInput.value;
+    return v ? new Date(v + 'T12:00:00') : new Date();
+  }
+  function offsetSuffix(tz){
+    var m = tzOffsetMinutes(tz, labelDate());
+    var sign = m < 0 ? '-' : '+';
+    var a = Math.abs(m), h = Math.floor(a/60), mm = a % 60;
+    return ' (UTC' + sign + h + (mm ? ':' + ('0'+mm).slice(-2) : '') + ')';
+  }
+  function buildZoneOptions(){
+    homeSel.innerHTML = ''; destSel.innerHTML = '';
+    ZONES.forEach(function(z){
+      var o1 = document.createElement('option'); o1.value = z[0]; o1.textContent = z[1] + offsetSuffix(z[0]); homeSel.appendChild(o1);
+      var o2 = document.createElement('option'); o2.value = z[0]; o2.textContent = z[1] + offsetSuffix(z[0]); destSel.appendChild(o2);
+    });
+  }
+  buildZoneOptions();
   homeSel.selectedIndex = -1; destSel.selectedIndex = -1;
+  depInput.addEventListener('change', function(){
+    var hv = homeSel.value, dv = destSel.value;
+    buildZoneOptions();
+    if (hv) homeSel.value = hv;
+    if (dv) destSel.value = dv;
+  });
 
   var regimen = null;
   var pills = document.querySelectorAll('#regimen-group .pill-opt');
