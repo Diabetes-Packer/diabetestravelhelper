@@ -37,7 +37,7 @@ A free diabetes travel packing calculator with SEO-targeted blog content. The ca
 ## Calculator CTA — use this block mid-content at peak reader intent
 <div class="cta-box">
   <p>Not sure how much to pack? Our free calculator builds a personalized diabetes packing list based on your pump, CGM, and trip length — with safety buffers built in.</p>
-  <a href="https://diabetes-packer.github.io/diabetestravelhelper/" class="cta-btn">Build my packing list →</a>
+  <a href="https://travelwithdiabetes.com/" class="cta-btn">Build my packing list →</a>
 </div>
 
 ## When touching any existing blog post
