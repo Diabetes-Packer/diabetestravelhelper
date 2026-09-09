@@ -154,7 +154,7 @@ function injectNav() {
       </a>
       <div class="dth-nav-links">
         <a href="${HOME}index.html">Home</a>
-        <a href="${HOME}guides.html">Guides</a>
+        <a href="${HOME}guides.html">Guides</a>         <a href="${HOME}timezone.html">Time Zone Planner</a>
         <a href="${HOME}index.html" class="dth-nav-btn">Packing Calculator</a>
       </div>
     </div>
