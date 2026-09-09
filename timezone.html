@@ -231,13 +231,13 @@
     }
     var dMin = tzOffsetMinutes(dest, dep) - tzOffsetMinutes(home, dep);
     var dH = dMin/60;
-    var dirWord = dH > 0 ? 'east' : 'west';
+    var clockWord = dH > 0 ? 'ahead' : 'behind';
     var dayWord = dH > 0 ? 'shorter' : 'longer';
     var absH = Math.abs(dH);
     var dHLabel = (absH % 1 === 0 ? absH : absH.toFixed(1)) + ' hour' + (absH === 1 ? '' : 's');
     var html = '';
     html += '<div class="card"><h2>Your time zone plan</h2>';
-    html += '<p><strong>' + esc(zoneLabel(home)) + ' → ' + esc(zoneLabel(dest)) + '</strong> · ' + dHLabel + ' ' + dirWord + ', your travel day gets ' + dayWord + '.</p>';
+    html += '<p><strong>' + esc(zoneLabel(home)) + ' → ' + esc(zoneLabel(dest)) + '</strong> · ' + dHLabel + ' ' + clockWord + ', your travel day gets ' + dayWord + '.</p>';
 
     if (absH <= 2){
       html += '<p>Good news: this is a small shift. Keep your normal schedule and set phone alarms to <strong>home time</strong> for the whole trip, no math needed.</p>';
@@ -250,17 +250,17 @@
         html += '<tr><td class="day-label">Return day</td><td>Switch your pump and CGM clock back to <strong>home time</strong> when you land.</td></tr>';
       }
       html += '</table>';
-      html += '<p style="margin-top:12px;">Traveling ' + dirWord + ' means your travel day is ' + dayWord + ' by ' + dHLabel + ', watch for lows if the day is longer, and keep fast-acting glucose handy.</p>';
+      html += '<p style="margin-top:12px;">With the clock ' + (dH > 0 ? 'moving forward' : 'falling back') + ', your travel day is ' + dayWord + ' by ' + dHLabel + '. If the day is longer than usual, watch for lows and keep fast-acting glucose handy.</p>';
     } else {
       var basal = parseTime(document.getElementById('basal-time').value || '21:00');
       var gradualDays = Math.ceil(absH/2);
+      var dirPhrase = dH > 0 ? 'earlier' : 'later';
       html += '<table class="schedule-table"><tr><th>Day</th><th>Take your long-acting insulin at</th></tr>';
-      html += '<tr><td class="day-label">Departure day</td><td><strong>' + fmt(basal) + ' home time</strong> before you fly (that\u2019s ' + fmt(basal + dMin) + ' destination time).</td></tr>';
-      html += '<tr><td class="day-label">At your destination</td><td>Switch to <strong>' + fmt(basal) + ' local time</strong> from your first night there.</td></tr>';
+      html += '<tr><td class="day-label">Departure day</td><td><strong>' + fmt(basal) + ' home time</strong> before you fly (that\u2019s ' + fmt(basal + dMin) + ' destination time).' + (absH > 6 ? ' If you are easing in (below), take it at your shifted time that day instead.' : '') + '</td></tr>';
       if (absH > 6){
-        var dirPhrase = dH > 0 ? 'earlier' : 'later';
-        html += '<tr><td class="day-label">Gentler option</td><td>Big shift? Ease in: move your dose about 2 hours ' + dirPhrase + ' each day, starting <strong>' + gradualDays + ' days before departure</strong>.</td></tr>';
+        html += '<tr><td class="day-label">Recommended for big shifts</td><td>Ease in instead of switching all at once: move your dose about 2 hours ' + dirPhrase + ' each day, starting <strong>' + gradualDays + ' days before departure</strong>, so you land already close to local time. Then keep taking it at <strong>' + fmt(basal) + ' local time</strong>.</td></tr>';
       }
+      html += '<tr><td class="day-label">At your destination</td><td>Switch to <strong>' + fmt(basal) + ' local time</strong> from your first night there.' + (absH > 6 ? ' Heads up: with a shift this big, the gap between your last home dose and your first local dose can be much shorter or longer than the usual 24 hours depending on your flight times, which is why easing in (above) is the safer default.' : '') + '</td></tr>';
       if (retVal){
         html += '<tr><td class="day-label">Return day</td><td>Shift back the same way, <strong>' + fmt(basal) + ' home time</strong> once you\u2019re back' + (absH > 6 ? ', or ease back 2 hours per day' : '') + '.</td></tr>';
       }
