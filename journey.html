@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Diabetes Life in Numbers Calculator, Fun Lifetime Stats Tool</title>
+<title>Diabetes Life in Numbers Calculator: Fun Lifetime Stats</title>
 <meta name="description" content="A fun, free calculator for people with diabetes. Enter your history and see your lifetime totals: injections, finger pricks, sensors, hypos survived. Share your numbers."/>
 <meta property="og:site_name" content="Diabetes Travel Helper"/>
 <meta property="og:title" content="Diabetes Life in Numbers Calculator"/>
@@ -18,6 +18,9 @@
 <link rel="canonical" href="https://travelwithdiabetes.com/journey.html"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Diabetes Life in Numbers Calculator","url":"https://travelwithdiabetes.com/journey.html","description":"A fun, free calculator that estimates lifetime diabetes totals: injections, finger pricks, CGM sensors, hypos survived. Runs entirely in the browser; no data leaves your device.","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"Person","description":"Built by a diabetic, for diabetics"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are these numbers accurate?", "acceptedAnswer": {"@type": "Answer", "text": "They are estimates, not exact counts. The calculator multiplies the averages you enter, such as injections per day or hypos per week, across the years you entered. Treat the results as a fun reflection of your journey, not medical data."}}, {"@type": "Question", "name": "Is my information private?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The calculator runs entirely in your browser. Nothing you enter is sent anywhere, stored, or seen by anyone else."}}, {"@type": "Question", "name": "Do I have to fill in every section?", "acceptedAnswer": {"@type": "Answer", "text": "No. Only your diagnosis year, or years with diabetes, is required. Fill in the sections that apply to you and skip the rest. Empty sections are simply left out of your results."}}, {"@type": "Question", "name": "Why does the low blood sugar section show juice boxes and glucose tablets?", "acceptedAnswer": {"@type": "Answer", "text": "Those are different ways of counting the same hypos, not separate totals. Most people reach for one treatment, not all of them, so pick the number that matches what you use."}}]}
 </script>
 <link rel="stylesheet" href="style.css" />
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -37,7 +40,12 @@
 .site-nav-links a:hover { color: #1C1A16; }
 .site-nav-tool-btn { padding: 8px 16px; background: #1C6459; color: #fff !important; border-radius: 8px; font-size: 13px !important; font-weight: 600 !important; transition: background 150ms ease !important; }
 .site-nav-tool-btn:hover { background: #0E3830 !important; color: #fff !important; }
-@media (max-width: 480px) { .site-nav-tool-btn { display: none; } .site-nav-links { gap: 16px; } }
+@media (max-width: 480px) {
+  .site-nav-inner { flex-wrap: wrap; row-gap: 10px; }
+  .site-nav-links { order: 2; flex: 1 1 100%; justify-content: space-around; gap: 8px; }
+  .site-nav-links a { font-size: 13px; }
+  .site-nav-tool-btn { display: inline-block; padding: 7px 12px; font-size: 12px !important; }
+}
 
 /* ── Journey calculator ── */
 .j-card { background: #fff; border: 1px solid rgba(28,26,22,0.10); border-radius: 14px; padding: 24px; margin-bottom: 20px; }
@@ -56,7 +64,8 @@
 .j-hint { font-size: 0.78rem; color: #6B6860; margin-top: 6px; }
 .j-range-wrap { display: flex; align-items: center; gap: 12px; }
 .j-range-wrap input[type="range"] { flex: 1; -webkit-appearance: none; height: 6px; border-radius: 9px; background: #D8D5D0; cursor: pointer; }
-.j-range-wrap input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #1C6459; border: 2px solid #fff; box-shadow: 0 0 0 2px #1C6459; }
+.j-range-wrap input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #1C6459; border: 2px solid #fff; box-shadow: 0 0 0 2px #1C6459; }
+.j-range-wrap input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; background: #1C6459; border: 2px solid #fff; box-shadow: 0 0 0 2px #1C6459; }
 .j-range-val { min-width: 2.8rem; text-align: center; font-weight: 700; font-size: 1rem; color: #1C6459; }
 .j-toggle { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #F8F7F4; border: 1.5px solid rgba(28,26,22,0.10); border-radius: 10px; margin-bottom: 16px; cursor: pointer; gap: 16px; }
 .j-toggle:hover { border-color: #2A9080; background: #E8F5F2; }
@@ -69,7 +78,7 @@
 .j-switch input:checked + .j-sw { background: #1C6459; }
 .j-switch input:checked + .j-sw::before { transform: translateX(20px); }
 .j-sub { overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.35s ease, opacity 0.25s ease; }
-.j-sub.open { max-height: 1200px; opacity: 1; }
+.j-sub.open { max-height: 4000px; opacity: 1; }
 .j-period { border: 1.5px dashed rgba(28,26,22,0.18); border-radius: 10px; padding: 16px; margin-bottom: 12px; position: relative; }
 .j-remove { position: absolute; top: 10px; right: 10px; background: none; border: none; color: #6B6860; font-size: 1.1rem; cursor: pointer; padding: 4px 8px; border-radius: 6px; line-height: 1; }
 .j-remove:hover { background: #FDE8E8; color: #b91c1c; }
@@ -102,7 +111,14 @@
 .j-persp-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; font-size: 0.92rem; line-height: 1.5; }
 .j-persp-item .pico { font-size: 1.3rem; flex-shrink: 0; }
 .j-share-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+.j-error { display: none; color: #b91c1c; font-size: 0.9rem; font-weight: 600; margin-top: 12px; }
+.j-faq { margin-top: 8px; }
+.j-faq details { background: #fff; border: 1px solid rgba(28,26,22,0.10); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+.j-faq summary { font-weight: 700; font-size: 0.95rem; cursor: pointer; }
+.j-faq details p { font-size: 0.9rem; color: #4a4741; margin: 8px 0 0; line-height: 1.6; }
+.j-section-title { font-size: 1.25rem; margin: 32px 0 16px; }
 .j-disclaimer { background: #FEF8EE; border: 1px solid #F6CC89; border-radius: 10px; padding: 14px 16px; font-size: 0.82rem; color: #8A5A08; margin-top: 20px; line-height: 1.55; }
+@media (prefers-reduced-motion: reduce) { .j-stat { animation: none; } }
 @keyframes jFadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
@@ -125,7 +141,7 @@
   <div class="trust-row" aria-label="trust badges">
     <span class="pill">No account needed</span>
     <span class="pill">Private: runs in your browser</span>
-    <span class="pill">Share your numbers</span>
+    <span class="pill">Free forever</span>
   </div>
 </header>
 <main class="container" style="max-width:780px;">
@@ -133,7 +149,7 @@
   <!-- SECTION 1: Diagnosis -->
   <div class="j-card">
     <div class="j-card-head">
-      <div class="j-icon t1">🩺</div>
+      <div class="j-icon t1" aria-hidden="true">🩺</div>
       <div><h2>Your diabetes diagnosis</h2><p>When did your journey begin?</p></div>
     </div>
     <div class="j-field">
@@ -142,13 +158,21 @@
         <button type="button" id="dxmode-years" onclick="setDxMode('years')">Years with diabetes</button>
       </div>
       <div id="dx-year-wrap">
-        <label>Year diagnosed <span>(or approximate)</span></label>
+        <label>Year of diagnosis <span>(or approximate)</span></label>
         <input type="number" id="year-diagnosed" min="1920" placeholder="e.g. 2005" />
       </div>
       <div id="dx-years-wrap" style="display:none;">
         <label>Years with diabetes</label>
         <input type="number" id="years-diabetic" min="0" max="100" step="0.5" placeholder="e.g. 20" />
       </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Lows and sleep -->
+  <div class="j-card">
+    <div class="j-card-head">
+      <div class="j-icon t3" aria-hidden="true">🌙</div>
+      <div><h2>Lows and sleep</h2><p>Your average week, across your whole diabetes life</p></div>
     </div>
     <div class="j-field">
       <label>Estimated lows (hypos) per week</label>
@@ -164,13 +188,14 @@
         <input type="range" id="nights-per-week" min="0" max="7" step="0.5" value="2" oninput="updateRange('nights-per-week','nights-val',1)" />
         <span class="j-range-val" id="nights-val">2</span>
       </div>
+      <div class="j-hint">Average across your whole diabetes life</div>
     </div>
   </div>
 
-  <!-- SECTION 2: Injections (MDI) -->
+  <!-- SECTION 3: Injections (MDI) -->
   <div class="j-card">
     <div class="j-card-head">
-      <div class="j-icon t2">💉</div>
+      <div class="j-icon t2" aria-hidden="true">💉</div>
       <div><h2>Injections (MDI)</h2><p>Multiple daily injections, pens or syringes</p></div>
     </div>
     <label class="j-toggle" for="mdi-toggle">
@@ -190,10 +215,10 @@
     </div>
   </div>
 
-  <!-- SECTION 3: Insulin Pump -->
+  <!-- SECTION 4: Insulin pump -->
   <div class="j-card">
     <div class="j-card-head">
-      <div class="j-icon t3">⚙️</div>
+      <div class="j-icon t3" aria-hidden="true">⚙️</div>
       <div><h2>Insulin pump</h2><p>Any pump, tubed or patch</p></div>
     </div>
     <label class="j-toggle" for="pump-toggle">
@@ -209,6 +234,9 @@
               <optgroup label="Tubed pumps">
                 <option value="medtronic">Medtronic MiniMed (any model)</option>
                 <option value="tandem">Tandem t:slim X2</option>
+                <option value="tandem-mobi">Tandem Mobi</option>
+                <option value="ilet">Beta Bionics iLet</option>
+                <option value="twiist">Sequel Twiist</option>
                 <option value="roche-combo">Roche Accu-Chek Combo / Spirit</option>
                 <option value="roche-insight">Roche Accu-Chek Insight / Solo</option>
                 <option value="dana-rs">SOOIL Dana RS / Dana-i</option>
@@ -234,14 +262,14 @@
     </div>
   </div>
 
-  <!-- SECTION 4: Finger pricks -->
+  <!-- SECTION 5: Finger-prick testing -->
   <div class="j-card">
     <div class="j-card-head">
-      <div class="j-icon t2">🩸</div>
+      <div class="j-icon t2" aria-hidden="true">🩸</div>
       <div><h2>Finger-prick testing</h2><p>Blood glucose meter checks</p></div>
     </div>
     <label class="j-toggle" for="prick-toggle">
-      <div><div class="t-label">I check BG with finger pricks</div><div class="t-sub">BGM / glucometer use</div></div>
+      <div><div class="t-label">I check blood sugar with finger pricks</div><div class="t-sub">BGM / glucometer use</div></div>
       <span class="j-switch"><input type="checkbox" id="prick-toggle" onchange="toggleSection('prick-toggle','prick-section')" /><span class="j-sw"></span></span>
     </label>
     <div id="prick-section" class="j-sub">
@@ -257,10 +285,10 @@
     </div>
   </div>
 
-  <!-- SECTION 5: CGM -->
+  <!-- SECTION 6: CGM -->
   <div class="j-card">
     <div class="j-card-head">
-      <div class="j-icon t1">📡</div>
+      <div class="j-icon t1" aria-hidden="true">📡</div>
       <div><h2>Continuous glucose monitor (CGM)</h2><p>Sensors worn on the body</p></div>
     </div>
     <label class="j-toggle" for="cgm-toggle">
@@ -277,6 +305,8 @@
                 <option value="dexcom-g5">Dexcom G5</option>
                 <option value="dexcom-g6">Dexcom G6</option>
                 <option value="dexcom-g7" selected>Dexcom G7</option>
+                <option value="dexcom-g7-15day">Dexcom G7 15-Day</option>
+                <option value="dexcom-stelo">Dexcom Stelo (OTC)</option>
                 <option value="dexcom-one">Dexcom ONE / ONE+</option>
               </optgroup>
               <optgroup label="Abbott FreeStyle Libre">
@@ -288,6 +318,7 @@
               <optgroup label="Medtronic">
                 <option value="guardian-3">Guardian 3</option>
                 <option value="guardian-4">Guardian 4</option>
+                <option value="simplera">Simplera</option>
               </optgroup>
               <optgroup label="Eversense (implantable)">
                 <option value="eversense-90">Eversense (90-day)</option>
@@ -308,6 +339,8 @@
 
   <div class="j-calc-wrap">
     <button class="j-cta" onclick="calculate()">Calculate my numbers</button>
+    <p class="j-error" id="j-error">Please enter how long you have had diabetes (diagnosis year or years).</p>
+    <p class="j-hint" style="text-align:center;margin-top:10px;">Takes about a minute. Nothing you enter leaves your device.</p>
   </div>
 
   <div id="j-results">
@@ -327,6 +360,25 @@
     </div>
     <div class="j-disclaimer"><strong>Note:</strong> All figures are estimates based on averages and the data you entered. Hypo frequencies, sleepless nights, and sugar consumed are population-average approximations; your personal experience will vary. This tool is for reflection and fun, not medical advice. Nothing you enter leaves your device.</div>
   </div>
+  <section class="j-faq">
+    <h2 class="j-section-title">Frequently asked questions</h2>
+    <details>
+      <summary>Are these numbers accurate?</summary>
+      <p>They are estimates, not exact counts. The calculator multiplies the averages you enter, such as injections per day or hypos per week, across the years you entered. Treat the results as a fun reflection of your journey, not medical data.</p>
+    </details>
+    <details>
+      <summary>Is my information private?</summary>
+      <p>Yes. The calculator runs entirely in your browser. Nothing you enter is sent anywhere, stored, or seen by anyone else.</p>
+    </details>
+    <details>
+      <summary>Do I have to fill in every section?</summary>
+      <p>No. Only your diagnosis year, or years with diabetes, is required. Fill in the sections that apply to you and skip the rest. Empty sections are simply left out of your results.</p>
+    </details>
+    <details>
+      <summary>Why does the low blood sugar section show juice boxes and glucose tablets?</summary>
+      <p>Those are different ways of counting the same hypos, not separate totals. Most people reach for one treatment, not all of them, so pick the number that matches what you use.</p>
+    </details>
+  </section>
 </main>
 <script>
 (function(){
@@ -335,8 +387,20 @@
 
   window.updateRange = function(inputId, displayId, decimals){
     var v = parseFloat(document.getElementById(inputId).value);
-    document.getElementById(displayId).textContent = v.toFixed(decimals || 0);
+    var txt = (v % 1 === 0) ? v.toFixed(0) : v.toFixed(decimals || 0);
+    document.getElementById(displayId).textContent = txt;
+    paintRange(document.getElementById(inputId));
   };
+  window.paintRange = function(input){
+    if (!input || input.type !== 'range') return;
+    var min = parseFloat(input.min) || 0, max = parseFloat(input.max) || 100;
+    var pct = ((parseFloat(input.value) - min) / (max - min)) * 100;
+    input.style.background = 'linear-gradient(to right, #1C6459 ' + pct + '%, #D8D5D0 ' + pct + '%)';
+  };
+  ['hypos-per-week','nights-per-week'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', function(){ paintRange(el); });
+  });
   updateRange('hypos-per-week','hypo-val',1);
   updateRange('nights-per-week','nights-val',1);
 
@@ -367,14 +431,17 @@
   window.addCGMPeriod = function(){ cloneBlock('cgm-periods'); };
 
   var CGM_DAYS = {
-    'dexcom-g5': 7, 'dexcom-g6': 10, 'dexcom-g7': 10, 'dexcom-one': 10,
+    'dexcom-g5': 7, 'dexcom-g6': 10, 'dexcom-g7': 10, 'dexcom-g7-15day': 15, 'dexcom-stelo': 15, 'dexcom-one': 10,
     'libre-1': 14, 'libre-2': 14, 'libre-3': 15, 'libre-3plus': 15,
-    'guardian-3': 7, 'guardian-4': 7,
+    'guardian-3': 7, 'guardian-4': 7, 'simplera': 7,
     'eversense-90': 90, 'eversense-180': 180, 'eversense-365': 365,
     'other-cgm': 10
   };
 
   function animateCounter(el, target, duration){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      el.textContent = Math.round(target).toLocaleString(); return;
+    }
     duration = duration || 1200;
     var start = performance.now();
     function step(now){
@@ -393,6 +460,15 @@
 
   var dxMode = 'year';
   window.setDxMode = function(mode){
+    if (mode !== dxMode){
+      if (mode === 'years'){
+        var y = parseInt(document.getElementById('year-diagnosed').value) || 0;
+        if (y > 0) document.getElementById('years-diabetic').value = Math.max(0, CURRENT_YEAR - y);
+      } else {
+        var yrs = parseFloat(document.getElementById('years-diabetic').value) || 0;
+        if (yrs > 0) document.getElementById('year-diagnosed').value = Math.round(CURRENT_YEAR - yrs);
+      }
+    }
     dxMode = mode;
     document.getElementById('dxmode-year').classList.toggle('active', mode === 'year');
     document.getElementById('dxmode-years').classList.toggle('active', mode === 'years');
@@ -408,7 +484,13 @@
     } else {
       yearsDx = parseFloat(document.getElementById('years-diabetic').value) || 0;
     }
-    if (yearsDx <= 0){ alert('Please enter how long you have had diabetes (diagnosis year or years).'); return; }
+    if (yearsDx <= 0){
+      var err = document.getElementById('j-error');
+      err.style.display = 'block';
+      err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    document.getElementById('j-error').style.display = 'none';
 
     var daysDx = yearsDx * 365.25;
     var weeksDx = yearsDx * 52.18;
@@ -464,7 +546,7 @@
       { id: 'journey', title: 'Your journey', sub: 'The headline numbers of a life with diabetes.', cards: [] },
       { id: 'insulin', title: 'Insulin delivery', sub: 'Every dose, every site change.', cards: [] },
       { id: 'monitor', title: 'Blood sugar monitoring', sub: 'Every check that kept you in range.', cards: [] },
-      { id: 'low', title: 'Low blood sugar treatments', sub: 'Every low you have treated, broken down by what you reached for.', cards: [] },
+      { id: 'low', title: 'Low blood sugar treatments', sub: 'The same hypos, counted four ways. Most people reach for one of these, not all four.', cards: [] },
       { id: 'sleep', title: 'Sleep', sub: 'The nights diabetes would not let you rest.', cards: [] }
     ];
     var accent = ['a','b','c','d'];
@@ -477,14 +559,14 @@
     }
 
     pushTo('journey', { emoji: '\uD83D\uDCC5', value: Math.round(daysDx), label: 'Days living with diabetes', note: fmtDec(yearsDx,1) + ' years, and counting' });
-    if (totalInjections > 0) pushTo('insulin', { emoji: '\uD83D\uDC89', value: Math.round(totalInjections), label: 'Insulin injections given', note: 'Needles laid end-to-end: about ' + fmtDec(totalInjections * 0.012 / 1000, 1) + ' km' });
-    if (totalSetChanges > 0) pushTo('insulin', { emoji: '\u2699\uFE0F', value: Math.round(totalSetChanges), label: 'Infusion sets / pods changed', note: fmtDec(totalPumpDays / 365.25, 1) + ' years with a pump attached' });
+    if (totalInjections > 0) pushTo('insulin', { emoji: '\uD83D\uDC89', value: Math.round(totalInjections), label: 'Insulin injections given', note: (function(){ var m = totalInjections * 0.012; return 'Needles laid end-to-end: about ' + (m >= 1000 ? fmtDec(m / 1000, 1) + ' km' : fmt(m) + ' metres'); })() });
+    if (totalSetChanges > 0) pushTo('insulin', { emoji: '\uD83D\uDD04', value: Math.round(totalSetChanges), label: 'Infusion sets / pods changed', note: fmtDec(totalPumpDays / 365.25, 1) + ' years with a pump attached' });
     if (totalPricks > 0) pushTo('monitor', { emoji: '\uD83E\uDE78', value: Math.round(totalPricks), label: 'Finger-prick tests done', note: 'That is ' + fmt(totalPricks) + ' tiny wounds in service of staying safe' });
-    if (totalSensors > 0) pushTo('monitor', { emoji: '\uD83D\uDCe1', value: Math.round(totalSensors), label: 'CGM sensors worn', note: totalLibreScans > 0 ? 'Plus about ' + fmt(totalLibreScans) + ' manual Libre scans' : fmtDec(totalCGMDays / 365.25, 1) + ' years of continuous glucose data' });
+    if (totalSensors > 0) pushTo('monitor', { emoji: '\uD83E\uDE79', value: Math.round(totalSensors), label: 'CGM sensors worn', note: totalLibreScans > 0 ? 'Plus about ' + fmt(totalLibreScans) + ' manual Libre scans' : fmtDec(totalCGMDays / 365.25, 1) + ' years of continuous glucose data' });
     pushTo('low', { emoji: '\u26A1', value: Math.round(totalHypos), label: 'Estimated hypo episodes survived', note: 'Based on ' + hyposWeek + ' per week average' });
-    pushTo('low', { emoji: '\uD83E\uDDC3', value: Math.round(juiceBoxes), label: 'Juice boxes / fast-acting drinks', note: 'About ' + fmt(juiceBoxes * 0.2) + ' litres of juice consumed for lows' });
-    pushTo('low', { emoji: '\uD83C\uDF6C', value: Math.round(glucoseTabs), label: 'Glucose / dextrose tablets', note: 'About ' + fmtDec(glucoseTabs * 4 / 1000, 1) + ' kg of glucose tablets' });
-    pushTo('low', { emoji: '\uD83C\uDF6D', value: Math.round(sugarPackets), label: 'Sugar sachets / packets', note: 'The backup that lived in every pocket' });
+    pushTo('low', { emoji: '\uD83E\uDDC3', value: Math.round(juiceBoxes), label: 'Juice boxes / fast-acting drinks', note: 'The same lows as juice boxes, about ' + fmt(juiceBoxes * 0.2) + ' litres' });
+    pushTo('low', { emoji: '\uD83C\uDF6C', value: Math.round(glucoseTabs), label: 'Glucose / dextrose tablets', note: 'The same lows as glucose tablets, about ' + fmtDec(glucoseTabs * 4 / 1000, 1) + ' kg' });
+    pushTo('low', { emoji: '\uD83C\uDF6D', value: Math.round(sugarPackets), label: 'Sugar sachets / packets', note: 'The same lows as sugar packets, the backup in every pocket' });
     pushTo('sleep', { emoji: '\uD83C\uDF19', value: Math.round(sleeplessNights), label: 'Nights disrupted by highs / lows', note: 'About ' + fmtDec(lostSleepDays, 0) + ' days of lost sleep total' });
 
     var alarmBeeps = Math.round(totalCGMDays * 3.5);
@@ -492,13 +574,13 @@
 
     pushTo('journey', { emoji: '\uD83C\uDFE5', value: Math.round(yearsDx * 4), label: 'Estimated endo / clinic visits', note: 'Waiting rooms, blood draws, HbA1c results' });
     var totalCarbsG = totalHypos * 18;
-    pushTo('low', { emoji: '\uD83C\uDF6B', value: Math.round(totalCarbsG / 1000), label: 'Kg of fast carbs eaten for lows', note: fmt(totalCarbsG) + ' g of sugar swallowed to stay safe' });
+    pushTo('low', { emoji: '\uD83C\uDF6B', value: Math.round(totalCarbsG / 1000), label: 'kg of fast carbs eaten for lows', note: fmt(totalCarbsG) + ' g of sugar swallowed to stay safe' });
 
     function makeCard(s, i){
       var card = document.createElement('div');
       card.className = 'j-stat ' + s.accent;
       card.style.animationDelay = (i * 60) + 'ms';
-      card.innerHTML = '<span class="j-emoji">' + s.emoji + '</span>' +
+      card.innerHTML = '<span class="j-emoji" aria-hidden="true">' + s.emoji + '</span>' +
         '<div class="j-value" data-target="' + s.value + '">0</div>' +
         '<div class="j-label">' + s.label + '</div>' +
         '<div class="j-note">' + s.note + '</div>';
@@ -534,11 +616,11 @@
       var needleText = needleM >= 1000 ? fmtDec(needleM / 1000, 1) + ' km' : fmt(needleM) + ' metres';
       persp.push({ pico: '\uD83D\uDCCF', text: 'Your needles and cannulas laid end to end would stretch <strong>' + needleText + '</strong>.' });
     }
-    if (juiceBoxes > 0) persp.push({ pico: '\uD83D\uDEC1', text: fmt(juiceBoxes) + ' juice boxes is about <strong>' + fmt(juiceBoxes * 0.2) + ' litres</strong> of juice.' });
-    persp.push({ pico: '\uD83C\uDF0D', text: 'On a CGM you have generated roughly <strong>' + fmt(Math.round(daysDx * 288)) + ' glucose readings</strong>, more data points than most long-term studies.' });
+    if (juiceBoxes > 0) persp.push({ pico: '\uD83E\uDDC3', text: (Math.round(juiceBoxes) === 1 ? fmt(juiceBoxes) + ' juice box is' : fmt(juiceBoxes) + ' juice boxes are') + ' about <strong>' + fmt(juiceBoxes * 0.2) + ' litres</strong> of juice.' });
+    if (totalCGMDays > 0) persp.push({ pico: '\uD83C\uDF0D', text: 'On a CGM you have generated roughly <strong>' + fmt(Math.round(totalCGMDays * 288)) + ' glucose readings</strong>, more data points than most long-term studies.' });
     persp.push({ pico: '\uD83D\uDCAA', text: 'Every one of those ' + fmt(Math.round(daysDx)) + ' days asks you to make medical decisions most people never think about. That takes strength.' });
     document.getElementById('j-perspective').innerHTML = '<h3>Put it in perspective</h3>' +
-      persp.map(function(p){ return '<div class="j-persp-item"><span class="pico">' + p.pico + '</span><span>' + p.text + '</span></div>'; }).join('');
+      persp.map(function(p){ return '<div class="j-persp-item"><span class="pico" aria-hidden="true">' + p.pico + '</span><span>' + p.text + '</span></div>'; }).join('');
 
     // Build share text (the viral loop: challenge a friend)
     var bits = [fmt(Math.round(daysDx)) + ' days with diabetes'];
