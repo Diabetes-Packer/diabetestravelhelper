@@ -139,8 +139,8 @@ const ARTICLES = [
   }
 ];
 
-const BASE = "https://diabetes-packer.github.io/diabetestravelhelper/Blogs/";
-const HOME = "https://diabetes-packer.github.io/diabetestravelhelper/";
+const BASE = "https://travelwithdiabetes.com/Blogs/";
+const HOME = "https://travelwithdiabetes.com/";
 
 // ── Nav: inject fully responsive site-wide navigation ──
 function injectNav() {
