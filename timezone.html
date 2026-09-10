@@ -59,6 +59,7 @@
   .site-nav-links a { font-size: 13px; }
   .site-nav-tool-btn { display: inline-block; padding: 7px 12px; font-size: 12px !important; }
 }
+.tz-error { color: #b91c1c; font-size: 0.9rem; font-weight: 600; margin: 2px 0 0; }
 </style>
 </head>
 <body>
@@ -94,10 +95,12 @@
       <div class="block" style="display:grid;gap:7px;">
         <label for="dest-tz" style="font-weight:600;font-size:15px;">Destination time zone</label>
         <select id="dest-tz" required></select>
+        <span class="help" style="font-size:13px;color:#6B6860;">The UTC offsets update automatically for your travel dates, including daylight saving.</span>
       </div>
       <div class="block" style="display:grid;gap:7px;">
         <label for="dep-date" style="font-weight:600;font-size:15px;">Departure date</label>
         <input type="date" id="dep-date" required />
+        <p class="tz-error" id="dep-error" hidden>Please pick a departure date, the plan needs it to get your time zone offsets right.</p>
       </div>
       <div class="block" style="display:grid;gap:7px;">
         <label for="ret-date" style="font-weight:600;font-size:15px;">Return date <span class="pill optional">optional</span></label>
@@ -110,6 +113,7 @@
           <button type="button" class="pill-opt" data-value="pump" role="radio" aria-checked="false">Insulin pump</button>
           <button type="button" class="pill-opt" data-value="mdi" role="radio" aria-checked="false">Daily injections (MDI)</button>
         </div>
+        <p class="tz-error" id="regimen-error" hidden>Please choose your regimen (pump or daily injections).</p>
       </div>
       <div class="block" id="basal-block" style="display:none;gap:7px;">
         <label for="basal-time" style="font-weight:600;font-size:15px;">Usual long-acting (basal) insulin time</label>
@@ -221,7 +225,19 @@
 
   document.getElementById('tz-form').addEventListener('submit', function(e){
     e.preventDefault();
-    if (!regimen){ alert('Please choose your regimen (pump or daily injections).'); return; }
+    var depInputEl = document.getElementById('dep-date');
+    var depError = document.getElementById('dep-error');
+    var regError = document.getElementById('regimen-error');
+    var depBad = !depInputEl.value;
+    var regBad = !regimen;
+    depError.hidden = !depBad;
+    regError.hidden = !regBad;
+    if (depBad || regBad){
+      var firstBad = depBad ? depInputEl : document.getElementById('regimen-group');
+      firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+      if (firstBad.focus) firstBad.focus({preventScroll:true});
+      return;
+    }
     var home = homeSel.value, dest = destSel.value;
     var dep = new Date(document.getElementById('dep-date').value + 'T12:00:00');
     var retVal = document.getElementById('ret-date').value;
@@ -247,13 +263,13 @@
     } else if (regimen === 'pump'){
       html += '<p>Your pump delivers basal insulin continuously, so there is no schedule to shift. The main job is keeping your devices on the right clock:</p>';
       html += '<table class="schedule-table"><tr><th>When</th><th>What to do</th></tr>';
-      html += '<tr><td class="day-label">Departure day</td><td>Keep your pump and CGM on <strong>home time</strong> during the flight, one consistent clock avoids confusion. Bolus with meals as usual.</td></tr>';
-      html += '<tr><td class="day-label">On arrival</td><td>Update your pump and CGM clock to <strong>destination time</strong>. Your basal keeps running, nothing else changes.</td></tr>';
+      html += '<tr><td class="day-label">Departure day</td><td>Keep your pump and CGM on <strong>home time</strong> while you are in the air, one consistent clock avoids confusion. Bolus for meals as usual.</td></tr>';
+      html += '<tr><td class="day-label">Once you land</td><td>Update your pump and CGM clock to <strong>destination time</strong>. Your basal keeps running, nothing else changes.</td></tr>';
       if (retVal){
         html += '<tr><td class="day-label">Return day</td><td>Switch your pump and CGM clock back to <strong>home time</strong> when you land.</td></tr>';
       }
       html += '</table>';
-      html += '<p style="margin-top:12px;">With the clock ' + (dH > 0 ? 'moving forward' : 'falling back') + ', your travel day is ' + dayWord + ' by ' + dHLabel + '. If the day is longer than usual, watch for lows and keep fast-acting glucose handy.</p>';
+      html += '<p style="margin-top:12px;">With the clock ' + (dH > 0 ? 'moving forward' : 'falling back') + ', your travel day is ' + dayWord + ' by ' + dHLabel + '. ' + (dH > 0 ? 'A shorter day can push numbers up, so check a little more often than usual.' : 'If the day is longer than usual, watch for lows and keep fast-acting glucose handy.') + '</p>';
     } else {
       var basal = parseTime(document.getElementById('basal-time').value || '21:00');
       var gradualDays = Math.ceil(absH/2);

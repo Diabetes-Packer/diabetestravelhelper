@@ -66,6 +66,7 @@
 .j-range-wrap input[type="range"] { flex: 1; -webkit-appearance: none; height: 6px; border-radius: 9px; background: #D8D5D0; cursor: pointer; }
 .j-range-wrap input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #1C6459; border: 2px solid #fff; box-shadow: 0 0 0 2px #1C6459; }
 .j-range-wrap input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; background: #1C6459; border: 2px solid #fff; box-shadow: 0 0 0 2px #1C6459; }
+.j-range-scale { display: flex; justify-content: space-between; font-size: 0.72rem; color: #8A877F; margin-top: 2px; padding-right: 3.6rem; }
 .j-range-val { min-width: 2.8rem; text-align: center; font-weight: 700; font-size: 1rem; color: #1C6459; }
 .j-toggle { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #F8F7F4; border: 1.5px solid rgba(28,26,22,0.10); border-radius: 10px; margin-bottom: 16px; cursor: pointer; gap: 16px; }
 .j-toggle:hover { border-color: #2A9080; background: #E8F5F2; }
@@ -181,7 +182,8 @@
         <input type="range" id="hypos-per-week" min="0" max="20" step="0.5" value="2" oninput="updateRange('hypos-per-week','hypo-val',1)" />
         <span class="j-range-val" id="hypo-val">2</span>
       </div>
-      <div class="j-hint">Average across your whole diabetes life</div>
+      <div class="j-range-scale" aria-hidden="true"><span>0</span><span>20 per week</span></div>
+      <div class="j-hint">Think of a typical week, a rough guess is fine</div>
     </div>
     <div class="j-field">
       <label>Average nights per week disrupted by highs / lows</label>
@@ -189,7 +191,8 @@
         <input type="range" id="nights-per-week" min="0" max="7" step="0.5" value="2" oninput="updateRange('nights-per-week','nights-val',1)" />
         <span class="j-range-val" id="nights-val">2</span>
       </div>
-      <div class="j-hint">Average across your whole diabetes life</div>
+      <div class="j-range-scale" aria-hidden="true"><span>0</span><span>7 per week</span></div>
+      <div class="j-hint">Think of a typical week, a rough guess is fine</div>
     </div>
   </div>
 
@@ -200,7 +203,7 @@
       <div><h2>Injections (MDI)</h2><p>Multiple daily injections, pens or syringes</p></div>
     </div>
     <label class="j-toggle" for="mdi-toggle">
-      <div><div class="t-label">I use(d) injections / pens</div><div class="t-sub">Include any period on MDI</div></div>
+      <div><div class="t-label">I use or used injections / pens</div><div class="t-sub">Include any period on MDI</div></div>
       <span class="j-switch"><input type="checkbox" id="mdi-toggle" onchange="toggleSection('mdi-toggle','mdi-section')" /><span class="j-sw"></span></span>
     </label>
     <div id="mdi-section" class="j-sub">
@@ -223,7 +226,7 @@
       <div><h2>Insulin pump</h2><p>Any pump, tubed or patch</p></div>
     </div>
     <label class="j-toggle" for="pump-toggle">
-      <div><div class="t-label">I use(d) an insulin pump</div><div class="t-sub">Include all pump periods</div></div>
+      <div><div class="t-label">I use or used an insulin pump</div><div class="t-sub">Include all pump periods</div></div>
       <span class="j-switch"><input type="checkbox" id="pump-toggle" onchange="toggleSection('pump-toggle','pump-section')" /><span class="j-sw"></span></span>
     </label>
     <div id="pump-section" class="j-sub">
@@ -270,7 +273,7 @@
       <div><h2>Finger-prick testing</h2><p>Blood glucose meter checks</p></div>
     </div>
     <label class="j-toggle" for="prick-toggle">
-      <div><div class="t-label">I check(ed) blood sugar with finger pricks</div><div class="t-sub">BGM / glucometer use</div></div>
+      <div><div class="t-label">I check or checked blood sugar with finger pricks</div><div class="t-sub">BGM / glucometer use</div></div>
       <span class="j-switch"><input type="checkbox" id="prick-toggle" onchange="toggleSection('prick-toggle','prick-section')" /><span class="j-sw"></span></span>
     </label>
     <div id="prick-section" class="j-sub">
@@ -293,7 +296,7 @@
       <div><h2>Continuous glucose monitor (CGM)</h2><p>Sensors worn on the body</p></div>
     </div>
     <label class="j-toggle" for="cgm-toggle">
-      <div><div class="t-label">I use(d) a CGM</div><div class="t-sub">Dexcom, Libre, Guardian, Eversense, etc.</div></div>
+      <div><div class="t-label">I use or used a CGM</div><div class="t-sub">Dexcom, Libre, Guardian, Eversense, etc.</div></div>
       <span class="j-switch"><input type="checkbox" id="cgm-toggle" onchange="toggleSection('cgm-toggle','cgm-section')" /><span class="j-sw"></span></span>
     </label>
     <div id="cgm-section" class="j-sub">

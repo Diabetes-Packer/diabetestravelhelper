@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <link rel="canonical" href="https://travelwithdiabetes.com/index.html">
+  <link rel="canonical" href="https://travelwithdiabetes.com/results.html">
   <meta name="description" content="Your personalized diabetes travel packing list, exact quantities for your pump, CGM, insulin, and backup supplies. Free calculator, no account needed.">
   <title>Your Diabetes Travel Packing List, Diabetes Travel Helper</title>
   <link rel="stylesheet" href="style.css">
@@ -318,6 +318,7 @@ const PRODUCTS = {
     desc: 'Silicone medical ID bracelet with a custom-engraved stainless steel ID plate. Alerts first responders to your diabetes in an emergency.',
     tag: 'device',
     showFor: ['universal'],
+    img: 'https://m.media-amazon.com/images/I/61US9Mvc7PL.jpg',
     url: 'https://www.amazon.com/ROAD-iD-Elite-Medical-Alert-Bracelet/dp/B01LQDVR2E?linkCode=ll2&tag=diabetestrave-20'
   },
 
@@ -627,15 +628,45 @@ function copyList() {
 }
 
 async function shareList() {
-  const url = window.location.href;
+  const url = cleanShareUrl();
   if (navigator.share) {
     try { await navigator.share({ title: 'My Diabetes Travel Packing List', url }); }
     catch(e) { if (e.name !== 'AbortError') fallbackCopy(url); }
   } else { fallbackCopy(url); }
 }
 
+function cleanShareUrl(){
+  var src = new URLSearchParams(window.location.search);
+  var defaults = { days:'7', pump:'none', cgm:'none', lows:'no', buffer:'no', set_days:'3', res_units:'180', cart_units:'300', ilet_units:'180' };
+  var out = new URLSearchParams();
+  src.forEach(function(v, k){
+    if (v === null || v === '') return;
+    if (defaults[k] !== undefined && String(v) === defaults[k]) return;
+    out.set(k, v);
+  });
+  var q = out.toString();
+  return window.location.origin + window.location.pathname + (q ? '?' + q : '');
+}
+
+function legacyCopy(text){
+  try {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  } catch(e){}
+}
+
 function fallbackCopy(url) {
-  navigator.clipboard.writeText(url).then(() => showToast('shareToast'));
+  function done(){ showToast('shareToast'); }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(done).catch(function(){ legacyCopy(url); done(); });
+  } else {
+    legacyCopy(url); done();
+  }
 }
 
 function showToast(id) {
