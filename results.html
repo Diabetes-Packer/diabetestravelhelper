@@ -518,7 +518,11 @@ const formData = {
 };
 
 const pumpNames = { none:'No pump', omnipod:'Omnipod 5', tandem:'Tandem t:slim X2', tandem_mobi:'Tandem Mobi', medtronic:'Medtronic 780G / 770G', ilet:'iLet Bionic Pancreas', twiist:'twiist' };
-const cgmNames  = { none:'No CGM', dexcomg6:'Dexcom G6', dexcomg7_10:'Dexcom G7 10-day', dexcomg7_15:'Dexcom G7 15-day', libre:'FreeStyle Libre 2 / 3', guardian:'Medtronic Guardian 4', eversense:'Eversense 365' };
+const cgmNames  = { none:'No CGM', dexcomg6:'Dexcom G6', dexcomg7:'Dexcom G7', dexcomg7_10:'Dexcom G7 10-day', dexcomg7_15:'Dexcom G7 15-day', libre:'FreeStyle Libre 2 / 3', guardian:'Medtronic Guardian 4', eversense:'Eversense 365' };
+
+// Bare 'dexcomg7' can arrive from shared/older links (the form normally upgrades it
+// to dexcomg7_10). Normalize so display, sensor math, and product matching all work.
+if (formData.cgm === 'dexcomg7') formData.cgm = 'dexcomg7_10';
 
 const hasBuffer = formData.buffer === 'yes';
 document.getElementById('heroSummary').textContent = [formData.days + '-day trip', cgmNames[formData.cgm] !== 'No CGM' ? cgmNames[formData.cgm] : null, pumpNames[formData.pump] !== 'No pump' ? pumpNames[formData.pump] : null, hasBuffer ? '20% buffer' : null].filter(Boolean).join(' · ');
@@ -530,9 +534,9 @@ if (!hasBuffer) {
 
 document.getElementById('tripDetailsRows').innerHTML = `
   <div class="row"><span class="label">Trip duration</span><span class="value">${formData.days} days</span></div>
-  <div class="row"><span class="label">Pump</span><span class="value">${pumpNames[formData.pump]}</span></div>
+  <div class="row"><span class="label">Pump</span><span class="value">${pumpNames[formData.pump] || 'Not specified'}</span></div>
   ${formData.units ? `<div class="row"><span class="label">Insulin (units/day)</span><span class="value">${formData.units}</span></div>` : ''}
-  <div class="row"><span class="label">CGM</span><span class="value">${cgmNames[formData.cgm]}</span></div>
+  <div class="row"><span class="label">CGM</span><span class="value">${cgmNames[formData.cgm] || 'Not specified'}</span></div>
   <div class="row"><span class="label">Carries fast-acting glucose</span><span class="value">${formData.lows === 'yes' ? 'Yes' : 'No'}</span></div>
   <div class="row"><span class="label">20% safety buffer</span><span class="value">${hasBuffer ? 'Yes' : 'No'}</span></div>
 `;
