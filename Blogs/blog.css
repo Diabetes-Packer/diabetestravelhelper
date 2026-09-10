@@ -97,8 +97,10 @@ details p a:not([class]):hover {
   color: #fff !important;
 }
 @media (max-width: 480px) {
-  .site-nav-tool-btn { display: none; }
-  .site-nav-links { gap: 16px; }
+  .site-nav-inner { flex-wrap: wrap; row-gap: 10px; }
+  .site-nav-links { order: 2; flex: 1 1 100%; justify-content: center; gap: 8px 16px; flex-wrap: wrap; }
+  .site-nav-links a { font-size: 13px; }
+  .site-nav-tool-btn { display: inline-block; padding: 7px 12px; font-size: 12px !important; }
 }
 
 /* ── Layout ── */
