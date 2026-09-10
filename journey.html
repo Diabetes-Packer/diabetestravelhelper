@@ -175,7 +175,7 @@
       <div><h2>Lows and sleep</h2><p>Your average week, across your whole diabetes life</p></div>
     </div>
     <div class="j-field">
-      <label>Estimated lows (hypos) per week</label>
+      <label>Average lows (hypos) per week</label>
       <div class="j-range-wrap">
         <input type="range" id="hypos-per-week" min="0" max="20" step="0.5" value="2" oninput="updateRange('hypos-per-week','hypo-val',1)" />
         <span class="j-range-val" id="hypo-val">2</span>
@@ -183,7 +183,7 @@
       <div class="j-hint">Average across your whole diabetes life</div>
     </div>
     <div class="j-field">
-      <label>Nights per week disrupted by highs / lows</label>
+      <label>Average nights per week disrupted by highs / lows</label>
       <div class="j-range-wrap">
         <input type="range" id="nights-per-week" min="0" max="7" step="0.5" value="2" oninput="updateRange('nights-per-week','nights-val',1)" />
         <span class="j-range-val" id="nights-val">2</span>
@@ -564,9 +564,9 @@
     if (totalPricks > 0) pushTo('monitor', { emoji: '\uD83E\uDE78', value: Math.round(totalPricks), label: 'Finger-prick tests done', note: 'That is ' + fmt(totalPricks) + ' tiny wounds in service of staying safe' });
     if (totalSensors > 0) pushTo('monitor', { emoji: '\uD83E\uDE79', value: Math.round(totalSensors), label: 'CGM sensors worn', note: totalLibreScans > 0 ? 'Plus about ' + fmt(totalLibreScans) + ' manual Libre scans' : fmtDec(totalCGMDays / 365.25, 1) + ' years of continuous glucose data' });
     pushTo('low', { emoji: '\u26A1', value: Math.round(totalHypos), label: 'Estimated hypo episodes survived', note: 'Based on ' + hyposWeek + ' per week average' });
-    pushTo('low', { emoji: '\uD83E\uDDC3', value: Math.round(juiceBoxes), label: 'Juice boxes / fast-acting drinks', note: 'The same lows as juice boxes, about ' + fmt(juiceBoxes * 0.2) + ' litres' });
-    pushTo('low', { emoji: '\uD83C\uDF6C', value: Math.round(glucoseTabs), label: 'Glucose / dextrose tablets', note: 'The same lows as glucose tablets, about ' + fmtDec(glucoseTabs * 4 / 1000, 1) + ' kg' });
-    pushTo('low', { emoji: '\uD83C\uDF6D', value: Math.round(sugarPackets), label: 'Sugar sachets / packets', note: 'The same lows as sugar packets, the backup in every pocket' });
+    pushTo('low', { emoji: '\uD83E\uDDC3', value: Math.round(juiceBoxes), label: 'Juice boxes / fast-acting drinks', note: 'about ' + fmt(juiceBoxes * 0.2) + ' litres of juice' });
+    pushTo('low', { emoji: '\uD83C\uDF6C', value: Math.round(glucoseTabs), label: 'Glucose / dextrose tablets', note: 'about ' + fmtDec(glucoseTabs * 4 / 1000, 1) + ' kg of tablets' });
+    pushTo('low', { emoji: '\uD83C\uDF6D', value: Math.round(sugarPackets), label: 'Sugar sachets / packets', note: 'the backup in every pocket' });
     pushTo('sleep', { emoji: '\uD83C\uDF19', value: Math.round(sleeplessNights), label: 'Nights disrupted by highs / lows', note: 'About ' + fmtDec(lostSleepDays, 0) + ' days of lost sleep total' });
 
     var alarmBeeps = Math.round(totalCGMDays * 3.5);
