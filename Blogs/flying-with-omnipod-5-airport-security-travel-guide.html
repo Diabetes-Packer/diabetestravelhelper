@@ -115,25 +115,6 @@
     gtag('js', new Date());
     gtag('config', 'G-VZWEQF1WNK');
   </script>
-<script>
-  // Affiliate click tracking: GA4 affiliate_click event for Amazon affiliate links.
-  document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a') : null;
-    if (!a || !a.href) return;
-    if (a.href.indexOf('amazon.com') === -1 || a.href.indexOf('tag=diabetestrave-20') === -1) return;
-    var m = a.href.match(/\/dp\/([A-Z0-9]{10})/);
-    var text = (a.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100);
-    gtag('event', 'affiliate_click', {
-      page_path: location.pathname,
-      product_asin: m ? m[1] : 'unknown',
-      link_text: text || 'image-or-icon-link'
-    });
-  });
-</script>
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"Diabetes Travel Helper","url":"https://travelwithdiabetes.com/"}
-  </script>
 </head>
 <body>
 
@@ -158,17 +139,8 @@
     <div class="tag">Pump Travel Guide</div>
     <h1>Flying with Omnipod 5: Airport Security &amp; Travel Guide (2026)</h1>
     <p class="intro">Everything Omnipod 5 users need to know before flying in 2026, TSA security rules, which scanners are safe, flight mode settings, cabin pressure effects, and exactly how many pods to pack.</p>
-    <div class="article-meta"><time datetime="2026-09-09">Updated September 2026</time> &nbsp;·&nbsp; 9 min read &nbsp;·&nbsp; By <a href="https://travelwithdiabetes.com/about.html">Diabetes Travel Helper</a></div>
+    <div class="article-meta"><time datetime="2026-09-09">Updated September 2026</time> &nbsp;·&nbsp; 9 min read</div>
   </header>
-
-<div class="tip">
-  <strong>The short answer:</strong> Yes, you can fly with Omnipod 5. Wear the Pod through the walk-through metal detector, but ask for a pat-down instead of the full-body scanner. The Controller goes in a tray through the X-ray belt like a phone, and spare pods ride in your carry-on through X-ray with no problem.
-</div>
-
-  <figure style="margin: 1.5rem 0;">
-    <img src="../assets/images/omnipod-5-airport-hero.jpg" alt="Omnipod 5 pod worn on an upper arm at an airport terminal" style="width:100%;height:auto;border-radius:12px;display:block;" width="1200" height="675" fetchpriority="high" />
-  </figure>
-
 
   <hr class="divider" />
 
@@ -195,7 +167,7 @@
     <strong>What to say at security:</strong> "I'm wearing an Omnipod 5 insulin pump and a CGM. I'd like to request a walk-through metal detector or a pat-down instead of the body scanner." TSA officers cannot require you to remove a worn medical device and must accommodate this request.
   </div>
 
-  <p><em>My own experience:</em> I fly with the Omnipod 5 and I have never opted out of the body scanner. I have never noticed any device problems afterward. That is my personal experience, not a recommendation. Insulet's guidance above is the official line, and it is the one to follow if you want to play it safe.</p>
+  <p><em>My own experience:</em> I have gone through the full-body scanner with my Pod on dozens of times and never noticed any device problems afterward. The Pod usually sets off the alarm, though, so I get a pat-down anyway. That is my personal experience, not a recommendation. Insulet's guidance above is the official line, and it is the one to follow if you want to play it safe.</p>
 
   <h3>The Controller (Handheld Device)</h3>
   <p>The Omnipod 5 Controller goes in the tray with your other electronics and passes through the X-ray belt with your carry-on bag. According to Insulet, the Controller can safely pass through airport X-ray machines. You do not need to request hand inspection for the Controller.</p>
