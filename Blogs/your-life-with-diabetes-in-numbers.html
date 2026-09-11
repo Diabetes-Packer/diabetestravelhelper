@@ -118,7 +118,7 @@
     }
     .numbers-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: 1fr;
       gap: 14px;
       margin-top: 18px;
     }
@@ -126,27 +126,41 @@
       background: rgba(254, 248, 238, 0.07);
       border: 1px solid rgba(246, 204, 137, 0.28);
       border-radius: 12px;
-      padding: 16px 12px;
+      padding: 20px 18px;
       text-align: center;
     }
     .number-card .num {
-      font-size: 1.9rem;
+      font-size: 3.2rem;
       font-weight: 800;
       color: #F6CC89;
-      line-height: 1.15;
+      line-height: 1.1;
     }
     .number-card .label {
-      font-size: 0.88rem;
+      font-size: 1rem;
       line-height: 1.4;
       color: #FEF8EE;
       opacity: 0.92;
-      margin-top: 6px;
+      margin-top: 8px;
     }
     .numbers-punchline {
       text-align: center;
       font-size: 1.15rem;
       font-weight: 700;
       margin: 22px 0 6px;
+    }
+    .numbers-cta {
+      text-align: center;
+      margin: 20px 0 6px;
+    }
+    .numbers-cta a {
+      display: inline-block;
+      background: #F6CC89;
+      color: #0E3830;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 14px 32px;
+      border-radius: 999px;
+      text-decoration: none;
     }
   </style>
   <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
@@ -246,6 +260,8 @@
   </div>
 
   <p class="numbers-punchline">Read that list again. That is what invisible looks like.</p>
+
+  <p class="numbers-cta"><a href="https://travelwithdiabetes.com/journey.html">Calculate your numbers</a></p>
 
   <h2>Show someone who loves you</h2>
 
