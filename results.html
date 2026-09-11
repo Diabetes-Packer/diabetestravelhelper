@@ -238,6 +238,16 @@
   .site-nav-links a { font-size: 13px; }
   .site-nav-tool-btn { display: inline-block; padding: 7px 12px; font-size: 12px !important; }
 }
+
+    /* Print: clean packing checklist */
+    @media print {
+      .site-nav, .site-footer, .page-footer, .copy-toast,
+      .results-adjust-link, .no-print, details.calc { display: none !important; }
+      body { background: #fff; }
+      .container { max-width: none; padding: 0 8px; }
+      .card { box-shadow: none; }
+      #packingList li, .product-card { break-inside: avoid; }
+    }
 </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","name":"Diabetes Travel Helper","url":"https://travelwithdiabetes.com/"}
@@ -278,9 +288,10 @@
           <h2>Packing List</h2>
           <p class="subtle-line" id="packingSubtitle">Includes extra backups for safety</p>
         </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <div class="no-print" style="display:flex; gap:8px; flex-wrap:wrap;">
           <button class="copy-btn" onclick="copyList()">⎘ Copy</button>
           <button class="copy-btn" onclick="shareList()">↗ Share</button>
+          <button class="copy-btn" onclick="window.print()">⎙ Print</button>
         </div>
       </div>
 
