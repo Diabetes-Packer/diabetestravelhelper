@@ -103,6 +103,52 @@
   </script>
 
   <link rel="stylesheet" href="blog.css" />
+  <style>
+    .numbers-showcase {
+      background: linear-gradient(160deg, #0E3830 0%, #1C6459 100%);
+      border-radius: 18px;
+      padding: 30px 26px;
+      margin: 26px 0;
+    }
+    .numbers-showcase .numbers-lead {
+      color: #FEF8EE;
+      font-size: 1.05rem;
+      margin: 0 0 4px;
+      text-align: center;
+    }
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .number-card {
+      background: rgba(254, 248, 238, 0.07);
+      border: 1px solid rgba(246, 204, 137, 0.28);
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+    }
+    .number-card .num {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #F6CC89;
+      line-height: 1.15;
+    }
+    .number-card .label {
+      font-size: 0.88rem;
+      line-height: 1.4;
+      color: #FEF8EE;
+      opacity: 0.92;
+      margin-top: 6px;
+    }
+    .numbers-punchline {
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 22px 0 6px;
+    }
+  </style>
   <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png" />
@@ -188,16 +234,18 @@
 
   <p>Here's what that looks like:</p>
 
-  <ul>
-    <li><strong>4,224</strong> insulin injections</li>
-    <li><strong>2,112</strong> pods changed, eighteen years spent physically attached to a pump</li>
-    <li><strong>52,742</strong> finger pricks</li>
-    <li><strong>176</strong> CGM sensors worn</li>
-    <li><strong>5,018</strong> low blood sugar episodes survived, or <strong>6,021</strong> juice boxes, which is about <strong>1,252 litres</strong></li>
-    <li><strong>3,009</strong> nights of broken sleep</li>
-  </ul>
+  <div class="numbers-showcase">
+    <div class="numbers-grid">
+      <div class="number-card"><div class="num">4,224</div><div class="label">insulin injections</div></div>
+      <div class="number-card"><div class="num">2,112</div><div class="label">pods changed, eighteen years attached to a pump</div></div>
+      <div class="number-card"><div class="num">52,742</div><div class="label">finger pricks</div></div>
+      <div class="number-card"><div class="num">176</div><div class="label">CGM sensors worn</div></div>
+      <div class="number-card"><div class="num">5,018</div><div class="label">lows survived, or 6,021 juice boxes (about 1,252 litres)</div></div>
+      <div class="number-card"><div class="num">3,009</div><div class="label">nights of broken sleep</div></div>
+    </div>
+  </div>
 
-  <p>Read that list again. That is what invisible looks like.</p>
+  <p class="numbers-punchline">Read that list again. That is what invisible looks like.</p>
 
   <h2>Show someone who loves you</h2>
 
