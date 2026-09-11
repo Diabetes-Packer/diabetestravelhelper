@@ -54,6 +54,18 @@ const ARTICLES = [
     emoji: "📡"
   },
   {
+    slug: "omnipod-5-dexcom-g7-travel-guide.html",
+    title: "Omnipod 5 + Dexcom G7 Travel Guide: After 5 Years on G6 (2026)",
+    desc: "Phone vs Controller, pod and sensor change timing around trips, Bluetooth and airplane mode, and the honest first impressions of the G7.",
+    emoji: "🩺"
+  },
+  {
+    slug: "omnipod-pod-failure-travel-backup-plan.html",
+    title: "Pod Failed on Vacation? Your Omnipod Travel Backup Plan (2026)",
+    desc: "The 20% packing rule, why supplies never go in checked luggage, what to do when a pod fails, and the adhesion fix for active trips.",
+    emoji: "🩺"
+  },
+  {
     slug: "diabetes-carry-on-packing-list.html",
     title: "Diabetes Travel Emergency Kit: What to Pack in Your Carry-On (2026)",
     desc: "A real carry-on packing list for Type 1 diabetics traveling with an insulin pump and CGM — built from international travel experience.",
