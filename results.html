@@ -204,6 +204,22 @@
     gtag('js', new Date());
     gtag('config', 'G-VZWEQF1WNK');
   </script>
+<script>
+  // Affiliate click tracking: GA4 affiliate_click event for Amazon affiliate links.
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a || !a.href) return;
+    if (a.href.indexOf('amazon.com') === -1 || a.href.indexOf('tag=diabetestrave-20') === -1) return;
+    var m = a.href.match(/\/dp\/([A-Z0-9]{10})/);
+    var text = (a.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100);
+    gtag('event', 'affiliate_click', {
+      page_path: location.pathname,
+      product_asin: m ? m[1] : 'unknown',
+      link_text: text || 'image-or-icon-link'
+    });
+  });
+</script>
+
 <style>
 .site-nav { border-bottom: 1px solid rgba(28,26,22,0.08); padding: 20px 0; margin-bottom: 0; }
 .site-nav-inner { width: min(1120px, calc(100% - 32px)); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
