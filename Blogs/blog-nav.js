@@ -148,6 +148,12 @@ const ARTICLES = [
     title: "Dexcom G7 International Travel: App Region Locks and How to Prepare (2026)",
     desc: "The app region lock that blindsides G7 travelers abroad, and how to prepare before you leave home.",
     emoji: "🌍"
+  },
+  {
+    slug: "your-life-with-diabetes-in-numbers.html",
+    title: "Your Life with Diabetes, in Numbers (2026)",
+    desc: "How many injections, finger pricks, and sleepless nights has diabetes cost you? Calculate your lifetime stats and share your numbers.",
+    emoji: "🔢"
   }
 ];
 
