@@ -154,6 +154,12 @@ const ARTICLES = [
     title: "Your Life with Diabetes, in Numbers (2026)",
     desc: "How many injections, finger pricks, and sleepless nights has diabetes cost you? Calculate your lifetime stats and share your numbers.",
     emoji: "🔢"
+  },
+  {
+    slug: "pre-bolus-wait-time-trick.html",
+    title: "The Pre-Bolus Trick I Learned on TikTok: Your Glucose Number Is Your Wait Time (2026)",
+    desc: "Your CGM reading tells you how many minutes to wait between bolusing and eating. The divide-by-10 trick, when to use it, and the caveats that matter.",
+    emoji: "⏱️"
   }
 ];
 
