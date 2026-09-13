@@ -99,7 +99,7 @@ details p a:not([class]):hover {
 @media (max-width: 480px) {
   .site-nav-inner { flex-wrap: wrap; row-gap: 10px; }
   .site-nav-links { order: 2; flex: 1 1 100%; justify-content: center; gap: 8px 16px; flex-wrap: wrap; }
-  .site-nav-links a { font-size: 13px; }
+  .site-nav-links a { font-size: 13px; padding: 8px 4px; }
   .site-nav-tool-btn { display: inline-block; padding: 7px 12px; font-size: 12px !important; }
 }
 
@@ -436,6 +436,6 @@ details p {
 .site-footer-brand { font-size: 15px; color: #1C1A16; margin: 0 0 12px; }
 .site-footer-brand em { color: #1C6459; }
 .site-footer-links { display: flex; gap: 22px; justify-content: center; margin: 0 0 12px; flex-wrap: wrap; }
-.site-footer-links a { font-size: 14px; color: #1C6459; text-decoration: none; font-weight: 600; }
+.site-footer-links a { font-size: 14px; color: #1C6459; text-decoration: none; font-weight: 600; padding: 6px 4px; }
 .site-footer-links a:hover { text-decoration: underline; }
 .site-footer-disclaimer { font-size: 12px; color: #8A867C; margin: 0; }
