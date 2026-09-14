@@ -160,6 +160,12 @@ const ARTICLES = [
     title: "The Pre-Bolus Trick I Learned on TikTok: Your Glucose Number Is Your Wait Time (2026)",
     desc: "Your CGM reading tells you how many minutes to wait between bolusing and eating. The divide-by-10 trick, when to use it, and the caveats that matter.",
     emoji: "⏱️"
+  },
+  {
+    slug: "dexcom-g7-first-week-experience.html",
+    title: "My First Week Using the Dexcom G7: My Experience (2026)",
+    desc: "Four days in, my G7 sensor failed at the gym: HIGH on the app, 23 on the meter. What happened and what I learned.",
+    emoji: "📡"
   }
 ];
 
