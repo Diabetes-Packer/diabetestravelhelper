@@ -163,7 +163,7 @@ const ARTICLES = [
   },
   {
     slug: "dexcom-g7-first-week-experience.html",
-    title: "My First Week Using the Dexcom G7: My Experience (2026)",
+    title: "Can the Dexcom G7 Be Wrong? Mine Said HIGH. I Was at 23. (2026)",
     desc: "Four days in, my G7 sensor failed at the gym: HIGH on the app, 23 on the meter. What happened and what I learned.",
     emoji: "📡"
   }
