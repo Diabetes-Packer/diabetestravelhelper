@@ -166,6 +166,12 @@ const ARTICLES = [
     title: "Can the Dexcom G7 Be Wrong? Mine Said HIGH. I Was at 23. (2026)",
     desc: "Four days in, my G7 sensor failed at the gym: HIGH on the app, 23 on the meter. What happened and what I learned.",
     emoji: "📡"
+  },
+  {
+    slug: "holiday-diabetes-travel-playbook.html",
+    title: "Flying Home for the Holidays with Diabetes: The Travel Playbook (2026)",
+    desc: "Crowded airports, delays, weird travel-day blood sugars, and landing into the biggest carb meal of the year. The holiday playbook.",
+    emoji: "🎄"
   }
 ];
 
