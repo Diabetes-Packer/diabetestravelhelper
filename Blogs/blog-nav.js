@@ -172,6 +172,12 @@ const ARTICLES = [
     title: "Flying Home for the Holidays with Diabetes: The Travel Playbook (2026)",
     desc: "Crowded airports, delays, weird travel-day blood sugars, and landing into the biggest carb meal of the year. The holiday playbook.",
     emoji: "🎄"
+  },
+  {
+    slug: "travel-insurance-type-1-diabetes.html",
+    title: "Travel Insurance with Type 1 Diabetes: What to Declare, What It Covers, and What to Check Before You Book (2026)",
+    desc: "Type 1 diabetes counts as a pre-existing condition on most travel insurance. The 14 to 21 day waiver rule, evacuation coverage, CFAR, and a pre-trip checklist.",
+    emoji: "🛡️"
   }
 ];
 
