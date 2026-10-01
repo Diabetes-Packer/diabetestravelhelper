@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "things-diabetics-forget-to-pack.html",
+    title: "7 Things Diabetics Forget to Pack for Travel (2026 Guide)",
+    desc: "Everyone remembers insulin. The 7 supporting items that actually get left behind: a crushproof gear case, a portable charger for your CGM phone, compression socks, and more.",
+    emoji: "\U0001F9F3"
+  },
+  {
     slug: "diabetes-packing-list.html",
     title: "Complete Diabetes Travel Packing List for 2026",
     desc: "Everything you need to pack for safe travel with Type 1 diabetes. TSA rules, insulin storage tips, and climate-specific advice.",
