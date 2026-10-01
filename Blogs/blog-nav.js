@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "flying-with-insulin-pens-vials-airport-security.html",
+    title: "Flying with Insulin Pens and Vials: Airport Security and In-Flight Guide (2026)",
+    desc: "TSA rules for insulin pens, vials, needles, and syringes: X-ray guidance, injecting on the plane, temperature tips, and time zone basics.",
+    emoji: "\U0001F489"
+  },
+  {
     slug: "things-diabetics-forget-to-pack.html",
     title: "7 Things Diabetics Forget to Pack for Travel (2026 Guide)",
     desc: "Everyone remembers insulin. The 7 supporting items that actually get left behind: a crushproof gear case, a portable charger for your CGM phone, compression socks, and more.",
