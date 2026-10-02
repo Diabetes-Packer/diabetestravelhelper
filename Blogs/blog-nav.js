@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "diabetes-road-trip-guide-driving-type-1.html",
+    title: "The Diabetes Road Trip Guide: Driving Safely with Type 1 Diabetes (2026)",
+    desc: "The pre-drive glucose check, the rule of 15 on the shoulder, why insulin never stays in a parked car, glucagon, and the full road-trip checklist.",
+    emoji: "\U0001F697"
+  },
+  {
     slug: "flying-with-insulin-pens-vials-airport-security.html",
     title: "Flying with Insulin Pens and Vials: Airport Security and In-Flight Guide (2026)",
     desc: "TSA rules for insulin pens, vials, needles, and syringes: X-ray guidance, injecting on the plane, temperature tips, and time zone basics.",
