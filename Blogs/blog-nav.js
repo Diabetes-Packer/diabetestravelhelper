@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "insulin-time-zones-adjust-schedule.html",
+    title: "Crossing Time Zones with Diabetes: How to Adjust Your Insulin Schedule (2026)",
+    desc: "Eastbound shortens the day, westbound stretches it. Pump clock changes, long-acting insulin timing for injections, and the care-team conversation to have before you fly.",
+    emoji: "\U0001F552"
+  },
+  {
     slug: "diabetes-road-trip-guide-driving-type-1.html",
     title: "The Diabetes Road Trip Guide: Driving Safely with Type 1 Diabetes (2026)",
     desc: "The pre-drive glucose check, the rule of 15 on the shoulder, why insulin never stays in a parked car, glucagon, and the full road-trip checklist.",
