@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "cruising-with-type-1-diabetes-pump-cgm-playbook.html",
+    title: "Cruising with Type 1 Diabetes: The Pump and CGM Playbook (2026)",
+    desc: "Port security rules for pumps and CGMs, the cabin fridge trap that ruins insulin, pool and shore excursion playbooks, and what to do if something goes wrong at sea.",
+    emoji: "\U0001F6A2"
+  },
+  {
     slug: "insulin-time-zones-adjust-schedule.html",
     title: "Crossing Time Zones with Diabetes: How to Adjust Your Insulin Schedule (2026)",
     desc: "Eastbound shortens the day, westbound stretches it. Pump clock changes, long-acting insulin timing for injections, and the care-team conversation to have before you fly.",
