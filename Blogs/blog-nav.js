@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "halloween-type-1-diabetes-candy-costume-party-playbook.html",
+    title: "Halloween with Type 1 Diabetes: The Candy, Costume, and Party Playbook (2026)",
+    desc: "How to count fun-size candy and bolus for it, the costume lows kit, the alcohol playbook that prevents overnight lows, and the parent trick for the candy haul.",
+    emoji: "\U0001F383"
+  },
+  {
     slug: "cruising-with-type-1-diabetes-pump-cgm-playbook.html",
     title: "Cruising with Type 1 Diabetes: The Pump and CGM Playbook (2026)",
     desc: "Port security rules for pumps and CGMs, the cabin fridge trap that ruins insulin, pool and shore excursion playbooks, and what to do if something goes wrong at sea.",
