@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "skiing-type-1-diabetes-cold-altitude-playbook.html",
+    title: "Skiing with Type 1 Diabetes: The Cold, Altitude, and Powder-Day Playbook (2026)",
+    desc: "Cold, altitude, and all-day activity: the three things a ski trip throws at type 1 diabetes, and the playbook for each.",
+    emoji: "\U0001F3B7"
+  },
+  {
     slug: "halloween-type-1-diabetes-candy-costume-party-playbook.html",
     title: "Halloween with Type 1 Diabetes: The Candy, Costume, and Party Playbook (2026)",
     desc: "How to count fun-size candy and bolus for it, the costume lows kit, the alcohol playbook that prevents overnight lows, and the parent trick for the candy haul.",
