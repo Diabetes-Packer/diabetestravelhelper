@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-glp-1-medications-guide.html",
+    title: "Traveling with GLP-1 Medications: Ozempic, Wegovy, Mounjaro, and Zepbound Travel Rules (2026)",
+    desc: "Ozempic, Wegovy, Mounjaro, and Zepbound on the road: the room-temperature limits for each pen, TSA rules, cooling tips, and the one rule that matters most.",
+    emoji: "\U0001F489"
+  },
+  {
     slug: "skiing-type-1-diabetes-cold-altitude-playbook.html",
     title: "Skiing with Type 1 Diabetes: The Cold, Altitude, and Powder-Day Playbook (2026)",
     desc: "Cold, altitude, and all-day activity: the three things a ski trip throws at type 1 diabetes, and the playbook for each.",
