@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "thanksgiving-type-1-diabetes-day-of-playbook.html",
+    title: "Thanksgiving with Type 1 Diabetes: The Day-Of Playbook (2026)",
+    desc: "Thanksgiving with type 1 diabetes: the carb counts for the classic dishes, the protein-first plate strategy, the delayed fat spike, and the day-of timeline.",
+    emoji: "\U0001F983"
+  },
+  {
     slug: "traveling-with-glp-1-medications-guide.html",
     title: "Traveling with GLP-1 Medications: Ozempic, Wegovy, Mounjaro, and Zepbound Travel Rules (2026)",
     desc: "Ozempic, Wegovy, Mounjaro, and Zepbound on the road: the room-temperature limits for each pen, TSA rules, cooling tips, and the one rule that matters most.",
