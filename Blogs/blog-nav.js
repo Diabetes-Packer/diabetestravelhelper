@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "diabetes-supplies-lost-stolen-travel-recovery.html",
+    title: "Diabetes Supplies Lost or Stolen on a Trip: The Recovery Playbook (2026)",
+    desc: "Your diabetes bag is gone. The exact call order for replacing insulin, pump supplies, and CGM sensors fast, plus the packing habits that make this scenario survivable. (2026)",
+    emoji: "\U0001F198"
+  },
+  {
     slug: "thanksgiving-type-1-diabetes-day-of-playbook.html",
     title: "Thanksgiving with Type 1 Diabetes: The Day-Of Playbook (2026)",
     desc: "Thanksgiving with type 1 diabetes: the carb counts for the classic dishes, the protein-first plate strategy, the delayed fat spike, and the day-of timeline.",
