@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-child-type-1-diabetes-parents-playbook.html",
+    title: "Traveling with a Child Who Has Type 1 Diabetes: The Parent's Playbook (2026)",
+    desc: "The parent's playbook for traveling with a child who has type 1 diabetes: paperwork, packing, the airport, Disney's DAS line pass, and the one-page plan for grandparents and caregivers. (2026)",
+    emoji: "\U0001F9D2"
+  },
+  {
     slug: "diabetes-supplies-lost-stolen-travel-recovery.html",
     title: "Diabetes Supplies Lost or Stolen on a Trip: The Recovery Playbook (2026)",
     desc: "Your diabetes bag is gone. The exact call order for replacing insulin, pump supplies, and CGM sensors fast, plus the packing habits that make this scenario survivable. (2026)",
