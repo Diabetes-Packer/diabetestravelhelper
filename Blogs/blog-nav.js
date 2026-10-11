@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "airport-security-with-diabetes-abroad.html",
+    title: "Airport Security with Diabetes Abroad: What Changes Outside the US (2026)",
+    desc: "Airport security with diabetes outside the US: the UK's CAA card rules for pumps and CGMs, EU liquid and device screening, what to say at a foreign checkpoint, and insulin brand names abroad. (2026)",
+    emoji: "\U0001F6EB"
+  },
+  {
     slug: "traveling-with-child-type-1-diabetes-parents-playbook.html",
     title: "Traveling with a Child Who Has Type 1 Diabetes: The Parent's Playbook (2026)",
     desc: "The parent's playbook for traveling with a child who has type 1 diabetes: paperwork, packing, the airport, Disney's DAS line pass, and the one-page plan for grandparents and caregivers. (2026)",
