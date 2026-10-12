@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "tsa-pat-down-rights-diabetes.html",
+    title: "Insulin Pump and CGM at the Body Scanner: Your TSA Pat-Down Rights (2026)",
+    desc: "Insulin pump or CGM at the TSA body scanner: your right to a pat-down instead, the self-pat-down and hand-swab routine, what TSA cannot do, and the exact sentences to say at the checkpoint. (2026)",
+    emoji: "\U0001F6E1"
+  },
+  {
     slug: "airport-security-with-diabetes-abroad.html",
     title: "Airport Security with Diabetes Abroad: What Changes Outside the US (2026)",
     desc: "Airport security with diabetes outside the US: the UK's CAA card rules for pumps and CGMs, EU liquid and device screening, what to say at a foreign checkpoint, and insulin brand names abroad. (2026)",
