@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "hotel-room-insulin-storage-diabetes.html",
+    title: "Hotel Rooms with Diabetes: Insulin Storage Rules for Travel (2026)",
+    desc: "Hotel nights are the riskiest part of traveling with insulin: minibar fridges, hot rooms, and the room-temperature question. The manufacturer rules for hotel insulin storage, what never goes in the freezer, and the travel checklist.",
+    emoji: "\U0001F3E8"
+  },
+  {
     slug: "sick-day-travel-playbook-type-1-diabetes.html",
     title: "Sick on a Trip with Type 1 Diabetes: The Sick-Day Travel Playbook (2026)",
     desc: "Getting sick on a trip with type 1 diabetes is scarier than getting sick at home. The 2026 sick-day travel playbook: the pre-trip kit, testing rules, the red flags that mean urgent care, and what never to do.",
