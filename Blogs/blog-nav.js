@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "all-inclusive-resort-type-1-diabetes-playbook.html",
+    title: "All-Inclusive Resorts with Type 1 Diabetes: The Buffet, Cocktail, and Beach-Day Playbook (2026)",
+    desc: "Winter escapes to Mexico and the Caribbean are booked in the fall, and the all-inclusive resort breaks every diabetes routine at once: unlimited buffets, sweet cocktails, heat, and long beach days. The 2026 playbook for the buffet line, the swim-up bar, and the sun.",
+    emoji: "\U0001F3DD"
+  },
+  {
     slug: "hotel-room-insulin-storage-diabetes.html",
     title: "Hotel Rooms with Diabetes: Insulin Storage Rules for Travel (2026)",
     desc: "Hotel nights are the riskiest part of traveling with insulin: minibar fridges, hot rooms, and the room-temperature question. The manufacturer rules for hotel insulin storage, what never goes in the freezer, and the travel checklist.",
