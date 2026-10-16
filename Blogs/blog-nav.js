@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "theme-parks-type-1-diabetes-disney-universal-playbook.html",
+    title: "Theme Parks with Type 1 Diabetes: The Disney and Universal Playbook (2026)",
+    desc: "Orlando and Anaheim are the holiday season's biggest family trips, and a park day stacks every diabetes variable at once: heat, miles of walking, coasters tugging at devices, and carb-heavy park food. The 2026 playbook for rides, devices, First Aid, and the queue.",
+    emoji: "\U0001F3A2"
+  },
+  {
     slug: "all-inclusive-resort-type-1-diabetes-playbook.html",
     title: "All-Inclusive Resorts with Type 1 Diabetes: The Buffet, Cocktail, and Beach-Day Playbook (2026)",
     desc: "Winter escapes to Mexico and the Caribbean are booked in the fall, and the all-inclusive resort breaks every diabetes routine at once: unlimited buffets, sweet cocktails, heat, and long beach days. The 2026 playbook for the buffet line, the swim-up bar, and the sun.",
