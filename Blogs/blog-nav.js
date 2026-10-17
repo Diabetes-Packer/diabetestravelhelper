@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "diabetes-devices-charging-travel-power-guide.html",
+    title: "Charging Your Diabetes Devices on the Road: The Pump, CGM, and Phone Power Guide (2026)",
+    desc: "Your pump, CGM, and phone are all medical devices now, and every one of them runs on a battery. The 2026 power guide for diabetes travelers: device charging facts, power-bank rules, airport and in-flight charging, and the outlet-adapter kit.",
+    emoji: "\U0001F50B"
+  },
+  {
     slug: "theme-parks-type-1-diabetes-disney-universal-playbook.html",
     title: "Theme Parks with Type 1 Diabetes: The Disney and Universal Playbook (2026)",
     desc: "Orlando and Anaheim are the holiday season's biggest family trips, and a park day stacks every diabetes variable at once: heat, miles of walking, coasters tugging at devices, and carb-heavy park food. The 2026 playbook for rides, devices, First Aid, and the queue.",
