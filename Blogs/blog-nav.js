@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "christmas-markets-type-1-diabetes-playbook.html",
+    title: "Christmas Markets with Type 1 Diabetes: The Cold, the Carbs, and the Mulled Wine Playbook (2026)",
+    desc: "European Christmas markets open mid-November: freezing days, hours of walking, sweet market food, and mulled wine. The 2026 type 1 diabetes playbook: keeping insulin from freezing, pumps and CGMs in winter weather, the market-food carb strategy, and the alcohol rules.",
+    emoji: "\U0001F384"
+  },
+  {
     slug: "diabetes-devices-charging-travel-power-guide.html",
     title: "Charging Your Diabetes Devices on the Road: The Pump, CGM, and Phone Power Guide (2026)",
     desc: "Your pump, CGM, and phone are all medical devices now, and every one of them runs on a battery. The 2026 power guide for diabetes travelers: device charging facts, power-bank rules, airport and in-flight charging, and the outlet-adapter kit.",
