@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "airline-meals-type-1-diabetes-guide.html",
+    title: "Airline Meals with Type 1 Diabetes: What to Order, What to Pack (2026)",
+    desc: "Flying for the holidays? Order the DBML diabetic special meal, pack backup food through TSA, and wait until the tray lands before injecting. The 2026 T1D guide to airline catering on United, American, and Southwest.",
+    emoji: "\U0001F371"
+  },
+  {
     slug: "christmas-markets-type-1-diabetes-playbook.html",
     title: "Christmas Markets with Type 1 Diabetes: The Cold, the Carbs, and the Mulled Wine Playbook (2026)",
     desc: "European Christmas markets open mid-November: freezing days, hours of walking, sweet market food, and mulled wine. The 2026 type 1 diabetes playbook: keeping insulin from freezing, pumps and CGMs in winter weather, the market-food carb strategy, and the alcohol rules.",
