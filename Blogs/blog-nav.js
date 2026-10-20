@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-glucagon-emergency-kit-guide.html",
+    title: "Traveling with Glucagon: The Emergency Kit People Forget to Pack (2026)",
+    desc: "The emergency kit most diabetes packing lists skip: Baqsimi, Gvoke, and Zegalogue for travel, TSA carry-on rules, storage limits, and the pre-trip companion briefing.",
+    emoji: "\U0001FA7A"
+  },
+  {
     slug: "airline-meals-type-1-diabetes-guide.html",
     title: "Airline Meals with Type 1 Diabetes: What to Order, What to Pack (2026)",
     desc: "Flying for the holidays? Order the DBML diabetic special meal, pack backup food through TSA, and wait until the tray lands before injecting. The 2026 T1D guide to airline catering on United, American, and Southwest.",
