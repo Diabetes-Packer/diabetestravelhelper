@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-solo-type-1-diabetes-safety-playbook.html",
+    title: "Traveling Solo with Type 1 Diabetes: The Safety Playbook (2026)",
+    desc: "No travel companion? No problem. The 2026 solo diabetes travel playbook: CGM sharing as your remote companion, the severe-low plan that works when nobody is beside you, hotel and hostel safety, and the 11-item solo checklist.",
+    emoji: "\U0001F9ED"
+  },
+  {
     slug: "traveling-with-glucagon-emergency-kit-guide.html",
     title: "Traveling with Glucagon: The Emergency Kit People Forget to Pack (2026)",
     desc: "The emergency kit most diabetes packing lists skip: Baqsimi, Gvoke, and Zegalogue for travel, TSA carry-on rules, storage limits, and the pre-trip companion briefing.",
