@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "cgm-sharing-while-traveling-connectivity-playbook.html",
+    title: "CGM Data Sharing While Traveling: The Connectivity Playbook (2026)",
+    desc: "Your followers can only see your glucose if your data reaches the internet. The 2026 CGM connectivity playbook: why airplane mode pauses Dexcom Follow, the both-phones-online rule, the before-you-fly app checklist, and the new cross-country sync update.",
+    emoji: "\U0001F4F6"
+  },
+  {
     slug: "traveling-solo-type-1-diabetes-safety-playbook.html",
     title: "Traveling Solo with Type 1 Diabetes: The Safety Playbook (2026)",
     desc: "No travel companion? No problem. The 2026 solo diabetes travel playbook: CGM sharing as your remote companion, the severe-low plan that works when nobody is beside you, hotel and hostel safety, and the 11-item solo checklist.",
