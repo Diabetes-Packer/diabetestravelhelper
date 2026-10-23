@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "high-altitude-trekking-type-1-diabetes-playbook.html",
+    title: "High-Altitude Trekking with Type 1 Diabetes: The Mountain Playbook (2026)",
+    desc: "Mountain trekking stacks altitude, cold, and days of hard walking onto type 1 diabetes. The 2026 playbook: pump altitude ceilings, why blood glucose meters misread above 3,000 meters, altitude sickness vs DKA, and the Inca Trail numbers.",
+    emoji: "\u26f0\ufe0f"
+  },
+  {
     slug: "cgm-sharing-while-traveling-connectivity-playbook.html",
     title: "CGM Data Sharing While Traveling: The Connectivity Playbook (2026)",
     desc: "Your followers can only see your glucose if your data reaches the internet. The 2026 CGM connectivity playbook: why airplane mode pauses Dexcom Follow, the both-phones-online rule, the before-you-fly app checklist, and the new cross-country sync update.",
