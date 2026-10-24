@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "long-layovers-flight-delays-type-1-diabetes-playbook.html",
+    title: "Long Layovers and Flight Delays with Type 1 Diabetes: The Airport Playbook (2026)",
+    desc: "A delay is not a ruined trip, it is a diabetes logistics problem. The 2026 airport playbook: meal timing when food is uncertain, lows away from your bag, power for the CGM phone, insulin temperature in the terminal, and US and EU delay rights.",
+    emoji: "\u2708\ufe0f"
+  },
+  {
     slug: "high-altitude-trekking-type-1-diabetes-playbook.html",
     title: "High-Altitude Trekking with Type 1 Diabetes: The Mountain Playbook (2026)",
     desc: "Mountain trekking stacks altitude, cold, and days of hard walking onto type 1 diabetes. The 2026 playbook: pump altitude ceilings, why blood glucose meters misread above 3,000 meters, altitude sickness vs DKA, and the Inca Trail numbers.",
