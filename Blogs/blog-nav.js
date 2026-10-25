@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "airport-assistance-type-1-diabetes-preboarding-wheelchair-sunflower.html",
+    title: "Airport Assistance with Type 1 Diabetes: Preboarding, Wheelchairs, and the Sunflower Lanyard (2026)",
+    desc: "Holiday airports are long walks, tight connections, and crowded gates. The 2026 assistance playbook: US preboarding and terminal help, EU 48 hour assistance, wheelchair and escort requests, and the sunflower lanyard for hidden disabilities.",
+    emoji: "\U0001f33b"
+  },
+  {
     slug: "long-layovers-flight-delays-type-1-diabetes-playbook.html",
     title: "Long Layovers and Flight Delays with Type 1 Diabetes: The Airport Playbook (2026)",
     desc: "A delay is not a ruined trip, it is a diabetes logistics problem. The 2026 airport playbook: meal timing when food is uncertain, lows away from your bag, power for the CGM phone, insulin temperature in the terminal, and US and EU delay rights.",
