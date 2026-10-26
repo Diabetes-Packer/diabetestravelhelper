@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "post-trip-reset-type-1-diabetes-playbook.html",
+    title: "Back Home with Type 1 Diabetes: The Post-Trip Reset Playbook (2026)",
+    desc: "You landed, but your diabetes routine is still on trip time. The 2026 post-trip reset playbook: pump and sensor clocks back, the jet lag math, the device-cycle reset, restocking before the holiday season, and reading the trip in your CGM data.",
+    emoji: "\U0001f3e0"
+  },
+  {
     slug: "airport-assistance-type-1-diabetes-preboarding-wheelchair-sunflower.html",
     title: "Airport Assistance with Type 1 Diabetes: Preboarding, Wheelchairs, and the Sunflower Lanyard (2026)",
     desc: "Holiday airports are long walks, tight connections, and crowded gates. The 2026 assistance playbook: US preboarding and terminal help, EU 48 hour assistance, wheelchair and escort requests, and the sunflower lanyard for hidden disabilities.",
