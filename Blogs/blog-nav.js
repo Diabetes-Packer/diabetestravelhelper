@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "insulin-customs-border-rules-type-1-diabetes.html",
+    title: "Bringing Insulin Through Customs: The Border Rules for Type 1 Diabetes (2026)",
+    desc: "The customs lane after landing: what border officers actually check, the personal-use quantity principle, the documentation trio, red and green channels, and the verified rules for the US, UK, Canada, Australia, Japan, and New Zealand.",
+    emoji: "\U0001f6c3"
+  },
+  {
     slug: "post-trip-reset-type-1-diabetes-playbook.html",
     title: "Back Home with Type 1 Diabetes: The Post-Trip Reset Playbook (2026)",
     desc: "You landed, but your diabetes routine is still on trip time. The 2026 post-trip reset playbook: pump and sensor clocks back, the jet lag math, the device-cycle reset, restocking before the holiday season, and reading the trip in your CGM data.",
