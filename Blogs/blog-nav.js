@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "pre-trip-diabetes-appointment-care-team-questions.html",
+    title: "The Pre-Trip Diabetes Appointment: What to Ask Your Care Team Before You Travel (2026)",
+    desc: "The appointment most diabetes packing lists skip: book 4 to 6 weeks out, bring your itinerary, and leave with a travel letter, generic-name prescriptions, a time zone plan, a sick-day plan, and a backup plan for a failed pod.",
+    emoji: "\U0001f4cb"
+  },
+  {
     slug: "insulin-customs-border-rules-type-1-diabetes.html",
     title: "Bringing Insulin Through Customs: The Border Rules for Type 1 Diabetes (2026)",
     desc: "The customs lane after landing: what border officers actually check, the personal-use quantity principle, the documentation trio, red and green channels, and the verified rules for the US, UK, Canada, Australia, Japan, and New Zealand.",
