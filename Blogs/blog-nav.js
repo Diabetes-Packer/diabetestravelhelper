@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "eating-out-restaurants-type-1-diabetes-playbook.html",
+    title: "Eating Out on Holiday Trips with Type 1 Diabetes: The Restaurant Playbook (2026)",
+    desc: "Holiday trips mean restaurant meals, and restaurant meals hide the carbs. The 2026 playbook: the FDA menu rule that gets you the carb count, the ADA plate method at a real table, the delayed-food plan, and the alcohol rules.",
+    emoji: "\U0001f37d"
+  },
+  {
     slug: "pre-trip-diabetes-appointment-care-team-questions.html",
     title: "The Pre-Trip Diabetes Appointment: What to Ask Your Care Team Before You Travel (2026)",
     desc: "The appointment most diabetes packing lists skip: book 4 to 6 weeks out, bring your itinerary, and leave with a travel letter, generic-name prescriptions, a time zone plan, a sick-day plan, and a backup plan for a failed pod.",
