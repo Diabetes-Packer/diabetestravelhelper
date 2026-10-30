@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "travel-vaccines-type-1-diabetes-holiday-travel-playbook.html",
+    title: "Travel Vaccines with Type 1 Diabetes: The Pre-Trip Shot List for Holiday Travel (2026)",
+    desc: "Holiday travel plus flu season is the moment to check your shots. The 2026 guide: the diabetes vaccine list, the flu shot rules, the 4 to 6 week travel clinic window, destination vaccines, and the yellow card that must be valid 10 days before you fly.",
+    emoji: "\U0001f489"
+  },
+  {
     slug: "eating-out-restaurants-type-1-diabetes-playbook.html",
     title: "Eating Out on Holiday Trips with Type 1 Diabetes: The Restaurant Playbook (2026)",
     desc: "Holiday trips mean restaurant meals, and restaurant meals hide the carbs. The 2026 playbook: the FDA menu rule that gets you the carb count, the ADA plate method at a real table, the delayed-food plan, and the alcohol rules.",
