@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-type-2-diabetes-oral-medications-playbook.html",
+    title: "Traveling with Type 2 Diabetes Pills: The Oral Medication Holiday Playbook (2026)",
+    desc: "Diabetes pills travel differently from insulin: no fridge, no pens, but time zones, missed doses, and airport screening still trip people up. The 2026 playbook for metformin, sulfonylureas, and SGLT2 pills on holiday trips.",
+    emoji: "\U0001f48a"
+  },
+  {
     slug: "travel-vaccines-type-1-diabetes-holiday-travel-playbook.html",
     title: "Travel Vaccines with Type 1 Diabetes: The Pre-Trip Shot List for Holiday Travel (2026)",
     desc: "Holiday travel plus flu season is the moment to check your shots. The 2026 guide: the diabetes vaccine list, the flu shot rules, the 4 to 6 week travel clinic window, destination vaccines, and the yellow card that must be valid 10 days before you fly.",
