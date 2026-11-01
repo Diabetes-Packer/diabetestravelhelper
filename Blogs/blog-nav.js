@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "keeping-cgm-pump-stuck-holiday-trips-adhesion-playbook.html",
+    title: "Keeping Your CGM and Pump Stuck on Holiday Trips: The Diabetes Device Adhesion Playbook (2026)",
+    desc: "Holiday trips are the worst week of the year for device adhesion: pools, sweat, sunscreen, and dry winter skin. The 2026 playbook for keeping a Dexcom G7 sensor and an Omnipod 5 pod stuck, from Dexcom and Insulet's own guidance.",
+    emoji: "\U0001fa79"
+  },
+  {
     slug: "traveling-with-type-2-diabetes-oral-medications-playbook.html",
     title: "Traveling with Type 2 Diabetes Pills: The Oral Medication Holiday Playbook (2026)",
     desc: "Diabetes pills travel differently from insulin: no fridge, no pens, but time zones, missed doses, and airport screening still trip people up. The 2026 playbook for metformin, sulfonylureas, and SGLT2 pills on holiday trips.",
