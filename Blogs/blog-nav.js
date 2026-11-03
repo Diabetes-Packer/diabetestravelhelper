@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "drinking-alcohol-holiday-trips-type-1-diabetes-playbook.html",
+    title: "Drinking on Holiday Trips with Type 1 Diabetes: The Alcohol Travel Playbook (2026)",
+    desc: "Thanksgiving, Christmas, and New Year's Eve put drinks in front of type 1 diabetes travelers for weeks. The 2026 alcohol travel playbook: why the low arrives hours later and overnight, what to eat and check, and the hotel-room plan that covers it.",
+    emoji: "\U0001f377"
+  },
+  {
     slug: "keeping-cgm-pump-stuck-holiday-trips-adhesion-playbook.html",
     title: "Keeping Your CGM and Pump Stuck on Holiday Trips: The Diabetes Device Adhesion Playbook (2026)",
     desc: "Holiday trips are the worst week of the year for device adhesion: pools, sweat, sunscreen, and dry winter skin. The 2026 playbook for keeping a Dexcom G7 sensor and an Omnipod 5 pod stuck, from Dexcom and Insulet's own guidance.",
