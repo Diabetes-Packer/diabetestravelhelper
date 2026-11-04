@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "new-years-eve-type-1-diabetes-countdown-playbook.html",
+    title: "New Year's Eve with Type 1 Diabetes: The Countdown Playbook (2026)",
+    desc: "New Year's Eve is the latest night of the year with type 1 diabetes: the midnight countdown, the drinks, the dancing, and the low that can arrive hours later while you sleep. The countdown playbook: the plan before midnight, the overnight watch, and the January 1 trip home.",
+    emoji: "\U0001f386"
+  },
+  {
     slug: "drinking-alcohol-holiday-trips-type-1-diabetes-playbook.html",
     title: "Drinking on Holiday Trips with Type 1 Diabetes: The Alcohol Travel Playbook (2026)",
     desc: "Thanksgiving, Christmas, and New Year's Eve put drinks in front of type 1 diabetes travelers for weeks. The 2026 alcohol travel playbook: why the low arrives hours later and overnight, what to eat and check, and the hotel-room plan that covers it.",
