@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "finding-insulin-abroad-type-1-diabetes-playbook.html",
+    title: "Finding Insulin Abroad with Type 1 Diabetes: The Pharmacy Playbook (2026)",
+    desc: "Running low on insulin in another country is a sourcing problem, not a panic problem. The 2026 pharmacy playbook: brand-name equivalents, prescription rules by region, the U-100 check, the US ReliOn fallback, and the emergency route when the pharmacy cannot help.",
+    emoji: "\u2695\ufe0f"
+  },
+  {
     slug: "new-years-eve-type-1-diabetes-countdown-playbook.html",
     title: "New Year's Eve with Type 1 Diabetes: The Countdown Playbook (2026)",
     desc: "New Year's Eve is the latest night of the year with type 1 diabetes: the midnight countdown, the drinks, the dancing, and the low that can arrive hours later while you sleep. The countdown playbook: the plan before midnight, the overnight watch, and the January 1 trip home.",
