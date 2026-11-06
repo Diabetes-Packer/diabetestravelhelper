@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "long-haul-flights-blood-clots-compression-socks-type-1-diabetes.html",
+    title: "Long-Haul Flights with Type 1 Diabetes: Blood Clots, Compression Socks, and Moving in Your Seat (2026)",
+    desc: "Sitting still for four hours or more raises the risk of a blood clot, and diabetes is on the CDC's risk list. The 2026 long-haul playbook: what the evidence actually says about compression socks, how to move in your seat, and the warning signs to watch for two weeks after landing.",
+    emoji: "\U0001f9e6"
+  },
+  {
     slug: "finding-insulin-abroad-type-1-diabetes-playbook.html",
     title: "Finding Insulin Abroad with Type 1 Diabetes: The Pharmacy Playbook (2026)",
     desc: "Running low on insulin in another country is a sourcing problem, not a panic problem. The 2026 pharmacy playbook: brand-name equivalents, prescription rules by region, the U-100 check, the US ReliOn fallback, and the emergency route when the pharmacy cannot help.",
