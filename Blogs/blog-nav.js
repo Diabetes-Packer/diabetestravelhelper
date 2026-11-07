@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "driving-abroad-type-1-diabetes-licenses-rental-cars.html",
+    title: "Driving Abroad with Type 1 Diabetes: Licenses, Rental Cars, and Low Blood Sugar Rules (2026)",
+    desc: "Renting a car abroad with type 1 diabetes means two sets of rules: the license and rental paperwork, and the low blood sugar numbers that change at the border. The 2026 guide: the IDP from AAA, what the rental counter asks for, the UK DVLA numbers, and keeping insulin safe in a hot rental car.",
+    emoji: "\U0001f697"
+  },
+  {
     slug: "long-haul-flights-blood-clots-compression-socks-type-1-diabetes.html",
     title: "Long-Haul Flights with Type 1 Diabetes: Blood Clots, Compression Socks, and Moving in Your Seat (2026)",
     desc: "Sitting still for four hours or more raises the risk of a blood clot, and diabetes is on the CDC's risk list. The 2026 long-haul playbook: what the evidence actually says about compression socks, how to move in your seat, and the warning signs to watch for two weeks after landing.",
