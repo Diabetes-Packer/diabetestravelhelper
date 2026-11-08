@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "severe-low-on-a-plane-type-1-diabetes-cabin-crew-playbook.html",
+    title: "A Severe Low on a Plane: What Cabin Crew Can (and Cannot) Do for Type 1 Diabetes (2026)",
+    desc: "A severe low at 35,000 feet means you cannot treat yourself, so the plan has to work through the people around you: what cabin crew can and cannot do, what is in the plane's emergency medical kit, and how the captain decides on a diversion.",
+    emoji: "\u2708"
+  },
+  {
     slug: "driving-abroad-type-1-diabetes-licenses-rental-cars.html",
     title: "Driving Abroad with Type 1 Diabetes: Licenses, Rental Cars, and Low Blood Sugar Rules (2026)",
     desc: "Renting a car abroad with type 1 diabetes means two sets of rules: the license and rental paperwork, and the low blood sugar numbers that change at the border. The 2026 guide: the IDP from AAA, what the rental counter asks for, the UK DVLA numbers, and keeping insulin safe in a hot rental car.",
