@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "train-travel-type-1-diabetes-rail-playbook.html",
+    title: "Train Travel with Type 1 Diabetes: The Rail Playbook (2026)",
+    desc: "Taking a train with type 1 diabetes? Amtrak boarding with no airport checkpoint, bags that stay with you, delay-proof low planning, sleeper cars, Eurostar security, and cross-country time zone rules.",
+    emoji: "\U0001f686"
+  },
+  {
     slug: "severe-low-on-a-plane-type-1-diabetes-cabin-crew-playbook.html",
     title: "A Severe Low on a Plane: What Cabin Crew Can (and Cannot) Do for Type 1 Diabetes (2026)",
     desc: "A severe low at 35,000 feet means you cannot treat yourself, so the plan has to work through the people around you: what cabin crew can and cannot do, what is in the plane's emergency medical kit, and how the captain decides on a diversion.",
