@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "insulin-pumps-cabin-pressure-flight-playbook.html",
+    title: "Insulin Pumps and Cabin Pressure: What Changes at 35,000 Feet (2026)",
+    desc: "Cabin pressure changes how much insulin a pump delivers on takeoff and landing. The 2024 chamber study numbers, Medtronic's safety notice, and the disconnect playbook for tubed pumps and Omnipod.",
+    emoji: "\U0001f388"
+  },
+  {
     slug: "train-travel-type-1-diabetes-rail-playbook.html",
     title: "Train Travel with Type 1 Diabetes: The Rail Playbook (2026)",
     desc: "Taking a train with type 1 diabetes? Amtrak boarding with no airport checkpoint, bags that stay with you, delay-proof low planning, sleeper cars, Eurostar security, and cross-country time zone rules.",
