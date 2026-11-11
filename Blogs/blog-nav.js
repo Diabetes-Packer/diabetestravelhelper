@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "travel-anxiety-type-1-diabetes-first-flight-playbook.html",
+    title: "Travel Anxiety with Type 1 Diabetes: The First-Flight Playbook (2026)",
+    desc: "Flying with type 1 diabetes for the first time, or the first time in years, is scary for a good reason. The fear of hypoglycemia numbers, what travelers who have done it say works, and the step-by-step playbook for the airport and the flight.",
+    emoji: "\U0001f60c"
+  },
+  {
     slug: "insulin-pumps-cabin-pressure-flight-playbook.html",
     title: "Insulin Pumps and Cabin Pressure: What Changes at 35,000 Feet (2026)",
     desc: "Cabin pressure changes how much insulin a pump delivers on takeoff and landing. The 2024 chamber study numbers, Medtronic's safety notice, and the disconnect playbook for tubed pumps and Omnipod.",
