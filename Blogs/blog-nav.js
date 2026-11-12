@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "long-stay-abroad-type-1-diabetes-playbook.html",
+    title: "Long Stays Abroad with Type 1 Diabetes: Beyond the 90-Day Supply Rule (2026)",
+    desc: "A semester abroad, a 3 to 6 month sabbatical, a winter snowbird stay, or a working holiday breaks every rule written for a 2-week trip. The 90-day border limits, the supply math for months, topping up abroad, and the local doctor, insurance, and routine that make a long stay work.",
+    emoji: "\U0001f9f3"
+  },
+  {
     slug: "travel-anxiety-type-1-diabetes-first-flight-playbook.html",
     title: "Travel Anxiety with Type 1 Diabetes: The First-Flight Playbook (2026)",
     desc: "Flying with type 1 diabetes for the first time, or the first time in years, is scary for a good reason. The fear of hypoglycemia numbers, what travelers who have done it say works, and the step-by-step playbook for the airport and the flight.",
