@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "game-day-travel-type-1-diabetes-athletes-away-trip-playbook.html",
+    title: "Game-Day Travel with Type 1 Diabetes: The Athlete's Away-Trip Playbook (2026)",
+    desc: "Flying to tournaments with type 1 diabetes: the TSA-to-locker-room kit list, game-day glucose checks before, during, and after play, treating a low from the stadium bag, and what heat and cold do to a CGM on the field.",
+    emoji: "\U0001f3c5"
+  },
+  {
     slug: "long-stay-abroad-type-1-diabetes-playbook.html",
     title: "Long Stays Abroad with Type 1 Diabetes: Beyond the 90-Day Supply Rule (2026)",
     desc: "A semester abroad, a 3 to 6 month sabbatical, a winter snowbird stay, or a working holiday breaks every rule written for a 2-week trip. The 90-day border limits, the supply math for months, topping up abroad, and the local doctor, insurance, and routine that make a long stay work.",
