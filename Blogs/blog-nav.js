@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "tsa-precheck-type-1-diabetes-guide.html",
+    title: "TSA PreCheck with Type 1 Diabetes: What Actually Changes at the Checkpoint (2026)",
+    desc: "TSA PreCheck, Global Entry, and CLEAR Plus each change the checkpoint differently for a pump or CGM. The fees, the enrollment steps, the device rules in the PreCheck lane, and the holiday plan for enrolling now.",
+    emoji: "\U0001f6c2"
+  },
+  {
     slug: "game-day-travel-type-1-diabetes-athletes-away-trip-playbook.html",
     title: "Game-Day Travel with Type 1 Diabetes: The Athlete's Away-Trip Playbook (2026)",
     desc: "Flying to tournaments with type 1 diabetes: the TSA-to-locker-room kit list, game-day glucose checks before, during, and after play, treating a low from the stadium bag, and what heat and cold do to a CGM on the field.",
