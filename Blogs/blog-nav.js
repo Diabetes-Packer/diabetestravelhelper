@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "flying-with-diabetes-alert-dog-service-animal-guide.html",
+    title: "Flying with a Diabetes Alert Dog: The DOT Rules, the Forms, and the Flight (2026)",
+    desc: "A diabetes alert dog can fly in the cabin with you, but only as a trained service dog under the DOT rules. The two forms, the 48-hour deadline, the TSA screening steps, and the hotel and international rules that apply once you land.",
+    emoji: "\U0001f415"
+  },
+  {
     slug: "tsa-precheck-type-1-diabetes-guide.html",
     title: "TSA PreCheck with Type 1 Diabetes: What Actually Changes at the Checkpoint (2026)",
     desc: "TSA PreCheck, Global Entry, and CLEAR Plus each change the checkpoint differently for a pump or CGM. The fees, the enrollment steps, the device rules in the PreCheck lane, and the holiday plan for enrolling now.",
