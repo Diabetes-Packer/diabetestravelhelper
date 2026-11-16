@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "scuba-diving-type-1-diabetes-dive-trip-playbook.html",
+    title: "Scuba Diving with Type 1 Diabetes: The DAN Rules, the Pre-Dive Checks, and the Trip (2026)",
+    desc: "Diabetes used to be an automatic no for scuba diving. The 2005 DAN and UHMS guidelines changed that, with clear rules for who can dive, the three pre-dive glucose checks, the 150 mg/dL floor, and what happens to your pump and CGM underwater.",
+    emoji: "\U0001f93f"
+  },
+  {
     slug: "flying-with-diabetes-alert-dog-service-animal-guide.html",
     title: "Flying with a Diabetes Alert Dog: The DOT Rules, the Forms, and the Flight (2026)",
     desc: "A diabetes alert dog can fly in the cabin with you, but only as a trained service dog under the DOT rules. The two forms, the 48-hour deadline, the TSA screening steps, and the hotel and international rules that apply once you land.",
