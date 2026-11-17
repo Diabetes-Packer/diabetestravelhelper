@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "christmas-day-type-1-diabetes-playbook.html",
+    title: "Christmas Day with Type 1 Diabetes: The Day-Of Playbook (2026)",
+    desc: "Christmas Day with type 1 diabetes: the carb counts for the Christmas classics, the plate strategy, the drinks that hide 30 grams, and the day-of timeline from breakfast to the overnight low alarm.",
+    emoji: "\U0001f384"
+  },
+  {
     slug: "scuba-diving-type-1-diabetes-dive-trip-playbook.html",
     title: "Scuba Diving with Type 1 Diabetes: The DAN Rules, the Pre-Dive Checks, and the Trip (2026)",
     desc: "Diabetes used to be an automatic no for scuba diving. The 2005 DAN and UHMS guidelines changed that, with clear rules for who can dive, the three pre-dive glucose checks, the 150 mg/dL floor, and what happens to your pump and CGM underwater.",
