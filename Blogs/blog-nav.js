@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-diabetes-in-japan-guide.html",
+    title: "Traveling with Diabetes in Japan: The Import Rules, the Pharmacy, and the Trip (2026)",
+    desc: "Japan's medicine import rules are specific: a one-month supply line, a certificate called a Yunyu Kakunin-sho for anything over it, and a pharmacy system that does not accept foreign prescriptions. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
+    emoji: "\u26e9\ufe0f"
+  },
+  {
     slug: "christmas-day-type-1-diabetes-playbook.html",
     title: "Christmas Day with Type 1 Diabetes: The Day-Of Playbook (2026)",
     desc: "Christmas Day with type 1 diabetes: the carb counts for the Christmas classics, the plate strategy, the drinks that hide 30 grams, and the day-of timeline from breakfast to the overnight low alarm.",
