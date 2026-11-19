@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-diabetes-in-mexico-guide.html",
+    title: "Traveling with Diabetes in Mexico: The Pharmacy, the Food, and the Trip (2026)",
+    desc: "Mexico's diabetes rules are the opposite of Japan's in one way that matters: insulin is sold over the counter at the farmacia, but the paperwork for bringing your own supply still counts, and the heat, the food, and the time zones all need a plan. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
+    emoji: "\U0001f335"
+  },
+  {
     slug: "traveling-with-diabetes-in-japan-guide.html",
     title: "Traveling with Diabetes in Japan: The Import Rules, the Pharmacy, and the Trip (2026)",
     desc: "Japan's medicine import rules are specific: a one-month supply line, a certificate called a Yunyu Kakunin-sho for anything over it, and a pharmacy system that does not accept foreign prescriptions. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
