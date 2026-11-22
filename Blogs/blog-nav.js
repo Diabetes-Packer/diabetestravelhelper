@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-diabetes-in-france-guide.html",
+    title: "Traveling with Diabetes in France: The Pharmacy, the Food, and the Trip (2026)",
+    desc: "France's diabetes rules are the European version with a French twist: carry medicine in the amount on your prescription, or up to three months without one, carry the original prescription for controlled medicines, and buy insulin only with a French prescription. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
+    emoji: "\U0001f1eb\U0001f1f7"
+  },
+  {
     slug: "traveling-with-diabetes-in-italy-guide.html",
     title: "Traveling with Diabetes in Italy: The Pharmacy, the Food, and the Trip (2026)",
     desc: "Italy's diabetes rules are the European version with an Italian twist: carry up to a 30-day supply with your prescription, get a Health Ministry certificate for controlled medicines, and buy insulin only with an Italian prescription. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
