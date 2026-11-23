@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-diabetes-in-united-kingdom-guide.html",
+    title: "Traveling with Diabetes in the United Kingdom: The Pharmacy, the Food, and the Trip (2026)",
+    desc: "The United Kingdom's diabetes rules are the friendliest version of the European system with a British twist: insulin is not a controlled drug, but it still needs a prescription your pharmacy at home cannot write, the airport has its own device card, and the food labels hide the carbs. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
+    emoji: "\U0001f1ec\U0001f1e7"
+  },
+  {
     slug: "traveling-with-diabetes-in-france-guide.html",
     title: "Traveling with Diabetes in France: The Pharmacy, the Food, and the Trip (2026)",
     desc: "France's diabetes rules are the European version with a French twist: carry medicine in the amount on your prescription, or up to three months without one, carry the original prescription for controlled medicines, and buy insulin only with a French prescription. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
