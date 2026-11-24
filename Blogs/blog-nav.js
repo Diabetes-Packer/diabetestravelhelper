@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-diabetes-in-canada-guide.html",
+    title: "Traveling with Diabetes in Canada: The Pharmacy, the Food, and the Trip (2026)",
+    desc: "Canada flips the pharmacy rule every other country guide in this series follows: insulin sits behind the counter with no prescription legally required, but the pharmacist still runs the sale, the border allows a 90-day supply, and the winter cold is the real diabetes risk. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
+    emoji: "\U0001f1e8\U0001f1e6"
+  },
+  {
     slug: "traveling-with-diabetes-in-united-kingdom-guide.html",
     title: "Traveling with Diabetes in the United Kingdom: The Pharmacy, the Food, and the Trip (2026)",
     desc: "The United Kingdom's diabetes rules are the friendliest version of the European system with a British twist: insulin is not a controlled drug, but it still needs a prescription your pharmacy at home cannot write, the airport has its own device card, and the food labels hide the carbs. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
