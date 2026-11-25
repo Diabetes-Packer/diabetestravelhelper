@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-diabetes-in-germany-guide.html",
+    title: "Traveling with Diabetes in Germany: The Pharmacy, the Food, and the Trip (2026)",
+    desc: "Germany flips the pharmacy rule the other way from Canada: insulin is prescription-only, a United States prescription cannot be filled, and a German doctor has to write a new one on a private prescription. The border allows a three-month supply, controlled medicines need a certificate, and the winter cold is the real diabetes risk. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
+    emoji: "\U0001f1e9\U0001f1ea"
+  },
+  {
     slug: "traveling-with-diabetes-in-canada-guide.html",
     title: "Traveling with Diabetes in Canada: The Pharmacy, the Food, and the Trip (2026)",
     desc: "Canada flips the pharmacy rule every other country guide in this series follows: insulin sits behind the counter with no prescription legally required, but the pharmacist still runs the sale, the border allows a 90-day supply, and the winter cold is the real diabetes risk. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
