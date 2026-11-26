@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-diabetes-in-portugal-guide.html",
+    title: "Traveling with Diabetes in Portugal: The Pharmacy, the Food, and the Trip (2026)",
+    desc: "Portugal is the mildest winter in this series, and the pharmacy rule is the same wall as Germany: insulin is prescription-only, a United States prescription cannot be filled directly at a farmacia, and a Portuguese doctor has to write a new one. The border allows medicines for personal use with a prescription, controlled medicines are limited to 30 days, and the SNS 24 health line answers around the clock. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
+    emoji: "\U0001f1f5\U0001f1f9"
+  },
+  {
     slug: "traveling-with-diabetes-in-germany-guide.html",
     title: "Traveling with Diabetes in Germany: The Pharmacy, the Food, and the Trip (2026)",
     desc: "Germany flips the pharmacy rule the other way from Canada: insulin is prescription-only, a United States prescription cannot be filled, and a German doctor has to write a new one on a private prescription. The border allows a three-month supply, controlled medicines need a certificate, and the winter cold is the real diabetes risk. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
