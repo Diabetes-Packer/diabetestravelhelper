@@ -1,5 +1,11 @@
 const ARTICLES = [
   {
+    slug: "traveling-with-diabetes-in-belgium-guide.html",
+    title: "Traveling with Diabetes in Belgium: The Pharmacy, the Food, and the Trip (2026)",
+    desc: "Belgium is the eleventh country in this series, and the pharmacy rule is the same wall as Germany and the Netherlands: insulin is prescription-only, a United States prescription cannot be filled directly at an apotheek or a pharmacie, and a Belgian doctor has to write a new one. The border allows medicines for personal use, controlled medicines need a prescription or a government-validated certificate, and the out-of-hours GP service answers on 1733 when the doctor's office is closed. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
+    emoji: "\U0001f1e7\U0001f1ea"
+  },
+  {
     slug: "traveling-with-diabetes-in-netherlands-guide.html",
     title: "Traveling with Diabetes in the Netherlands: The Pharmacy, the Food, and the Trip (2026)",
     desc: "The Netherlands is a cold winter in this series, and the pharmacy rule is the same wall as Germany: insulin is prescription-only, a United States prescription cannot be filled directly at an apotheek, and a Dutch doctor has to write a new one. The border allows medicines for personal use with a prescription, Opium Act medicines need an official certificate, and the out-of-hours GP service answers when the doctor's office is closed. This guide covers the import rules, the pharmacy, and the trip, from official sources.",
